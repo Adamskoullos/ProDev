@@ -29,7 +29,7 @@
                   <span class="btn" @click="toggleSideChat">Team Chat</span>
                 </li>
               </ul>
-              <div class="theme">
+              <div class="theme ">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                 </div>
@@ -86,14 +86,20 @@ export default {
   padding-left: 0;
 }
 .nav-row{
-  min-height: 60px;
+  min-height: 100px;
   height: 10vh;
 }
 nav{
-  margin: 5px;
+  margin: 10px;
   border-radius: 10px;
   box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
   border: 1px solid  var(--secondary);
+}
+.nav-item{
+  margin: 10px auto;
+}
+.form-check-input::before{
+  background-color: red;
 }
 .main-nav{
   display: flex;
@@ -121,7 +127,7 @@ nav{
   justify-content: center;
 }
 .content-row{
-  min-height: 10vh;
+  min-height: 90vh;
   background: rgb(71, 94, 66);
   display: flex;
   align-items: stretch;
@@ -142,11 +148,14 @@ nav{
   align-items: center;
 }
 li span{
-  margin-right: 10px;
+  margin: 2px 10px;
 }
 input{
   margin-top: auto;
   margin-bottom: auto;
+}
+.navbar{
+  padding: 5px;
 }
 
 </style>
