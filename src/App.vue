@@ -11,22 +11,22 @@
             <div class="collapse navbar-collapse main-nav" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
-                  <router-link :to="{ name: 'TeamProjects' }" class="nav-link active" aria-current="page">Team Projects</router-link>
+                  <router-link :to="{ name: 'TeamProjects' }" class=" btn" aria-current="page">Team Projects</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'MyProjects' }" class="nav-link" aria-current="page">My Projects</router-link>
+                  <router-link :to="{ name: 'MyProjects' }" class=" btn" aria-current="page">My Projects</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'NewProject' }" class="nav-link" aria-current="page">New Project</router-link>
+                  <router-link :to="{ name: 'NewProject' }" class=" btn" aria-current="page">New Project</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'Bugs' }" class="nav-link" aria-current="page">Bugs</router-link>
+                  <router-link :to="{ name: 'Bugs' }" class=" btn" aria-current="page">Bugs</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'NewBug' }" class="nav-link" aria-current="page">New Bug</router-link>
+                  <router-link :to="{ name: 'NewBug' }" class=" btn" aria-current="page">New Bug</router-link>
                 </li>
                 <li class="nav-item">
-                  <span class="btn nav-link" @click="toggleSideChat">Team Chat</span>
+                  <span class="btn" @click="toggleSideChat">Team Chat</span>
                 </li>
               </ul>
               <div class="theme">
@@ -37,7 +37,7 @@
               <div class="user">
                 <span>User Name</span>
               </div>
-              <button class="btn logout"><span class="material-icons">logout</span></button>
+              <button class="btn logout">Logout</button>
             </div>
           </div>
         </nav>
@@ -73,7 +73,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -89,6 +89,12 @@ export default {
   min-height: 60px;
   height: 10vh;
 }
+nav{
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  border: 1px solid  var(--secondary);
+}
 .main-nav{
   display: flex;
   justify-content: center;
@@ -96,7 +102,6 @@ export default {
 }
 .view-container{
   min-height: 100vh;
-  background: rgb(150, 39, 39);
 }
 .chat-window{
   min-height: 90vh;
@@ -139,4 +144,9 @@ export default {
 li span{
   margin-right: 10px;
 }
+input{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 </style>
