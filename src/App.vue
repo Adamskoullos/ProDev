@@ -49,7 +49,7 @@
           <div class="col content-col">
             <h1>Content Window</h1>
           </div>
-          <div class="col-12 col-md-4 chat-col">
+          <div class="col-12 col-md-4 chat-col" v-if="showSideChat">
             <h1>Chat Window</h1>
           </div>
         </div>
