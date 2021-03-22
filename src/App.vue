@@ -158,7 +158,7 @@ components: { Chat },
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgb(213, 228, 193);
+  background: rgb(188, 202, 170);
   max-width: 200px;
   margin: 0px;
   border-radius: 2px;
@@ -175,7 +175,7 @@ components: { Chat },
 }
 .top-bar-row{
   min-height: 60px;
-  background: rgb(213, 228, 193);
+  background: rgb(188, 202, 170);
   box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
   border: 1.5px solid  var(--secondary);
   border-radius: 2px;
@@ -290,8 +290,16 @@ ul li a{
 .user-name{
   margin: auto 5px auto auto;
 }
-.logout{
+.logout span{
   margin: auto 10px auto 15px;
+  transition: all ease 0.2s;
+}
+.logout span:hover{
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  transform: scale(1.13);
+  transition: all ease 0.2s;
+  color: var(--primary);
+  cursor: pointer;
 }
 .view-icons{
   margin: auto 15px;
