@@ -16,19 +16,19 @@
                   <span >Team Chat</span>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'TeamProjects' }" class="" aria-current="page">Team Projects</router-link>
+                  <router-link :to="{ name: 'TeamProjects' }">Team Projects</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'MyProjects' }" class="" aria-current="page">My Projects</router-link>
+                  <router-link :to="{ name: 'MyProjects' }">My Projects</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'NewProject' }" class="" aria-current="page">New Project</router-link>
+                  <router-link :to="{ name: 'NewProject' }">New Project</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'Bugs' }" class="" aria-current="page">Bugs</router-link>
+                  <router-link :to="{ name: 'Bugs' }">Bugs</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'NewBug' }" class="" aria-current="page">New Bug</router-link>
+                  <router-link :to="{ name: 'NewBug' }">New Bug</router-link>
                 </li>
                 <li class="nav-item">
                   <a class="logout">Logout</a>
@@ -47,10 +47,10 @@
         </div>
         <div class="row content-row">
           <div class="col content-col">
-            <h1>Content Window</h1>
+            <router-view/>
           </div>
           <div class="col-12 col-md-4 chat-col" v-if="showSideChat">
-            <h1>Chat Window</h1>
+            <h1>Live Chat</h1>
           </div>
         </div>
       </div>
@@ -65,25 +65,25 @@ import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
 export default {
 
     setup(){
-        const showSideChat = ref(true)
+        const showSideChat = ref(false)
         const user = ref(true)
         const showSideNav = ref(false)
 
         onBeforeMount(()=> {
           window.addEventListener('load', ()=> {
-            if(visualViewport.width < 900){
+            if(visualViewport.width < 1100){
               showSideNav.value = false
             }
-            if(visualViewport.width > 900){
+            if(visualViewport.width > 1100){
               showSideNav.value = true 
             }
           }),
 
           window.addEventListener('resize', () =>{
-            if(visualViewport.width < 900){
+            if(visualViewport.width < 1100){
               showSideNav.value = false
             }
-            if(visualViewport.width > 900){
+            if(visualViewport.width > 1100){
               showSideNav.value = true 
             }
           })
@@ -121,12 +121,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: #fff;
+  background: rgb(193, 223, 155);
   max-width: 200px;
   margin: 0px;
-  border-radius: 0px;
+  border-radius: 2px;
   box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 1px solid  var(--secondary);
+  border: 2px solid  var(--secondary);
 }
 .main-row{
   max-height: 100vh;
@@ -138,14 +138,17 @@ export default {
 }
 .top-bar-row{
   min-height: 60px;
-  background: rgb(255, 255, 255);
+  background: rgb(193, 223, 155);
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  border: 1.5px solid  var(--secondary);
+  border-radius: 2px;
 }
 .top-bar-col{
   display: flex;
   align-items: center;
 }
 .content-row{
-  background: lightgray;
+  background: var(--background-b);
   flex: 1;
 }
 .content-col{
@@ -192,19 +195,24 @@ export default {
   padding-top: 12px; 
 }
 .nav-item{
-  background: var(--secondary);
+  background: rgb(255, 255, 255);
+  /* background: var(--background-b); */
   color: var(--primary);
-  border-radius: 8px;
+  border-radius: 2px;
   border: 0;
   padding: 10px 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-block;
   box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 1px solid  var(--secondary);
+  border: 1.5px solid  var(--secondary);
   width: 100%;
+  transition: all ease 0.2s;
 }
-a{
+.nav-item:hover{
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  transform: scale(1.05);
+  transition: all ease 0.2s;
   color: var(--primary);
 }
 .theme{
@@ -231,5 +239,8 @@ a{
 ul li {
   margin: 10px auto 10px 0;
   min-width: 130px;
+}
+ul li a{
+  display: block;
 }
 </style>

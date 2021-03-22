@@ -6,6 +6,7 @@
     --primary: #707070;
     --secondary: #ebebeb;
     --warning: #da0f41;
+    --background-b: rgb(248, 248, 248);
   }
   
   /* base styles  */
@@ -21,6 +22,10 @@
   }
   a {
     text-decoration: none;
+    color: var(--primary);
+  }
+  a:hover{
+    color: var(--primary);
   }
   
   /* buttons */
