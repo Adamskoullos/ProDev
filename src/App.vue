@@ -36,12 +36,15 @@
       <div class="col main-col">
         <div class="row top-bar-row">
           <div class="col top-bar-col">
-            <nav v-if="!user" class="top-nav">
-              <div>
-                <router-link><h4>Login</h4></router-link>
+            <nav v-if="!user" class="top-nav no-auth-nav">
+              <div class="no-auth-logo">
+                <span><h1>ProDev</h1></span>
               </div>
-              <div>
-                <router-link><h4>Login</h4></router-link>
+              <div class="no-auth no-auth-login">
+                <router-link :to="{ name: 'Login' }"><h3>Login</h3></router-link>
+              </div>
+              <div class="no-auth">
+                <router-link :to="{ name: 'Signup' }"><h3>Signup</h3></router-link>
               </div>
             </nav>
             <nav class="top-nav" v-if="!showSideNav && user">
@@ -55,9 +58,11 @@
                   <span class="material-icons">bug_report</span>
                 </router-link>
               </div>
-              <router-link :to="{ name: 'Chat' }">
-                <span class="material-icons">chat_bubble</span>
-              </router-link>
+              <div class="view-icons">
+                <router-link :to="{ name: 'Chat' }">
+                  <span class="material-icons">chat_bubble</span>
+                </router-link>
+              </div>
             </nav>
             <div class="user-name" v-if="user">
               <h3>User Name</h3>
@@ -276,7 +281,8 @@ ul li a{
 .top-nav{
   display: flex;
   align-items: center;
-
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  border: 1.5px solid  var(--secondary);
 }
 .user-name{
   margin: auto 5px auto auto;
@@ -285,7 +291,7 @@ ul li a{
   margin: auto 10px auto 15px;
 }
 .view-icons{
-  margin: auto 10px;
+  margin: auto 15px;
 }
 span.material-icons{
   font-size: 35px;
@@ -293,4 +299,25 @@ span.material-icons{
 .chat{
   margin-right: auto;
 }
+/* Top bar when user not logged in */
+
+.no-auth-nav{
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end
+}
+.no-auth-logo{
+  margin: auto auto auto 20px;
+}
+.no-auth{
+  margin: auto 20px;
+  transition: all ease 0.2s;
+}
+.no-auth:hover{
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  transform: scale(1.05);
+  transition: all ease 0.2s;
+  color: var(--primary);
+}
+
 </style>

@@ -6,6 +6,8 @@ import NewProject from '../views/NewProject.vue'
 import Bugs from '../views/Bugs.vue'
 import NewBug from '../views/NewBug.vue'
 import Chat from '../views/Chat'
+import Login from '../views/auth/Login'
+import Signup from '../views/auth/Signup'
 
 const routes = [
   {
@@ -42,6 +44,16 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     component: Chat
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
   }
 ]
 
