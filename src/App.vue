@@ -92,6 +92,7 @@
 import { ref } from '@vue/reactivity'
 import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
 import Chat from './views/Chat'
+import { useRouter } from 'vue-router'
 
 
 export default {
@@ -100,25 +101,27 @@ components: { Chat },
         const showSideChat = ref(false)
         const user = ref(true)
         const showSideNav = ref(false)
+        const router = useRouter()
 
         onBeforeMount(()=> {
           window.addEventListener('load', ()=> {
-            if(visualViewport.width < 1100){
+            if(visualViewport.width < 1200){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1100){
+            if(visualViewport.width > 1200){
               showSideNav.value = true 
             }
           }),
 
           window.addEventListener('resize', () =>{
-            if(visualViewport.width < 1100){
+            if(visualViewport.width < 1200){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1100){
-              showSideNav.value = true 
+            if(visualViewport.width > 1200){
+              showSideNav.value = true
+              router.push({ name: 'MyProjects' }) 
             }
           })
         })
