@@ -1,56 +1,81 @@
 <template>
   <div class="container-fluid">
     <div class="row main-row">
-      <div class="col-2 side-nav" v-if="showSideNav">
-            <nav>
-              <div class="logo">
-                <router-link :to="{ name: 'MyProjects' }" class=""><h3>ProDev</h3></router-link>
-              </div>
-              <div class="theme">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                </div>
-              </div>
-              <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item" @click="toggleSideChat">
-                  <span >Team Chat</span>
-                </li>
-                <li class="nav-item">
-                  <router-link :to="{ name: 'TeamProjects' }">Team Projects</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link :to="{ name: 'MyProjects' }">My Projects</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link :to="{ name: 'NewProject' }">New Project</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link :to="{ name: 'Bugs' }">Bugs</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link :to="{ name: 'NewBug' }">New Bug</router-link>
-                </li>
-                <li class="nav-item">
-                  <a class="logout">Logout</a>
-                </li>
-              </ul>
-            </nav>
-            
+      <div class="col-2 side-nav" v-if="showSideNav && user">
+        <nav>
+          <div class="logo">
+          <router-link :to="{ name: 'MyProjects' }" class=""><h3>ProDev</h3></router-link>
+          </div>
+          <div class="theme">
+          <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          </div>
+          </div>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item" @click="toggleSideChat">
+                <span >Team Chat</span>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'TeamProjects' }">Team Projects</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'MyProjects' }">My Projects</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'NewProject' }">New Project</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'Bugs' }">Bugs</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'NewBug' }">New Bug</router-link>
+            </li>
+          </ul>
+      </nav>
       </div>
       <div class="col main-col">
         <div class="row top-bar-row">
           <div class="col top-bar-col">
-            <div class="user">
-              <h2>Top bar</h2>
+            <nav v-if="!user" class="top-nav">
+              <div>
+                <router-link><h4>Login</h4></router-link>
+              </div>
+              <div>
+                <router-link><h4>Login</h4></router-link>
+              </div>
+            </nav>
+            <nav class="top-nav" v-if="!showSideNav && user">
+              <div class="view-icons" v-if="user">
+                <router-link :to="{ name: 'MyProjects' }">
+                  <span class="material-icons">folder</span>
+                </router-link>
+              </div>
+              <div class="view-icons" v-if="user">
+                <router-link :to="{ name: 'Bugs' }">
+                  <span class="material-icons">bug_report</span>
+                </router-link>
+              </div>
+              <router-link :to="{ name: 'Chat' }">
+                <span class="material-icons">chat_bubble</span>
+              </router-link>
+            </nav>
+            <div class="user-name" v-if="user">
+              <h3>User Name</h3>
+            </div>
+            <div class="logout" v-if="user">
+              <span class="material-icons">logout</span>
             </div>
           </div>
         </div>
         <div class="row content-row">
           <div class="col content-col">
-            <router-view/>
+            <div class="col-12 chat-col" v-if="showSideChat && !showSideNav">
+              <Chat />
+            </div>
+            <router-view v-if="(!showSideChat && !showSideNav) || (!showSideChat && showSideNav) || (showSideNav)"/>
           </div>
-          <div class="col-12 col-md-4 chat-col" v-if="showSideChat">
-            <h1>Live Chat</h1>
+          <div class="col-12 col-md-4 chat-col" v-if="showSideChat && showSideNav">
+            <Chat />
           </div>
         </div>
       </div>
@@ -61,9 +86,11 @@
 <script>
 import { ref } from '@vue/reactivity'
 import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
+import Chat from './views/Chat'
+
 
 export default {
-
+components: { Chat },
     setup(){
         const showSideChat = ref(false)
         const user = ref(true)
@@ -73,6 +100,7 @@ export default {
           window.addEventListener('load', ()=> {
             if(visualViewport.width < 1100){
               showSideNav.value = false
+              showSideChat.value = false
             }
             if(visualViewport.width > 1100){
               showSideNav.value = true 
@@ -82,6 +110,7 @@ export default {
           window.addEventListener('resize', () =>{
             if(visualViewport.width < 1100){
               showSideNav.value = false
+              showSideChat.value = false
             }
             if(visualViewport.width > 1100){
               showSideNav.value = true 
@@ -121,7 +150,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgb(193, 223, 155);
+  background: rgb(213, 228, 193);
   max-width: 200px;
   margin: 0px;
   border-radius: 2px;
@@ -138,7 +167,7 @@ export default {
 }
 .top-bar-row{
   min-height: 60px;
-  background: rgb(193, 223, 155);
+  background: rgb(213, 228, 193);
   box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
   border: 1.5px solid  var(--secondary);
   border-radius: 2px;
@@ -242,5 +271,26 @@ ul li {
 }
 ul li a{
   display: block;
+}
+/* Top Bar *******************************************/
+.top-nav{
+  display: flex;
+  align-items: center;
+
+}
+.user-name{
+  margin: auto 5px auto auto;
+}
+.logout{
+  margin: auto 10px auto 15px;
+}
+.view-icons{
+  margin: auto 10px;
+}
+span.material-icons{
+  font-size: 35px;
+}
+.chat{
+  margin-right: auto;
 }
 </style>

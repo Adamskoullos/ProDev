@@ -5,6 +5,7 @@ import MyProjects from '../views/MyProjects.vue'
 import NewProject from '../views/NewProject.vue'
 import Bugs from '../views/Bugs.vue'
 import NewBug from '../views/NewBug.vue'
+import Chat from '../views/Chat'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     name: 'NewBug',
     component: NewBug
   },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat
+  }
 ]
 
 const router = createRouter({
