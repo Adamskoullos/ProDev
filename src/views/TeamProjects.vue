@@ -12,7 +12,6 @@ export default {
 
 <style>
 .main{
-    background: darkblue;
     display: flex;
     flex-direction: column;
     justify-content: center;

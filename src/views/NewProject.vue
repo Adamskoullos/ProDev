@@ -9,7 +9,5 @@ export default {
 </script>
 
 <style>
-h1{
-    background: rgb(255, 255, 255);
-}
+
 </style>
