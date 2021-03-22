@@ -161,9 +161,10 @@ components: { Chat },
   background: rgb(188, 202, 170);
   max-width: 200px;
   margin: 0px;
-  border-radius: 2px;
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 2px solid  var(--secondary);
+  border-radius: 0px;
+  box-shadow: 4px 1px 17px rgba(50,50,50,0.5);
+  border: 0px solid  var(--secondary);
+  z-index: 3;
 }
 .main-row{
   max-height: 100vh;
@@ -175,14 +176,19 @@ components: { Chat },
 }
 .top-bar-row{
   min-height: 60px;
-  background: rgb(188, 202, 170);
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 1.5px solid  var(--secondary);
-  border-radius: 2px;
 }
 .top-bar-col{
   display: flex;
   align-items: center;
+  box-shadow: 1px 4px 15px rgba(50,50,50,0.4);
+  border: 0px solid  var(--secondary);
+  border-radius: 8px;
+  margin: 1px;
+  z-index: 2;
+  min-height: 60px;
+  background: rgb(188, 202, 170);
+  border-radius: 0px;
+  /* margin: 1px; */
 }
 .content-row{
   background: var(--background-b);
@@ -232,24 +238,25 @@ components: { Chat },
   padding-top: 12px; 
 }
 .nav-item{
-  background: rgb(255, 255, 255);
+  background:rgb(188, 202, 170);
   /* background: var(--background-b); */
   color: var(--primary);
-  border-radius: 2px;
+  border-radius: 8px;
   border: 0;
   padding: 10px 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-block;
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 1.5px solid  var(--secondary);
+  /* box-shadow: 1px 3px 12px rgba(50,50,50,0.4); */
+  box-shadow: 1px 3px 12px rgba(50,50,50,0.5);
+  border: 0px solid  var(--secondary);
   width: 100%;
   transition: all ease 0.2s;
 }
 .nav-item:hover{
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  transform: scale(1.05);
-  transition: all ease 0.2s;
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
+  transform: scale(0.96);
+  transition: all ease 0.3s;
   color: var(--primary);
 }
 .theme{
@@ -284,14 +291,12 @@ ul li a{
 .top-nav{
   display: flex;
   align-items: center;
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
-  border: 1.5px solid  var(--secondary);
 }
 .user-name{
   margin: auto 5px auto auto;
 }
 .logout span{
-  margin: auto 10px auto 15px;
+  margin: auto 10px auto 12px;
   transition: all ease 0.2s;
 }
 .logout span:hover{
@@ -302,10 +307,10 @@ ul li a{
   cursor: pointer;
 }
 .view-icons{
-  margin: auto 15px;
+  margin: auto 12px;
 }
 span.material-icons{
-  font-size: 35px;
+  font-size: 30px;
 }
 .chat{
   margin-right: auto;
