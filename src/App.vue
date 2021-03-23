@@ -3,7 +3,9 @@
     <div class="row main-row">
       <transition name="side-nav" appear 
       @before-enter="sideNavBeforeEnter"
-      @enter="sideNavEnter">
+      @enter="sideNavEnter"
+      @before-leave="sideNavBeforeLeave"
+      @leave="sideNavLeave">
         <div class="col-2 side-nav" v-if="showSideNav && user">
         <nav>
           <div class="logo">
@@ -40,37 +42,41 @@
       <div class="col main-col">
         <transition name="top-bar" appear
         @before-enter="topBarBeforeEnter"
-        @enter="topBarEnter">
+        @enter="topBarEnter"
+        @before-leave="topBarBeforeLeave"
+        @leave="topBarLeave">
           <div class="row top-bar-row">
           <div class="col top-bar-col">
-            <nav v-if="!user" class="top-nav no-auth-nav">
-              <div class="no-auth-logo">
-                <span><h1>ProDev</h1></span>
-              </div>
-              <div class="no-auth no-auth-login">
-                <router-link :to="{ name: 'Login' }"><h3>Login</h3></router-link>
-              </div>
-              <div class="no-auth">
-                <router-link :to="{ name: 'Signup' }"><h3>Signup</h3></router-link>
-              </div>
-            </nav>
-            <nav class="top-nav" v-if="!showSideNav && user">
-              <div class="view-icons" v-if="user">
-                <router-link :to="{ name: 'MyProjects' }">
-                  <span class="material-icons">folder</span>
-                </router-link>
-              </div>
-              <div class="view-icons" v-if="user">
-                <router-link :to="{ name: 'Bugs' }">
-                  <span class="material-icons">bug_report</span>
-                </router-link>
-              </div>
-              <div class="view-icons">
-                <router-link :to="{ name: 'Chat' }">
-                  <span class="material-icons">chat_bubble</span>
-                </router-link>
-              </div>
-            </nav>
+            
+              <nav v-if="!user" class="top-nav no-auth-nav">
+                <div class="no-auth-logo">
+                  <span><h1>ProDev</h1></span>
+                </div>
+                <div class="no-auth no-auth-login">
+                  <router-link :to="{ name: 'Login' }"><h3>Login</h3></router-link>
+                </div>
+                <div class="no-auth">
+                  <router-link :to="{ name: 'Signup' }"><h3>Signup</h3></router-link>
+                </div>
+              </nav>
+              <nav class="top-nav" v-if="!showSideNav && user">
+                <div class="view-icons" v-if="user">
+                  <router-link :to="{ name: 'MyProjects' }">
+                    <span class="material-icons">folder</span>
+                  </router-link>
+                </div>
+                <div class="view-icons" v-if="user">
+                  <router-link :to="{ name: 'Bugs' }">
+                    <span class="material-icons">bug_report</span>
+                  </router-link>
+                </div>
+                <div class="view-icons">
+                  <router-link :to="{ name: 'Chat' }">
+                    <span class="material-icons">chat_bubble</span>
+                  </router-link>
+                </div>
+              </nav>
+            
             <div class="user-name" v-if="user">
               <h3>User Name</h3>
             </div>
@@ -152,8 +158,24 @@ components: { Chat },
           gsap.to(el, {
             y:0,
             opacity: 1,
+            duration: 1.5,
+            ease: 'sine',
+            delay: 0.5
+          })
+        }
+
+        const topBarBeforeLeave = (el) => {
+          el.style.transform = 'translateY(0)'
+          ell.style.opacity = 1
+        }
+
+        const topBarLeave = (el) => {
+          gsap.to(el, {
+            y:-200,
+            opacity: 0,
             duration: 1,
-            ease: 'sine'
+            ease: 'sine',
+            delay: 0
           })
         }
 
@@ -167,12 +189,40 @@ components: { Chat },
             x:0,
             opacity: 1,
             duration: 1,
-            ease: 'sine'
+            ease: 'sine',
+            
+          })
+        }
+
+        const sideNavBeforeLeave = (el) => {
+          el.style.transform = 'translateX(0)'
+          el.style.opacity = 1
+        }
+
+        const sideNavLeave = (el) => {
+          gsap.to(el, {
+            x:-400,
+            opacity: 0,
+            duration: 0.5,
+            ease: 'sine',
+            
           })
         }
         
 
-        return { toggleSideChat, showSideChat, user, showSideNav, topBarBeforeEnter, topBarEnter, sideNavBeforeEnter, sideNavEnter}
+        return { 
+          toggleSideChat, 
+          showSideChat, 
+          user, 
+          showSideNav, 
+          topBarBeforeEnter, 
+          topBarEnter, 
+          sideNavBeforeEnter, 
+          sideNavEnter,
+          topBarBeforeLeave,
+          topBarLeave,
+          sideNavBeforeLeave,
+          sideNavLeave}
     }
 }
 
@@ -200,7 +250,7 @@ components: { Chat },
   border-radius: 0px;
   box-shadow: 4px 1px 17px rgba(50,50,50,0.5);
   border: 0px solid  var(--secondary);
-  z-index: 3;
+  z-index: 4;
 }
 .main-row{
   max-height: 100vh;
@@ -212,6 +262,7 @@ components: { Chat },
 }
 .top-bar-row{
   min-height: 60px;
+  z-index: 3;
 }
 .top-bar-col{
   display: flex;
@@ -220,11 +271,10 @@ components: { Chat },
   border: 0px solid  var(--secondary);
   border-radius: 8px;
   margin: 1px;
-  z-index: 2;
+  z-index: 3;
   min-height: 60px;
   background: rgb(188, 202, 170);
   border-radius: 0px;
-  /* margin: 1px; */
 }
 .content-row{
   background: var(--background-b);
@@ -328,6 +378,7 @@ ul li a{
 .top-nav{
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 .user-name{
   margin: auto 5px auto auto;
