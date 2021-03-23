@@ -1,7 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row main-row">
-      <div class="col-2 side-nav" v-if="showSideNav && user">
+      <transition name="side-nav" appear 
+      @before-enter="sideNavBeforeEnter"
+      @enter="sideNavEnter">
+        <div class="col-2 side-nav" v-if="showSideNav && user">
         <nav>
           <div class="logo">
           <router-link :to="{ name: 'MyProjects' }" class=""><h3>ProDev</h3></router-link>
@@ -32,9 +35,13 @@
             </li>
           </ul>
       </nav>
-      </div>
+        </div>
+      </transition>
       <div class="col main-col">
-        <div class="row top-bar-row">
+        <transition name="top-bar" appear
+        @before-enter="topBarBeforeEnter"
+        @enter="topBarEnter">
+          <div class="row top-bar-row">
           <div class="col top-bar-col">
             <nav v-if="!user" class="top-nav no-auth-nav">
               <div class="no-auth-logo">
@@ -71,7 +78,8 @@
               <span class="material-icons">logout</span>
             </div>
           </div>
-        </div>
+          </div>
+        </transition>
         <div class="row content-row">
           <div class="col content-col">
             <div class="col-12 chat-col" v-if="showSideChat && !showSideNav">
@@ -79,7 +87,7 @@
             </div>
             <router-view v-if="(!showSideChat && !showSideNav) || (!showSideChat && showSideNav) || (showSideNav)"/>
           </div>
-          <div class="col-12 col-md-4 chat-col" v-if="showSideChat && showSideNav">
+          <div class="col-12 col-md-4 chat-col side-chat-window" v-if="showSideChat && showSideNav">
             <Chat />
           </div>
         </div>
@@ -93,6 +101,7 @@ import { ref } from '@vue/reactivity'
 import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
 import Chat from './views/Chat'
 import { useRouter } from 'vue-router'
+import gsap from 'gsap'
 
 
 export default {
@@ -134,9 +143,36 @@ components: { Chat },
             showSideChat.value = !showSideChat.value
         }
 
+        const topBarBeforeEnter = (el) => {
+          el.style.transform = 'translateY(-200px)'
+          el.style.opacity = 0
+        }
+
+        const topBarEnter = (el) => {
+          gsap.to(el, {
+            y:0,
+            opacity: 1,
+            duration: 1,
+            ease: 'sine'
+          })
+        }
+
+        const sideNavBeforeEnter = (el) => {
+          el.style.transform = 'translateX(-400px)'
+          el.style.opacity = 0
+        }
+
+        const sideNavEnter = (el) => {
+          gsap.to(el, {
+            x:0,
+            opacity: 1,
+            duration: 1,
+            ease: 'sine'
+          })
+        }
         
 
-        return { toggleSideChat, showSideChat, user, showSideNav }
+        return { toggleSideChat, showSideChat, user, showSideNav, topBarBeforeEnter, topBarEnter, sideNavBeforeEnter, sideNavEnter}
     }
 }
 
@@ -151,7 +187,7 @@ components: { Chat },
   color: #464646;
 }
 
-/* Basic layout and responsiveness for main window*/ 
+/* Basic layout and responsiveness for main window - Main view, side chat, side nav, top bar */ 
 
 .side-nav{
   min-height: 100vh;
@@ -180,7 +216,7 @@ components: { Chat },
 .top-bar-col{
   display: flex;
   align-items: center;
-  box-shadow: 1px 4px 15px rgba(50,50,50,0.4);
+  box-shadow: 4px 4px 15px rgba(50,50,50,0.4);
   border: 0px solid  var(--secondary);
   border-radius: 8px;
   margin: 1px;
@@ -198,14 +234,17 @@ components: { Chat },
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 }
 .chat-col{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: lightslategrey;
+  background: var(--background-b);
+  box-shadow: -3px 1px 13px rgba(50,50,50,0.3);
+  z-index: 1;
 }
-/* Inner layout styling for side nav elements */
+/* Inner layout styling for side nav elements ******************************/
 .navbar-expand-md .navbar-nav{ 
     flex-direction: column;
     
@@ -239,7 +278,6 @@ components: { Chat },
 }
 .nav-item{
   background:rgb(188, 202, 170);
-  /* background: var(--background-b); */
   color: var(--primary);
   border-radius: 8px;
   border: 0;
@@ -247,7 +285,6 @@ components: { Chat },
   font-weight: 600;
   cursor: pointer;
   display: inline-block;
-  /* box-shadow: 1px 3px 12px rgba(50,50,50,0.4); */
   box-shadow: 1px 3px 12px rgba(50,50,50,0.5);
   border: 0px solid  var(--secondary);
   width: 100%;
@@ -308,17 +345,27 @@ ul li a{
 }
 .view-icons{
   margin: auto 12px;
+  transition: all ease 0.2s;
+}
+.view-icons:hover{
+  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+  transform: scale(1.13);
+  transition: all ease 0.2s;
+  color: var(--primary);
+  cursor: pointer;
 }
 span.material-icons{
   font-size: 30px;
+  display: block;
 }
 .chat{
   margin-right: auto;
 }
-/* Top bar when user not logged in */
+/* Top bar when user not logged in ******************************/
 
 .no-auth-nav{
-  width: 100vw;
+  box-sizing: border-box;
+  flex:1;
   display: flex;
   justify-content: flex-end
 }
@@ -327,13 +374,22 @@ span.material-icons{
 }
 .no-auth{
   margin: auto 20px;
+}
+.no-auth-login{
+  margin-left: auto;
+}
+.no-auth h3{
   transition: all ease 0.2s;
 }
-.no-auth:hover{
-  box-shadow: 1px 2px 3px rgba(50,50,50,0.05);
+.no-auth h3:hover{
   transform: scale(1.05);
   transition: all ease 0.2s;
   color: var(--primary);
 }
+
+/* Main elements switch transitions (when breakpoints are hit)**********/
+
+/* View transition ******************************************/
+
 
 </style>
