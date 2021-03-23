@@ -1,101 +1,111 @@
 <template>
   <div class="container-fluid">
-    <div class="row main-row">
+    <div class="row main-row" :class="{dark: dark}">
       <transition name="side-nav" appear 
       @before-enter="sideNavBeforeEnter"
       @enter="sideNavEnter"
       @before-leave="sideNavBeforeLeave"
       @leave="sideNavLeave">
-        <div class="col-2 side-nav" v-if="showSideNav && user">
-        <nav>
-          <div class="logo">
-          <router-link :to="{ name: 'MyProjects' }" class=""><h3>ProDev</h3></router-link>
+        <div class="col-2 side-nav" v-if="showSideNav && user" :class="{dark: dark}">
+          <nav :class="{dark: dark}">
+            <div class="logo" :class="{dark: dark}">
+            <router-link :to="{ name: 'MyProjects' }" :class="{dark: dark}"><h3 :class="{dark: dark}">ProDev</h3></router-link>
+            </div>
+            <div class="nav-spacer">
+            </div>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item" @click="toggleSideChat" :class="{dark: dark}">
+                  <span :class="{dark: dark}">Team Chat</span>
+              </li>
+              <li class="nav-item" :class="{dark: dark}">
+                  <router-link :to="{ name: 'TeamProjects' }" :class="{dark: dark}">Team Projects</router-link>
+              </li>
+              <li class="nav-item" :class="{dark: dark}">
+                  <router-link :to="{ name: 'MyProjects' }" :class="{dark: dark}">My Projects</router-link>
+              </li>
+              <li class="nav-item" :class="{dark: dark}">
+                  <router-link :to="{ name: 'NewProject' }" :class="{dark: dark}">New Project</router-link>
+              </li>
+              <li class="nav-item" :class="{dark: dark}">
+                  <router-link :to="{ name: 'Bugs' }" :class="{dark: dark}">Bugs</router-link>
+              </li>
+              <li class="nav-item" :class="{dark: dark}">
+                  <router-link :to="{ name: 'NewBug' }" :class="{dark: dark}">New Bug</router-link>
+              </li>
+            </ul>
+          </nav>
+          <div class="dark-mode" :class="{dark: dark}">
+              <div  class="nav-item" :class="{dark: dark}" @click="toggleMode">
+                <span :class="{dark: dark}">Mode</span>
+              </div> 
           </div>
-          <div class="theme">
-          <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-          </div>
-          </div>
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item" @click="toggleSideChat">
-                <span >Team Chat</span>
-            </li>
-            <li class="nav-item">
-                <router-link :to="{ name: 'TeamProjects' }">Team Projects</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link :to="{ name: 'MyProjects' }">My Projects</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link :to="{ name: 'NewProject' }">New Project</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link :to="{ name: 'Bugs' }">Bugs</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link :to="{ name: 'NewBug' }">New Bug</router-link>
-            </li>
-          </ul>
-      </nav>
         </div>
       </transition>
-      <div class="col main-col">
+      <div class="col main-col" :class="{ dark: dark.value }">
         <transition name="top-bar" appear
         @before-enter="topBarBeforeEnter"
         @enter="topBarEnter"
         @before-leave="topBarBeforeLeave"
         @leave="topBarLeave">
-          <div class="row top-bar-row">
-          <div class="col top-bar-col">
-            
-              <nav v-if="!user" class="top-nav no-auth-nav">
+          <div class="row top-bar-row" :class="{dark: dark}">
+          <div class="col top-bar-col" :class="{dark: dark}">
+              <nav v-if="!user" class="top-nav no-auth-nav" :class="{dark: dark}">
                 <div class="no-auth-logo">
-                  <span><h1>ProDev</h1></span>
+                  <span><h1 :class="{dark: dark}">ProDev</h1></span>
                 </div>
                 <div class="no-auth no-auth-login">
-                  <router-link :to="{ name: 'Login' }"><h3>Login</h3></router-link>
+                  <router-link :to="{ name: 'Login' }"><h3 :class="{dark: dark}">Login</h3></router-link>
                 </div>
                 <div class="no-auth">
-                  <router-link :to="{ name: 'Signup' }"><h3>Signup</h3></router-link>
+                  <router-link :to="{ name: 'Signup' }"><h3 :class="{dark: dark}">Signup</h3></router-link>
                 </div>
               </nav>
-              <nav class="top-nav" v-if="!showSideNav && user">
+              <nav class="top-nav" v-if="!showSideNav && user" :class="{dark: dark}">
                 <div class="view-icons" v-if="user">
                   <router-link :to="{ name: 'MyProjects' }">
-                    <span class="material-icons">folder</span>
+                    <span class="material-icons" :class="{dark: dark}">folder</span>
                   </router-link>
                 </div>
                 <div class="view-icons" v-if="user">
                   <router-link :to="{ name: 'Bugs' }">
-                    <span class="material-icons">bug_report</span>
+                    <span class="material-icons" :class="{dark: dark}">bug_report</span>
                   </router-link>
                 </div>
                 <div class="view-icons">
                   <router-link :to="{ name: 'Chat' }">
-                    <span class="material-icons">chat_bubble</span>
+                    <span class="material-icons" :class="{dark: dark}">chat_bubble</span>
                   </router-link>
                 </div>
               </nav>
-            
-            <div class="user-name" v-if="user">
-              <h3>User Name</h3>
+            <div class="user-name" :class="{dark: dark}" v-if="user">
+              <h3 :class="{dark: dark}">User Name</h3>
             </div>
-            <div class="logout" v-if="user">
-              <span class="material-icons">logout</span>
+            <div class="logout" :class="{dark: dark}" v-if="user">
+              <span :class="{dark: dark}" class="material-icons">logout</span>
             </div>
           </div>
           </div>
         </transition>
-        <div class="row content-row">
-          <div class="col content-col">
-            <div class="col-12 chat-col" v-if="showSideChat && !showSideNav">
+        <div class="row content-row" :class="{dark: dark}">
+          <div class="col content-col" :class="{dark: dark}">
+            <div class="col-12 chat-col side-chat-window" :class="{dark: dark}" v-if="showSideChat && !showSideNav">
               <Chat />
             </div>
-            <router-view v-if="(!showSideChat && !showSideNav) || (!showSideChat && showSideNav) || (showSideNav)"/>
+            <router-view v-if="(!showSideChat && !showSideNav) || (!showSideChat && showSideNav) || (showSideNav)" v-slot="{ Component }">
+              <transition name="route" mode="out-in">
+                <component :is="Component"></component>
+              </transition>  
+            </router-view>
           </div>
-          <div class="col-12 col-md-4 chat-col side-chat-window" v-if="showSideChat && showSideNav">
-            <Chat />
-          </div>
+          <transition name="slideSideChat"
+          @before-enter="sideChatBeforeEnter"
+          @enter="sideChatEnter"
+          @before-leave="sideChatBeforeLeave"
+          @leave="sideChatLeave">
+            <div class="col-12 col-md-4 chat-col side-chat-window" :class="{dark: dark}" v-if="showSideChat && showSideNav">
+              <Chat />
+            </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -117,6 +127,7 @@ components: { Chat },
         const user = ref(true)
         const showSideNav = ref(false)
         const router = useRouter()
+        const dark =ref(false)
 
         onBeforeMount(()=> {
           window.addEventListener('load', ()=> {
@@ -145,6 +156,10 @@ components: { Chat },
           window.removeEventListener()
         })
 
+        const toggleMode = () => {
+          dark.value = !dark.value
+        }
+        
         const toggleSideChat = () => {
             showSideChat.value = !showSideChat.value
         }
@@ -158,7 +173,7 @@ components: { Chat },
           gsap.to(el, {
             y:0,
             opacity: 1,
-            duration: 1.5,
+            duration: 0.8,
             ease: 'sine',
             delay: 0.5
           })
@@ -208,6 +223,38 @@ components: { Chat },
             
           })
         }
+
+        const sideChatBeforeEnter = (el) => {
+          el.style.transform = 'translateX(600px)'
+          el.style.opacity = 0
+        }
+
+        const sideChatEnter = (el) => {
+          gsap.to(el, {
+            x:0,
+            opacity: 1,
+            duration: 0.1,
+            ease: 'sine',
+            
+          })
+        }
+
+        const sideChatBeforeLeave = (el) => {
+          el.style.transform = 'translateX(0)'
+          el.style.opacity = 1
+        }
+
+        const sideChatLeave = (el) => {
+          gsap.to(el, {
+            x:600,
+            opacity: 0,
+            duration: 0.1,
+            ease: 'sine',
+            
+          })
+        }
+
+        
         
 
         return { 
@@ -222,7 +269,13 @@ components: { Chat },
           topBarBeforeLeave,
           topBarLeave,
           sideNavBeforeLeave,
-          sideNavLeave}
+          sideNavLeave,
+          sideChatBeforeEnter,
+          sideChatEnter,
+          sideChatBeforeLeave,
+          sideChatLeave,
+          toggleMode,
+          dark}
     }
 }
 
@@ -244,6 +297,7 @@ components: { Chat },
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  justify-content: space-around;
   background: rgb(188, 202, 170);
   max-width: 200px;
   margin: 0px;
@@ -254,6 +308,7 @@ components: { Chat },
 }
 .main-row{
   max-height: 100vh;
+  position: relative;
 }
 .main-col{
   min-height: 100vh;
@@ -279,6 +334,7 @@ components: { Chat },
 .content-row{
   background: var(--background-b);
   flex: 1;
+  position: relative;
 }
 .content-col{
   display: flex;
@@ -297,7 +353,12 @@ components: { Chat },
 /* Inner layout styling for side nav elements ******************************/
 .navbar-expand-md .navbar-nav{ 
     flex-direction: column;
-    
+}
+.nav-spacer{
+  height: 50px;
+}
+.dark-mode{
+  margin-top: 100px;
 }
 .navbar{
   display: flex;
@@ -443,8 +504,31 @@ span.material-icons{
 .side-nav{
   transition: all 0.2s ease;
 }
+.side-chat-window{
+  transition: all 0.2s ease;
+}
 
 /* View transition ******************************************/
+.route-enter-from{
+  opacity: 0;
+  transform: translateX(-1500px);
+}
+.route-enter-active{
+  transition: all 0.1s ease-out;
+}
+.route-leave-to{
+  opacity: 0;
+  transform: translateX(1500px);
+}
+.route-leave-active{
+  transition: all 0.1s ease-in;
+}
+
+
+/* Side chat slider */
+.slideSideChat{
+  transition: all 0.1s ease;
+}
 
 
 </style>
