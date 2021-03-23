@@ -175,7 +175,7 @@ components: { Chat },
             opacity: 0,
             duration: 1,
             ease: 'sine',
-            delay: 0
+            delay: 1
           })
         }
 
@@ -188,7 +188,7 @@ components: { Chat },
           gsap.to(el, {
             x:0,
             opacity: 1,
-            duration: 1,
+            duration: 0.6,
             ease: 'sine',
             
           })
@@ -203,7 +203,7 @@ components: { Chat },
           gsap.to(el, {
             x:-400,
             opacity: 0,
-            duration: 0.5,
+            duration: 0.3,
             ease: 'sine',
             
           })
@@ -438,7 +438,11 @@ span.material-icons{
   color: var(--primary);
 }
 
-/* Main elements switch transitions (when breakpoints are hit)**********/
+/* Main elements move transitions (when breakpoints are hit)**********/
+
+.side-nav{
+  transition: all 0.2s ease;
+}
 
 /* View transition ******************************************/
 
