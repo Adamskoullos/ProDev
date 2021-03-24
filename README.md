@@ -53,7 +53,7 @@ Overall the application is designed to be used within a developers daily operati
     - Issues to be identified quickly and solutions implemented with a rapid response 
     - New requirements and changes to be acted on and implemented quickly, efficiently and smoothly 
 
-- ProDev project developer personal goals for the project:
+- ProDev developer personal goals for the project:
 
     - To reinforce understanding and build skills in the following areas:
         - Working with Vue 3 and the composition api
@@ -62,7 +62,7 @@ Overall the application is designed to be used within a developers daily operati
         - Building single page applications
         - Become more consistent and patterned working with composables/modules, components, views and managing data as it is passed around
         - Get more familiar working with Vue transitions in conjunction with GSAP and JS hooks
-        - develop a better feel for how to work with box shadows to create subtle and modern looking applications
+        - Develop a better feel for how to work with box shadows to create subtle and modern looking applications
         - Reinforce understanding of js methods where possible  
         - Become more familiar with Bootstrap 5
     
@@ -85,12 +85,33 @@ Overall the application is designed to be used within a developers daily operati
 * Admin authentication and UI for project manager roles
 * Developer performance reporting and analysis 
 * Multiple team authentication - so when a user logs in they only have access to their private team bubble
+* In app notifications of unread chat messages
 
+## User Stories
 
+### First time visitor goals:
 
+- To quickly and easily be able absorb content that answers the question: what does this tool do?
+- To be able to easily see how to sign in or sign up in order to get access to the application
+- The application to be easy and intuitive to navigate and get familiar with
+- To get up and running quickly 
 
+### Returning visitor goals
 
+- To be able to quickly and smoothly sign in
+- To clearly see when they are logged in and for any user profile settings to be loaded on login
+- To easily develop workflow patterns of efficiency and fold them into their daily processes
 
+### Frequent visitor goals
+
+- For ProDev to become an integral cog to the users daily operations
+- To at a glance get up to speed with the overall project and any changes
+- To efficiently share ideas and support team members
+- To quickly receive support and reduce downtime
+- To manage tasks and maintain high levels of productivity through staying organised and focused
+- To maintain transparency and accountability 
+
+------------------------------------------------------------
 
 
 
