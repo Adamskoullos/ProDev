@@ -153,6 +153,25 @@ The Chat component itself will take the traditional style of newest message at t
 
 ## Wireframes
 
+Early trials and testing have left me with the main foundation with the main `router-view` ready to be filled with each view.  Therefore below is the main dashboard template so far:
+
+
+![Screenshot from 2021-03-24 11-17-51](https://user-images.githubusercontent.com/73107656/112303646-70c5ed00-8c94-11eb-9fd4-2f5ecb040372.png)
+
+
+![light-chat](https://user-images.githubusercontent.com/73107656/112303654-74597400-8c94-11eb-9f58-6c27c6cb25d5.png)
+
+
+![light-mobile](https://user-images.githubusercontent.com/73107656/112303665-77546480-8c94-11eb-862e-98ecbd801c81.png)
+
+
+![dark](https://user-images.githubusercontent.com/73107656/112303673-7b808200-8c94-11eb-882a-fed0d7949ba6.png)
+
+
+![dark-chat](https://user-images.githubusercontent.com/73107656/112303695-7fac9f80-8c94-11eb-8df2-98ab73412329.png)
+
+
+![dark-tablet-2](https://user-images.githubusercontent.com/73107656/112303708-82a79000-8c94-11eb-818e-bea99a047ffa.png)
 
 
 

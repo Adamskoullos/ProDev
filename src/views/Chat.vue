@@ -2,7 +2,6 @@
   
   <div class="box">
     <h1 class="">Live Chat View</h1>
-    <button>button 1</button>
   </div>
 </template>
 
