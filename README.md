@@ -173,7 +173,18 @@ Early trials and testing have left me with the main foundation with the main `ro
 
 ![dark-tablet-2](https://user-images.githubusercontent.com/73107656/112303708-82a79000-8c94-11eb-818e-bea99a047ffa.png)
 
+![image](https://user-images.githubusercontent.com/73107656/112324787-0ec4b200-8cab-11eb-93b5-daec29b746aa.png)
 
+![image](https://user-images.githubusercontent.com/73107656/112325034-40d61400-8cab-11eb-8f0a-744f6c151166.png)
+
+![image](https://user-images.githubusercontent.com/73107656/112325248-6c58fe80-8cab-11eb-8910-118d0575d486.png)
+
+![image](https://user-images.githubusercontent.com/73107656/112325322-7b3fb100-8cab-11eb-8fae-132c3f84a695.png)
+
+![image](https://user-images.githubusercontent.com/73107656/112325368-898dcd00-8cab-11eb-9ecd-300dbf70ab8c.png)
+
+
+![image](https://user-images.githubusercontent.com/73107656/112325458-9ca09d00-8cab-11eb-84bd-d96e604d29b8.png)
 
 ------------------------------------------------------------
 
