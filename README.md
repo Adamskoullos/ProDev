@@ -190,7 +190,7 @@ Early trials and testing have left me with the main foundation with the main `ro
 
 # Component Architecture
 
-Below is a visual map of the planned structure of the project. The blue boxes are individual views that have their own route, the green boxes are nested components and the bright yellow boxes are composables.  The links show what views the components are nested within and where the composables are used.  
+Below is a visual map of the planned structure for the project. The blue boxes are individual views that have their own route, the green boxes are nested components and the bright yellow boxes are composables.  The links show what views the components are nested within and where the composables are used.  
 
 My only regret so far is that I did not extract the side-nav and top-bar into separate components from the start.  I miss judged the volume of code it would take in building the custom navigation for the project, next time I will start the nav build as a component or two depending on the project. Sitting down and creating this visual map has reinforced just how reusable functions can be if they are created with that in mind.
 
@@ -200,7 +200,51 @@ My only regret so far is that I did not extract the side-nav and top-bar into se
 ----------------------------------------------------------
 
 
-## Project setup
+# Development
+
+The project management for each sprint is implemented using Trello, so this section will cover:
+
+[Bugs and Solutions](#Bugs-and-Solutions)<br>
+[Unresolved Bugs](#Unresolved-Bugs)<br>
+[Testing](#Testing)<br>
+[Credits](#Credits)<br>
+[Deployment](#Deployment)<br>
+
+
+## Bugs and Solutions
+
+## Unresolved Bugs
+
+## Testing
+
+### HTML & CSS
+
+### Testing User Stories
+
+### Device Testing
+
+## Credits
+
+## Deployment
+
+
+--------------------------------------------------------------
+
+# Technologies
+
+The project was built in `vscode` and was set up via the `Vue cli` which included: the `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` was installed and used mostly for the rows and columns responsiveness, `material icons` were used to keep things tidy especially on mobile devices.  `date-fns` was used to present timestamp data for chat messages and `GSAP` was also installed and used with Vue transitions to add a bit of flare. 
+
+The project was built using the `Vue 3 composition api`.
+
+`Firebase` was installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` were used within this project.
+
+`GitHub` was used for version control and `Trello` for managing the project and each sprint.
+
+--------------------------------------------------
+
+### Project setup
+
+
 ```
 npm install
 ```
