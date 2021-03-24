@@ -190,6 +190,12 @@ Early trials and testing have left me with the main foundation with the main `ro
 
 # Component Architecture
 
+Below is a visual map of the planned structure of the project. The blue boxes are individual views that have their own route, the green boxes are nested components and the bright yellow boxes are composables.  The links show what views the components are nested within and where the composables are used.  
+
+My only regret so far is that I did not extract the side-nav and top-bar into separate components from the start.  I miss judged the volume of code it would take in building the custom navigation for the project, next time I will start the nav build as a component or two depending on the project. Sitting down and creating this visual map has reinforced just how reusable functions can be if they are created with that in mind.
+
+![image](https://user-images.githubusercontent.com/73107656/112342244-f7d98c00-8cb9-11eb-88ae-f35ad358091d.png)
+
 
 ----------------------------------------------------------
 
