@@ -38,6 +38,9 @@
   .chat-col.dark{
     background: rgb(75, 75, 75) !important;
   }
+  .chat-col.dark{
+    box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
+  }
   /* base styles  */
   * {
     margin: 0;
