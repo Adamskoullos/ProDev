@@ -128,9 +128,9 @@ Overall the application is designed to be used within a developers daily operati
 
 - The main dashboard includes top bar with user name and logout button, side nav with direct links to all views and the toggle button for the side chat and dark mode. The main `router-vew` is nested within this structure as the center piece
 
-At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue tools in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.        
+At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue lifecycle hooks in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.        
 
-**side-note**: There is focus on creating a neutral look to the dashboard with subtle styling with an emphasis on using box shadows to create a layered multi level look and feel. Coupled with this, also a focus on using transitions and transforms to create subtle switches that provide tactile experience (if Cherry mx made application switches).  To add to the layered effect, transitions to be used to give a snappy natural feel as if scrolling through a tangible document. 
+**side-note**: There is a focus on creating a neutral look to the dashboard with subtle styling with an emphasis on using box shadows to create a layered multi level look and feel. Coupled with this, also a focus on using transitions and transforms to create subtle switches that provide tactile experience (if Cherry mx made application switches).  To add to the layered effect, transitions to be used to give a snappy natural feel as if scrolling through a tangible document. 
 
 The overarching theme dark and light to be clean and subtle with an err towards a dimmed finish. 
 
@@ -146,11 +146,15 @@ On to the views:
     - file upload for solution images
     - Open/closed property
 
-- Team Live-Chat 
+- Team Live-Chat: When the viewport is larger than the main break point, on laptops and desktop screens the `Chat` component is taken out of the main `router-view` and displays on the toggled side-chat window.  When the viewport is the size of tablets and phones the `Chat` component is added as a main view.  There were a few issues to overcome here but now when screens go below the main breakpoint the chat will not wrap below the main router-view, so gives a more mobile focused experience on smaller screens, while also offering full functionality on larger screens.
 
+The Chat component itself will take the traditional style of newest message at the bottom and auto scrolling the message window to always show the newest messages.  The new message form to be located below the message window. The `date-fns` library will be used here to manipulate the `createdAt` property to present the message date in a more chat app manner. 
 
 
 ## Wireframes
+
+
+
 
 ------------------------------------------------------------
 
