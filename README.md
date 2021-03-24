@@ -5,7 +5,9 @@
 ## Table of Contents:
 
 [Project Overview](#Project-Overview)<br>
+[Stakeholders and their business goals](#Stakeholders-and-their-business-goals)<br>
 [UX Design](#UX-Design)<br>
+[Component Architecture](#Component-Architecture)<br>
 [Development](#Development)<br>
 [Deployment](#Deployment)<br>
 [Technologies](#Technologies)<br>
@@ -27,8 +29,10 @@ A light weight and zippy project management hub for small teams, the main featur
 
 Overall the application is designed to be used within a developers daily operations and thus be mostly displayed for long periods of time via a laptop or desktop screen.  For this reason there is a dark mode option within the ui.  
 
+--------------------------------------------------
 
-## Stakeholders and their business goals
+
+# Stakeholders and their business goals
 
 - The developer/user:
 
@@ -111,8 +115,49 @@ Overall the application is designed to be used within a developers daily operati
 - To manage tasks and maintain high levels of productivity through staying organised and focused
 - To maintain transparency and accountability 
 
+
+## Features and Functionality
+
+- Landing page:
+    
+    - Simple top bar including login and signup buttons
+    - Content to include images and descriptions of each section of the application
+    - Login and sign up buttons also at the bottom of the content (unless fixed top bar)
+
+- Once logged in visitors are routed to the main dashboard with the `My Projects` view active.  From here they can open and close the side chat window and access each view directly via the side panel and also switch from light to dark mode and vice versa
+
+- The main dashboard includes top bar with user name and logout button, side nav with direct links to all views and the toggle button for the side chat and dark mode. The main `router-vew` is nested within this structure as the center piece
+
+At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue tools in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.        
+
+**side-note**: There is focus on creating a neutral look to the dashboard with subtle styling with an emphasis on using box shadows to create a layered multi level look and feel. Coupled with this, also a focus on using transitions and transforms to create subtle switches that provide tactile experience (if Cherry mx made application switches).  To add to the layered effect, transitions to be used to give a snappy natural feel as if scrolling through a tangible document. 
+
+The overarching theme dark and light to be clean and subtle with an err towards a dimmed finish. 
+
+On to the views:
+
+- The `My Projects` and `Team Projects` views to use the same list style structure. New projects can be added from here and existing projects can be edited and deleted.  Click into a project to open a view for that specific project. Each project has a title, description, cover image and task list
+
+- The bug journal view to have a blog structure with searchable functionality (either through tags or title keyword search). To be ordered newest at the top.  Within this view a button routing through to the `New Bug` view. Each bug ticket to have:
+    
+    - Title
+    - Description
+    - Solution
+    - file upload for solution images
+    - Open/closed property
+
+- Team Live-Chat 
+
+
+
+## Wireframes
+
 ------------------------------------------------------------
 
+# Component Architecture
+
+
+----------------------------------------------------------
 
 
 ## Project setup
