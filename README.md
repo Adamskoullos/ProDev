@@ -15,7 +15,7 @@
 
 # Project Overview
 
-**ProDev** is built from the ground up as an SPA with Vue 3 using Vue-router, Bootstrap 5 for responsiveness, splashes of GSAP in conjunction with Vue transitions and Firebase for the backend. 
+**ProDev** is built from the ground up as an SPA with Vue 3 using the composition api and Vue-router coupled with Bootstrap 5. GSAP has been used in conjunction with Vue transitions and Firebase services are used for the backend. 
 
 A light weight and zippy project management hub for small teams, the main features include:
 
@@ -128,11 +128,7 @@ Overall the application is designed to be used within a developers daily operati
 
 - The main dashboard includes top bar with user name and logout button, side nav with direct links to all views and the toggle button for the side chat and dark mode. The main `router-vew` is nested within this structure as the center piece
 
-At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue lifecycle hooks in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.        
-
-**side-note**: There is a focus on creating a neutral look to the dashboard with subtle styling with an emphasis on using box shadows to create a layered multi level look and feel. Coupled with this, also a focus on using transitions and transforms to create subtle switches that provide tactile experience (if Cherry mx made application switches).  To add to the layered effect, transitions to be used to give a snappy natural feel as if scrolling through a tangible document. 
-
-The overarching theme dark and light to be clean and subtle with an err towards a dimmed finish. 
+At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue lifecycle hooks in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.         
 
 On to the views:
 
@@ -150,10 +146,22 @@ On to the views:
 
 The Chat component itself will take the traditional style of newest message at the bottom and auto scrolling the message window to always show the newest messages.  The new message form to be located below the message window. The `date-fns` library will be used here to manipulate the `createdAt` property to present the message date in a more chat app manner. 
 
+## Styling
+
+There is a focus on creating a neutral look to the dashboard with subtle styling and an emphasis on using box shadows to create a layered look and feel. There is also a focus on using transitions and transforms to create subtle switches that provide a tactile experience (a kind of digital mechanical switch). Also element transitions to be used to give a tactile and snappy experience when navigating the application. 
+
+The overarching theme dark and light to be clean and subtle with an err towards a dimmed look on the dark theme.
+
+Whilst the main structure of the layout has hard edges, softened slightly by the box shadows the internal elements to have a slight rounded corner consistent through the application.  The main structure layout to have simple smooth transitions and the internal elements to be a little more dynamic with the use of GSAP.  
+
+To provide a transition between the hard edges of the main layout and the softer corners of buttons and internal elements the font to be clean, simple with slightly rounded ends. 
+
+The color pallette to be simple with one accent color for each theme plus a splash of functionality color from for example to show completed and open tasks etc.
+
 
 ## Wireframes
 
-Early trials and testing have left me with the main foundation with the main `router-view` ready to be filled with each view.  Therefore below is the main dashboard template so far:
+Early trials and testing have left me with the main foundation with the `router-view` window ready to be filled with each view.  Therefore below is the main dashboard template so far and below them the wireframes for the views:
 
 
 ![Screenshot from 2021-03-24 11-17-51](https://user-images.githubusercontent.com/73107656/112303646-70c5ed00-8c94-11eb-9fd4-2f5ecb040372.png)
@@ -196,6 +204,33 @@ My only regret so far is that I did not extract the side-nav and top-bar into se
 
 ![image](https://user-images.githubusercontent.com/73107656/112342244-f7d98c00-8cb9-11eb-88ae-f35ad358091d.png)
 
+Digging slightly deeper into the composables in the above map:
+
+Composables extract much of the logic keeping each component cleaner and easier to maintain.  Structured as ES6 modules they take advantage of closure and simply return the function which once invoked within a component returns the required properties.  There is a consistent structure used when creating composables.
+
+Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks can be used as normal.  
+
+- **getUser** The composable returns the `getUser` function which through destructuring returns the current user object. Fist firebase authentication is queried to check if there is a user logged in and if so grabs the current user and saves it to the `user` object which is returned. If no user is logged in, the value of `user` is null. 
+
+Then a firebase real-time monitor is used to track if the value of `user` changes, therefore the `user` object can be used to check authentication, create user documents or make user collection/document queries
+
+- **useLogin**: is used to query the login credentials with the database and only allow access if they match an existing user
+
+- **useSignup**: grabs the use inputs and creates a new user object with firebase authentication. The user display name is then added to the user object
+
+- **useLogout**: simply returns the logout function which uses the firebase logout method
+
+- **useStorage**: Firebase uses a service called Storage for files such as images, music, videos.  This composable returns `deleteImage` and `uploadImage` within its logic and utilises the `getUser` composable.
+
+when uploading an image a file path to the `user/imageCollection` is made and once uploaded firebase returns a `url` access point to use within the application to display the image.  
+
+- **useCollection**: Initially the only function to be within this composable is the `AddDoc` function to add new projects, messages and bugs to firebase Storage
+
+- **getCollection**: is used to grab the whole collection in order to loop through them and display them as a list.  Here we can use the Vue computed property to create filtered lists for different purposes.
+
+- **useDocument**: is used to update and delete individual documents from firebase Storage
+
+- **getDocument**: is used to grab individual documents. first a reference to the document is made, this is done by passing in the collection and id. A real time listener is added to the document reference updating its value on any updates to the database. In practice when a user adds a new task to a project and hits the `Add task` button the project document is updated, the user is re-routed to the project list view and as the view mounts the DOM the collection is grabbed with the updated document and rendered to the screen.  
 
 ----------------------------------------------------------
 
