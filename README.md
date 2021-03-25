@@ -206,9 +206,9 @@ My only regret so far is that I did not extract the side-nav and top-bar into se
 
 Digging slightly deeper into the composables in the above map:
 
-Composables extract much of the logic keeping each component cleaner and easier to maintain.  Structured as ES6 modules they take advantage of closure and simply return the function which once invoked within a component returns the required properties.  There is a consistent structure used when creating composables.
+Composables extract much of the logic keeping each component cleaner and easier to maintain.  Structured as ES6 modules they take advantage of closure and simply return the function which once invoked within a component returns the required properties/functions.  There is a consistent structure used when creating composables.
 
-Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks can be used as normal.  
+Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks is be used as normal.  
 
 - **getUser** The composable returns the `getUser` function which through destructuring returns the current user object. First firebase authentication is queried to check if there is a user logged in and if so grabs the current user and saves it to the `user` object which is returned. If no user is logged in, the value of `user` is null. 
 
@@ -237,7 +237,7 @@ when uploading an image a file path to the `user/imageCollection` is made and on
 
 # Development
 
-The project management for each sprint is implemented using Trello, so this section will cover:
+The project management for each sprint is implemented using Trello, this section covers the following areas:
 
 [Bugs and Solutions](#Bugs-and-Solutions)<br>
 [Unresolved Bugs](#Unresolved-Bugs)<br>
@@ -267,13 +267,13 @@ The project management for each sprint is implemented using Trello, so this sect
 
 # Technologies
 
-The project was built in `vscode` and was set up via the `Vue cli` which included: the `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` was installed and used mostly for the rows and columns responsiveness, `material icons` were used to keep things tidy especially on mobile devices.  `date-fns` was used to present timestamp data for chat messages and `GSAP` was also installed and used with Vue transitions to add a bit of flare. 
+The project is built in `vscode` and set up via the `Vue cli` which included: the `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
 
-The project was built using the `Vue 3 composition api`.
+The project is built using the `Vue 3 composition api`.
 
-`Firebase` was installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` were used within this project.
+`Firebase` is installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` are used within this project.
 
-`GitHub` was used for version control and `Trello` for managing the project and each sprint.
+`GitHub` is used for version control and `Trello` for managing the project and each sprint.
 
 --------------------------------------------------
 
