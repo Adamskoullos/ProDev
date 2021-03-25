@@ -210,13 +210,13 @@ Composables extract much of the logic keeping each component cleaner and easier 
 
 Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks can be used as normal.  
 
-- **getUser** The composable returns the `getUser` function which through destructuring returns the current user object. Fist firebase authentication is queried to check if there is a user logged in and if so grabs the current user and saves it to the `user` object which is returned. If no user is logged in, the value of `user` is null. 
+- **getUser** The composable returns the `getUser` function which through destructuring returns the current user object. First firebase authentication is queried to check if there is a user logged in and if so grabs the current user and saves it to the `user` object which is returned. If no user is logged in, the value of `user` is null. 
 
 Then a firebase real-time monitor is used to track if the value of `user` changes, therefore the `user` object can be used to check authentication, create user documents or make user collection/document queries
 
 - **useLogin**: is used to query the login credentials with the database and only allow access if they match an existing user
 
-- **useSignup**: grabs the use inputs and creates a new user object with firebase authentication. The user display name is then added to the user object
+- **useSignup**: grabs the user inputs and creates a new user object with firebase authentication. The user display name is then added to the user object
 
 - **useLogout**: simply returns the logout function which uses the firebase logout method
 
@@ -224,11 +224,11 @@ Then a firebase real-time monitor is used to track if the value of `user` change
 
 when uploading an image a file path to the `user/imageCollection` is made and once uploaded firebase returns a `url` access point to use within the application to display the image.  
 
-- **useCollection**: Initially the only function to be within this composable is the `AddDoc` function to add new projects, messages and bugs to firebase Storage
+- **useCollection**: Initially the only function to be within this composable is the `AddDoc` function to add new projects, messages and bugs to firebase firestore
 
 - **getCollection**: is used to grab the whole collection in order to loop through them and display them as a list.  Here we can use the Vue computed property to create filtered lists for different purposes.
 
-- **useDocument**: is used to update and delete individual documents from firebase Storage
+- **useDocument**: is used to update and delete individual documents from firebase firestore and storage
 
 - **getDocument**: is used to grab individual documents. first a reference to the document is made, this is done by passing in the collection and id. A real time listener is added to the document reference updating its value on any updates to the database. In practice when a user adds a new task to a project and hits the `Add task` button the project document is updated, the user is re-routed to the project list view and as the view mounts the DOM the collection is grabbed with the updated document and rendered to the screen.  
 
