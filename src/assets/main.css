@@ -7,6 +7,7 @@
     --secondary: #ebebeb;
     --warning: #da0f41;
     --background-b: rgb(248, 248, 248);
+    --green: rgb(188, 202, 170)
   }
   /* Dark mode **********************************************/
   *.dark{
@@ -76,7 +77,7 @@
     transition: all ease 0.2s;
   }
   button:hover, .btn:hover {
-    /* background: var(--primary); */
+    
     color: white;
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.96);

@@ -51,7 +51,7 @@
           <div class="col top-bar-col" :class="{dark: dark}">
               <nav v-if="!user" class="top-nav no-auth-nav" :class="{dark: dark}">
                 <div class="no-auth-logo">
-                  <span><h1 :class="{dark: dark}">ProDev</h1></span>
+                  <router-link :to="{ name: 'Home' }"><h1 :class="{dark: dark}">ProDev</h1></router-link>
                 </div>
                 <div class="no-auth no-auth-login">
                   <router-link :to="{ name: 'Login' }"><h3 :class="{dark: dark}">Login</h3></router-link>
@@ -149,7 +149,7 @@ components: { Chat },
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1200){
+            if(visualViewport.width > 1200 && user.value){
               showSideNav.value = true
               router.push({ name: 'MyProjects' }) 
             }
