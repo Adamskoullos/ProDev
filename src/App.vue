@@ -91,7 +91,11 @@
             <div class="col-12 chat-col side-chat-window" :class="{dark: dark}" v-if="showSideChat && !showSideNav">
               <Chat />
             </div>
-            <router-view v-if="(!showSideChat && !showSideNav) || (!showSideChat && showSideNav) || (showSideNav)" v-slot="{ Component }">
+            <router-view v-if="
+            (!showSideChat && !showSideNav) || 
+            (!showSideChat && showSideNav) || 
+            (showSideNav)" 
+            v-slot="{ Component }">
               <transition name="route" mode="out-in">
                 <component :is="Component"></component>
               </transition>  
@@ -124,7 +128,7 @@ export default {
 components: { Chat },
     setup(){
         const showSideChat = ref(false)
-        const user = ref(true)
+        const user = ref(false)
         const showSideNav = ref(false)
         const router = useRouter()
         const dark =ref(false)
