@@ -1,10 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <h3>Login</h3>
-    <input type="email" placeholder="Email" v-model="email" required>
-    <input type="Password" placeholder="Password" v-model="password" required>
+    <input type="email" placeholder="Email" v-model="email" @click="handleReset" required>
+    <input type="Password" placeholder="Password" v-model="password" @click="handleReset" required>
     <div class="error" v-if="error">{{ error }}</div>
-    <button>Login</button>
+    <button v-if="!isPending">Login</button>
+    <button v-if="isPending">Loading...</button>
   </form>
 </template>
 
@@ -17,7 +18,7 @@ export default {
     const email = ref('')
     const password = ref('')
 
-    const { error, login } = useLogin()
+    const { error, login, isPending } = useLogin()
 
     const handleSubmit = async () => {
       const res = await login(email.value, password.value)
@@ -26,7 +27,11 @@ export default {
       }
     }
 
-    return { error, email, password, handleSubmit }
+    const handleReset = ()=> {
+      error.value = null
+    }
+
+    return { error, email, password, handleSubmit, isPending, handleReset }
   }
 }
 </script>
