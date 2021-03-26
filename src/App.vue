@@ -78,10 +78,11 @@
                 </div>
               </nav>
             <div class="user-name" :class="{dark: dark}" v-if="user">
-              <h3 :class="{dark: dark}">User Name</h3>
+              <h3 :class="{dark: dark}">{{ user.displayName }}</h3>
             </div>
-            <div class="logout" :class="{dark: dark}" v-if="user">
-              <span :class="{dark: dark}" class="material-icons">logout</span>
+            <div class="logout" :class="{dark: dark}" v-if="user" @click="handleLogout">
+              <span v-if="!isPending" :class="{dark: dark}" class="material-icons">logout</span>
+              <span v-if="isPending" class="material-icons" :class="{dark: dark}">autorenew</span>
             </div>
           </div>
           </div>
@@ -122,16 +123,19 @@ import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
 import Chat from './views/Chat'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
+import useLogout from './composables/useLogout'
+import getUser from './composables/getUser'
 
 
 export default {
 components: { Chat },
     setup(){
         const showSideChat = ref(false)
-        const user = ref(false)
         const showSideNav = ref(false)
         const router = useRouter()
         const dark =ref(false)
+        const { logout, error, isPending } = useLogout()
+        const { user } = getUser()
 
         onBeforeMount(()=> {
           window.addEventListener('load', ()=> {
@@ -258,7 +262,10 @@ components: { Chat },
           })
         }
 
-        
+        const handleLogout = async () => {
+            await logout()
+            router.push({name: 'Login' })
+        }        
         
 
         return { 
@@ -279,7 +286,11 @@ components: { Chat },
           sideChatBeforeLeave,
           sideChatLeave,
           toggleMode,
-          dark}
+          dark,
+          handleLogout,
+          error,
+          isPending,
+          user}
     }
 }
 
