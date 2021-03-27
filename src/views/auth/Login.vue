@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit" :class="{dark: dark}">
     <h3 :class="{dark: dark}">Login</h3>
-    <input type="email" placeholder="Email" v-model="email" @click="handleReset" :class="{dark: dark}" required>
-    <input type="Password" placeholder="Password" v-model="password" @click="handleReset" :class="{dark: dark}" required>
-    <div class="error" v-if="error" :class="{dark: dark}">{{ error }}</div>
-    <button v-if="!isPending" :class="{dark: dark}">Login</button>
-    <button v-if="isPending" :class="{dark: dark}">Loading...</button>
+    <input type="email" placeholder="Email" v-model="email" @click="handleReset"  required>
+    <input type="Password" placeholder="Password" v-model="password" @click="handleReset" required>
+    <div class="error" v-if="error">{{ error }}</div>
+    <button v-if="!isPending">Login</button>
+    <button v-if="isPending">Loading...</button>
   </form>
 </template>
 
@@ -15,6 +15,7 @@ import useLogin from '../../composables/useLogin'
 import { useRouter } from 'vue-router'
 
 export default {
+  props:['dark'],
   setup(){
     const email = ref('')
     const password = ref('')

@@ -26,6 +26,7 @@ export default {
     
     const handleSubmit = async () => {
       const res = await signup(email.value, password.value, displayName.value)
+
       if(!error.value){
           router.push({ name: 'MyProjects' })
       }

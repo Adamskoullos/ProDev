@@ -18,42 +18,50 @@ const routes = [
   {
     path: '/team-projects',
     name: 'TeamProjects',
-    component: TeamProjects
+    component: TeamProjects,
+    props: true
   },
   {
     path: '/my-projects',
     name: 'MyProjects',
-    component: MyProjects
+    component: MyProjects,
+    props: true
   },
   {
     path: '/new-project',
     name: 'NewProject',
-    component: NewProject
+    component: NewProject,
+    props: true
   },
   {
     path: '/bugs',
     name: 'Bugs',
-    component: Bugs
+    component: Bugs,
+    props: true
   },
   {
     path: '/new-bug',
     name: 'NewBug',
-    component: NewBug
+    component: NewBug,
+    props: true
   },
   {
     path: '/chat',
     name: 'Chat',
-    component: Chat
+    component: Chat,
+    props: true
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    props: true
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: Signup
+    component: Signup,
+    props: true
   }
 ]
 

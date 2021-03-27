@@ -92,7 +92,7 @@
             <div class="col-12 chat-col side-chat-window" :class="{dark: dark}" v-if="showSideChat && !showSideNav">
               <Chat />
             </div>
-            <router-view v-if="
+            <router-view :dark="dark" v-if="
             (!showSideChat && !showSideNav) || 
             (!showSideChat && showSideNav) || 
             (showSideNav)" 
@@ -167,6 +167,7 @@ components: { Chat },
         const toggleMode = () => {
           dark.value = !dark.value
         }
+
         
         const toggleSideChat = () => {
             showSideChat.value = !showSideChat.value
@@ -264,6 +265,8 @@ components: { Chat },
 
         const handleLogout = async () => {
             await logout()
+            dark.value = false
+            showSideChat.value = false
             router.push({name: 'Login' })
         }        
         
@@ -289,8 +292,7 @@ components: { Chat },
           dark,
           handleLogout,
           error,
-          isPending,
-          user}
+          isPending,}
     }
 }
 

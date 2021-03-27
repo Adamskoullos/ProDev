@@ -9,13 +9,13 @@ const getDocument = (collection, id) => {
     const error = ref(null)
 
     let docRef = fStore.collection(collection).doc(id)
-
+    
     const unsub = docRef.onSnapshot((doc) => {
         if(doc.data()){
             document.value = {...doc.data(), id: doc.id}
             error.value = null
         } else{
-            error.value = 'That project does not exist'
+            error.value = 'That document does not exist'
         }
 
     }, (err) => {
