@@ -337,7 +337,7 @@ components: { Chat },
 .top-bar-col{
   display: flex;
   align-items: center;
-  box-shadow: 4px 4px 15px rgba(50,50,50,0.4);
+  box-shadow: 2px 2px 8px rgba(50,50,50,0.4);
   border: 0px solid  var(--secondary);
   border-radius: 8px;
   margin: 1px;
