@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="handleSubmit" :class="{dark: dark}">
-    <h3 :class="{dark: dark}">Login</h3>
-    <input type="email" placeholder="Email" v-model="email" @click="handleReset"  required>
+  <form @submit.prevent="handleSubmit">
+    <h3>Login</h3>
+    <input type="email" placeholder="Email" v-model="email" @click="handleReset" required>
     <input type="Password" placeholder="Password" v-model="password" @click="handleReset" required>
     <div class="error" v-if="error">{{ error }}</div>
     <button v-if="!isPending">Login</button>
@@ -15,8 +15,8 @@ import useLogin from '../../composables/useLogin'
 import { useRouter } from 'vue-router'
 
 export default {
-  props:['dark'],
-  setup(){
+  props:['light', 'showSideNav'],
+  setup(props){
     const email = ref('')
     const password = ref('')
     const router = useRouter()

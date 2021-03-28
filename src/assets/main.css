@@ -9,50 +9,50 @@
     --background-b: rgb(248, 248, 248);
     --green: rgb(188, 202, 170)
   }
-  /* Dark mode **********************************************/
-  *.dark{
-    background: rgb(63, 63, 63) !important;
-    color:rgb(206, 206, 206) !important; 
+  /*Base**********************************/
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
   }
-  body.dark{
-    background: rgb(63, 63, 63) !important;
+  a {
+    color: rgb(206, 206, 206);
+    text-decoration: none;
   }
-  .side-nav.dark{
-    box-shadow: 4px 1px 17px rgba(0, 0, 0, 0.5) !important;
-    color: rgb(188, 202, 170) !important;
+  a:hover{
+    color: rgb(51, 179, 1);
   }
-  .nav-item.dark{
-    box-shadow: 2px 6px 16px rgba(50,50,50,0.8);
-    transition: all ease 0.2s;
-  }
-  .nav-item.dark:hover{
-    box-shadow: 2px 3px 8px rgba(50,50,50,0.3);
-    transform: scale(0.94);
-    transition: all ease 0.4s;
-  }
-  .top-bar-col.dark{
-    box-shadow: 4px 3px 12px rgb(0, 0, 0, 0.5) !important;
+   /* error text */
+   .error {
+    color: var(--warning);
+    font-size: 14px;
+    margin: 16px 0;
   }
 
-  .content-col.dark,
-  .content-row.dark,
-  .chat-col.dark{
-    background: rgb(75, 75, 75) !important;
+
+  h1,h2,h3,h4{
+    margin-bottom: 0;
   }
-  .chat-col.dark{
-    box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
+  /* Dark mode (default)**********************************************/
+  *{
+    background: rgb(63, 63, 63);
+    color:rgb(206, 206, 206); 
+  }
+  body{
+    background: rgb(75, 75, 75);
+    box-sizing: border-box;
   }
 
-  form.dark {
+  form {
     max-width: 400px;
     margin: 0 auto;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 2px 3px 15px rgba(50,50,50,0.09);
+    border-radius: 4px;
+    box-shadow: 2px 3px 10px rgba(50,50,50,0.8);
     border: 0px solid  var(--secondary);
-    background: rgb(63, 63, 63) !important;
+    background: rgb(63, 63, 63);
   }
-  input.dark, textarea.dark {
+  input, textarea {
     border: 0;
     border-bottom: 1px solid var(--secondary);
     padding: 10px;
@@ -63,51 +63,43 @@
     margin: 20px auto;
   }
 
-  button.dark, .btn.dark { 
-    background: rgb(63, 63, 63) !important;
-    color:rgb(206, 206, 206) !important;
-    border-radius: 8px;
+  button, .btn { 
+    background: rgb(75, 75, 75);
+    color:rgb(206, 206, 206);
+    border-radius: 4px;
     border: 0;
     padding: 10px 12px;
     font-weight: 600;
     cursor: pointer;
     display: inline-block;
     margin: auto 5px;
-    box-shadow: 1px 2px 6px rgba(50,50,50,0.5);
+    box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
     border: 0px solid  var(--secondary);
     transition: all ease 0.2s;
   }
-  button.dark:hover, .btn.dark:hover {
+  button:hover, .btn:hover {
     
-    color: white;
+    color: rgb(51, 179, 1);
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
-    transform: scale(0.96);
+    transform: scale(0.94);
     transition: all ease 0.3s;
-    color: var(--primary);
   }
 
 
-  /* base styles  */
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Nunito', sans-serif;
-    color: var(--primary);
-  }
-  body {
+  /* Light mode  *********************************************/
+  
+  body.light {
     background: rgb(248, 248, 248);
-    box-sizing: border-box;
   }
-  a {
-    text-decoration: none;
+  a.light {
     color: var(--primary);
   }
-  a:hover{
+  a.light:hover{
     color: var(--primary);
   }
   
   /* buttons */
-  button, .btn { 
+  button.light, .btn { 
     background: rgb(188, 202, 170);
     color: var(--primary);
     border-radius: 8px;
@@ -121,7 +113,7 @@
     border: 0px solid  var(--secondary);
     transition: all ease 0.2s;
   }
-  button:hover, .btn:hover {
+  button.light:hover, .btn:hover {
     
     color: white;
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
@@ -137,7 +129,7 @@
   }
   
   /* forms */
-  form {
+  form.light {
     max-width: 400px;
     margin: 0 auto;
     padding: 30px;
@@ -146,7 +138,7 @@
     border: 0px solid  var(--secondary);
     background: white;
   }
-  input, textarea {
+  input.light, textarea.light {
     border: 0;
     border-bottom: 1px solid var(--secondary);
     padding: 10px;
@@ -157,12 +149,4 @@
     margin: 20px auto;
   }
   
-  /* error text */
-  .error {
-    color: var(--warning);
-    font-size: 14px;
-    margin: 16px 0;
-  }
-  h1,h2,h3,h4{
-    margin-bottom: 0;
-  }
+ 
