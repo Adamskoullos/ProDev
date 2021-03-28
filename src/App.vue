@@ -131,7 +131,7 @@ export default {
 components: { Chat },
     setup(){
         const showSideChat = ref(false)
-        const showSideNav = ref(false)
+        const showSideNav = ref(true)
         const router = useRouter()
         const light =ref(false)
         const { logout, error, isPending } = useLogout()
@@ -144,9 +144,7 @@ components: { Chat },
               showSideChat.value = false
             }
             if(visualViewport.width > 1200){
-              setTimeout(() => {
                 showSideNav.value = true
-              }, 1000); 
             }
           }),
 
