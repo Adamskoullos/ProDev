@@ -53,7 +53,7 @@
   }
   input, textarea {
     border: 0;
-    border-bottom: 1px solid var(--secondary);
+    border-bottom: 1px solid rgb(83, 83, 83);
     padding: 10px;
     outline: none;
     display: block;
@@ -61,6 +61,10 @@
     box-sizing: border-box;
     margin: 20px auto;
     background: rgb(63, 63, 63)
+  }
+
+  input:focus{
+    border-bottom: 2px solid rgb(112, 1, 177);
   }
 
   button, .btn { 
@@ -83,6 +87,16 @@
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.94);
     transition: all ease 0.3s;
+  }
+  button:focus {
+    
+    color: rgb(51, 179, 1);
+    box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
+    transform: scale(0.94);
+    transition: all ease 0.3s;
+  }
+  .loading{
+    color: rgb(45, 144, 236);
   }
 
 

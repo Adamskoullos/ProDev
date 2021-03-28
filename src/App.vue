@@ -511,6 +511,9 @@ components: { Chat },
 .user-name h3{
   color: rgb(236, 236, 236);
 }
+.logo h3:hover{
+  color: rgb(45, 144, 236);
+}
 /* Light mode nav items ************************/
 .nav-item.light{
   background:rgb(255, 255, 255);

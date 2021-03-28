@@ -6,7 +6,7 @@
     <input type="Password" placeholder="Password" v-model="password" @click="handleReset" required>
     <div class="error" v-if="error">{{ error }}</div>
     <button v-if="!isPending">Signup</button>
-    <button v-if="isPending">Loading...</button>
+    <button class="loading" v-if="isPending">Loading...</button>
   </form>
 </template>
 
