@@ -391,7 +391,7 @@ components: { Chat },
   flex-direction: column;
   align-items: stretch;
   justify-content: space-around;
-  background: rgb(219, 219, 219);
+  background: rgb(255, 255, 255);
   max-width: 200px;
   margin: 0px;
   border-radius: 0px;
@@ -415,31 +415,32 @@ components: { Chat },
 .top-bar-col.light{
   display: flex;
   align-items: center;
-  box-shadow: 2px 2px 8px rgba(50,50,50,0.4);
+  box-shadow: 2px 2px 13px rgba(50,50,50,0.4);
   border: 0px solid  var(--secondary);
   border-radius: 8px;
-  margin: 1px;
+  margin: 0px;
   z-index: 3;
   min-height: 60px;
-  background: rgb(219, 219, 219);
+  background: rgb(255, 255, 255);
   border-radius: 0px;
 }
 .content-row.light{
-  background: var(--background-b);
+  background: rgb(216, 216, 216);
   flex: 1;
   position: relative;
 }
-.content-col{
+.content-col.light{
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 0;
+  background: rgb(216, 216, 216);
 }
 .chat-col.light{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--background-b);
+  background: rgb(216, 216, 216);
   box-shadow: -3px 1px 13px rgba(50,50,50,0.3);
   z-index: 1;
 }
@@ -546,6 +547,9 @@ span.util:hover{
   transition: all ease 0.3s;
   color: var(--primary);
 }
+.nav-item span.light{
+  color: var(--primary);
+}
 .theme{
   display: flex;
   justify-content: center;
@@ -573,6 +577,22 @@ ul li {
 }
 ul li a{
   display: block;
+}
+span.util.light:hover{
+  color: rgb(216, 158, 0)
+}
+a.light.projects:hover{
+  color: rgb(51, 179, 1);
+}
+span.chat.light:hover{
+  color: rgb(135, 0, 212);
+}
+h1.light, h2.light,
+h3.light, h4.light{
+  color: var(--primary)
+}
+span.material-icons.light{
+  color: var(--primary);
 }
 /* Top Bar *******************************************/
 .top-nav{
