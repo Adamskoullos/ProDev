@@ -620,6 +620,9 @@ span.bugs.light:hover{
 span.chat.light:hover{
   color: rgb(119, 0, 230);
 }
+span.chat-side-nav.light:hover{
+  color: rgb(119, 0, 230);
+}
 h1.light, h2.light,
 h3.light, h4.light{
   color: var(--primary)

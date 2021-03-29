@@ -38,7 +38,6 @@
     color:rgb(206, 206, 206); 
   }
   body{
-    /* background: rgb(75, 75, 75); */
     box-sizing: border-box;
   }
 
@@ -47,7 +46,7 @@
     margin: 0 auto;
     padding: 30px;
     border-radius: 4px;
-    box-shadow: 2px 3px 10px rgba(50,50,50,0.8);
+    box-shadow: 4px 4px 12px rgba(50,50,50,0.4);
     border: 0px solid  var(--secondary);
     background: rgb(63, 63, 63);
   }
@@ -68,6 +67,9 @@
   input:focus{
     /* border: 2px solid rgb(101, 0, 160); */
     border: 2px solid rgb(119, 0, 230);
+  }
+  textarea:focus{
+    border: 2px solid rgb(45, 160, 0)
   }
 
   button, .btn { 
