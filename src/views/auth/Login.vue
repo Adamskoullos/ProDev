@@ -16,7 +16,7 @@ import { useRouter } from 'vue-router'
 
 export default {
   props:['light'],
-  setup(props){
+  setup(props, context){
     const email = ref('')
     const password = ref('')
     const router = useRouter()
@@ -26,6 +26,7 @@ export default {
     const handleSubmit = async () => {
       const res = await login(email.value, password.value)
       if(!error.value){
+          context.emit('login')
           router.push({ name: 'MyProjects' })
       }
     }

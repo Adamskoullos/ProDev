@@ -15,7 +15,7 @@
             </div>
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item" @click="toggleSideChat" :class="{light: light}">
-                  <span :class="{light: light}" class="chat">Team Chat</span>
+                  <span :class="{light: light}" class="chat-side-nav">Team Chat</span>
               </li>
               <li class="nav-item" :class="{light: light}">
                   <router-link :to="{ name: 'TeamProjects' }" :class="{light: light}" class="projects">Team Projects</router-link>
@@ -92,7 +92,10 @@
             <div class="col-12 chat-col side-chat-window" :class="{light: light}" v-if="showSideChat && !showSideNav">
               <Chat />
             </div>
-            <router-view :light="light" @signedUp="handleTopBar" v-if="
+            <router-view :light="light" 
+            @signedUp="handleLogin"
+            @login="handleLogin" 
+            v-if="
             (!showSideChat && !showSideNav) || 
             (!showSideChat && showSideNav) || 
             (showSideNav)" 
@@ -119,7 +122,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import { onBeforeMount, onUnmounted, onBeforeUpdate } from '@vue/runtime-core'
+import { onBeforeMount, onUnmounted, onBeforeUpdate, onUpdated } from '@vue/runtime-core'
 import Chat from './views/Chat'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
@@ -139,7 +142,6 @@ components: { Chat },
         const { user } = getUser()
 
         onBeforeMount(()=> {
-          window.addEventListener('load', ()=> {
             if(visualViewport.width < 1200){
               showSideNav.value = false
               showSideChat.value = false
@@ -147,7 +149,7 @@ components: { Chat },
             if(visualViewport.width > 1200){
                 showSideNav.value = true
             }
-          }),
+          })
 
           window.addEventListener('resize', () =>{
             if(visualViewport.width < 1200){
@@ -158,7 +160,7 @@ components: { Chat },
               showSideNav.value = true
               router.push({ name: 'MyProjects' }) 
             }
-          })
+          
         })
         
         onBeforeUpdate(() => {
@@ -280,9 +282,16 @@ components: { Chat },
             showSideChat.value = false
             router.push({name: 'Login' })
         } 
-        const handleTopBar = () => {
+        const handleLogin = () => {
           showTopBar.value = false
           showTopBar.value = true
+          if(visualViewport.width < 1200){
+              showSideNav.value = false
+              showSideChat.value = false
+          }
+          if(visualViewport.width > 1200 && user.value){
+            showSideNav.value = true
+          }
         }       
         
 
@@ -308,7 +317,7 @@ components: { Chat },
           handleLogout,
           error,
           isPending,
-          handleTopBar,
+          handleLogin,
           showTopBar}
     }
 }
@@ -349,6 +358,7 @@ components: { Chat },
 .main-row{
   max-height: 100vh;
   position: relative;
+  background: rgb(75, 75, 75);
 }
 .main-col{
   min-height: 100vh;
@@ -395,6 +405,9 @@ components: { Chat },
 }
 
 /** Light mode ***************************************/
+.main-row.light{
+  background: rgb(216, 216, 216);
+}
 .side-nav.light{
   min-height: 100vh;
   display: flex;
@@ -494,9 +507,9 @@ components: { Chat },
 }
 /** Dark mode nav items ************************/
 .nav-item{
-    box-shadow: 2px 6px 16px rgba(50,50,50,0.8);
+    box-shadow: 3px 6px 10px rgba(50,50,50,0.9);
     transition: all ease 0.2s;
-    background:rgb(63, 63, 63);
+    background:rgb(64, 64, 64);
     border-radius: 8px;
     border: 0;
     padding: 0px 0px;
@@ -508,8 +521,8 @@ components: { Chat },
   }
   .nav-item:hover{
     box-shadow: 2px 3px 8px rgba(50,50,50,0.3);
-    transform: scale(0.96);
-    transition: all ease 0.4s;
+    transform: scale(0.97);
+    transition: all ease 0.2s;
   }
 .nav-item span,
 .nav-item a{
@@ -535,8 +548,12 @@ components: { Chat },
 .projects a:hover{
   color: rgb(51, 179, 1);
 }
+
 span.chat:hover{
-  color: rgb(135, 0, 212);
+  color: rgb(119, 0, 230);
+}
+span.chat-side-nav:hover{
+  color: rgb(160, 58, 255)
 }
 .bugs:hover,
 span.bugs:hover{
@@ -594,8 +611,14 @@ span.util.light:hover{
 a.light.projects:hover{
   color: rgb(51, 179, 1);
 }
+span.projects.light:hover{
+  color: rgb(51, 179, 1);
+}
+span.bugs.light:hover{
+  color: rgb(45, 144, 236);
+}
 span.chat.light:hover{
-  color: rgb(135, 0, 212);
+  color: rgb(119, 0, 230);
 }
 h1.light, h2.light,
 h3.light, h4.light{
