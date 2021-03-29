@@ -16,7 +16,7 @@ import useSignup from '@/composables/useSignup'
 import { useRouter } from 'vue-router'
 
 export default {
-  setup(){
+  setup(props, context){
     const email = ref('')
     const password = ref('')
     const displayName = ref('')
@@ -28,6 +28,7 @@ export default {
       const res = await signup(email.value, password.value, displayName.value)
 
       if(!error.value){
+          context.emit('signedUp')
           router.push({ name: 'MyProjects' })
       }
     }

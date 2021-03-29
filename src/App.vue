@@ -15,28 +15,28 @@
             </div>
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item" @click="toggleSideChat" :class="{light: light}">
-                  <span :class="{light: light}">Team Chat</span>
+                  <span :class="{light: light}" class="chat">Team Chat</span>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'TeamProjects' }" :class="{light: light}">Team Projects</router-link>
+                  <router-link :to="{ name: 'TeamProjects' }" :class="{light: light}" class="projects">Team Projects</router-link>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'MyProjects' }" :class="{light: light}">My Projects</router-link>
+                  <router-link :to="{ name: 'MyProjects' }" :class="{light: light}" class="projects">My Projects</router-link>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'NewProject' }" :class="{light: light}">New Project</router-link>
+                  <router-link :to="{ name: 'NewProject' }" :class="{light: light}" class="projects">New Project</router-link>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'Bugs' }" :class="{light: light}">Bugs</router-link>
+                  <router-link :to="{ name: 'Bugs' }" :class="{light: light}" class="bugs">Bugs</router-link>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'NewBug' }" :class="{light: light}">New Bug</router-link>
+                  <router-link :to="{ name: 'NewBug' }" :class="{light: light}" class="bugs">New Bug</router-link>
               </li>
             </ul>
           </nav>
           <div class="dark-mode" :class="{light: light}">
               <div  class="nav-item" :class="{light: light}" @click="toggleMode">
-                <span :class="{light: light}">Mode</span>
+                <span :class="{light: light}" class="util">Mode</span>
               </div> 
           </div>
         </div>
@@ -48,7 +48,7 @@
         @before-leave="topBarBeforeLeave"
         @leave="topBarLeave">
           <div class="row top-bar-row" :class="{light: light}">
-          <div class="col top-bar-col" :class="{light: light}">
+          <div class="col top-bar-col" :class="{light: light}" v-if="showTopBar">
               <nav v-if="!user" class="top-nav no-auth-nav" :class="{light: light}">
                 <div class="no-auth-logo">
                   <router-link :to="{ name: 'Home' }"><h1 :class="{light: light}">ProDev</h1></router-link>
@@ -63,25 +63,25 @@
               <nav class="top-nav" v-if="!showSideNav && user" :class="{light: light}">
                 <div class="view-icons" v-if="user">
                   <router-link :to="{ name: 'MyProjects' }">
-                    <span class="material-icons" :class="{light: light}">folder</span>
+                    <span class="material-icons projects" :class="{light: light}">folder</span>
                   </router-link>
                 </div>
                 <div class="view-icons" v-if="user">
                   <router-link :to="{ name: 'Bugs' }">
-                    <span class="material-icons" :class="{light: light}">bug_report</span>
+                    <span class="material-icons bugs" :class="{light: light}">bug_report</span>
                   </router-link>
                 </div>
                 <div class="view-icons">
                   <router-link :to="{ name: 'Chat' }">
-                    <span class="material-icons" :class="{light: light}">chat_bubble</span>
+                    <span class="material-icons chat" :class="{light: light}">chat_bubble</span>
                   </router-link>
                 </div>
               </nav>
-            <div class="user-name" :class="{light: light}" v-if="user">
-              <h3 :class="{light: light}">{{ user.displayName }}</h3>
+            <div class="user-name" :class="{light: light}" >
+              <h3 :class="{light: light}" v-if="user">{{ user.displayName }}</h3>
             </div>
             <div class="logout" :class="{light: light}" v-if="user" @click="handleLogout">
-              <span v-if="!isPending" :class="{light: light}" class="material-icons">logout</span>
+              <span v-if="!isPending" :class="{light: light}" class="material-icons util">logout</span>
               <span v-if="isPending" class="material-icons" :class="{light: light}">autorenew</span>
             </div>
           </div>
@@ -92,7 +92,7 @@
             <div class="col-12 chat-col side-chat-window" :class="{light: light}" v-if="showSideChat && !showSideNav">
               <Chat />
             </div>
-            <router-view :light="light" :showSideNav="showSideNav" v-if="
+            <router-view :light="light" @signedUp="handleTopBar" v-if="
             (!showSideChat && !showSideNav) || 
             (!showSideChat && showSideNav) || 
             (showSideNav)" 
@@ -132,6 +132,7 @@ components: { Chat },
     setup(){
         const showSideChat = ref(false)
         const showSideNav = ref(true)
+        const showTopBar = ref(true)
         const router = useRouter()
         const light =ref(false)
         const { logout, error, isPending } = useLogout()
@@ -268,7 +269,11 @@ components: { Chat },
             light.value = false
             showSideChat.value = false
             router.push({name: 'Login' })
-        }        
+        } 
+        const handleTopBar = () => {
+          showTopBar.value = false
+          showTopBar.value = true
+        }       
         
 
         return { 
@@ -292,7 +297,9 @@ components: { Chat },
           light,
           handleLogout,
           error,
-          isPending,}
+          isPending,
+          handleTopBar,
+          showTopBar}
     }
 }
 
@@ -513,6 +520,19 @@ components: { Chat },
 }
 .logo h3:hover{
   color: rgb(45, 144, 236);
+}
+.projects a:hover{
+  color: rgb(51, 179, 1);
+}
+span.chat:hover{
+  color: rgb(135, 0, 212);
+}
+.bugs:hover,
+span.bugs:hover{
+  color: rgb(45, 144, 236)
+}
+span.util:hover{
+  color: rgb(255, 187, 0)
 }
 /* Light mode nav items ************************/
 .nav-item.light{
