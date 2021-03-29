@@ -539,11 +539,11 @@ span.util:hover{
 .nav-item.light{
   background:rgb(255, 255, 255);
   color: var(--primary);
-  box-shadow: 1px 3px 12px rgba(50,50,50,0.5);
+  box-shadow: 1px 2px 12px rgba(50,50,50,0.4);
 }
 .nav-item.light:hover{
   box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
-  transform: scale(0.96);
+  transform: scale(0.97);
   transition: all ease 0.3s;
   color: var(--primary);
 }
