@@ -1,17 +1,22 @@
 <template>
-  <form @submit.prevent="addNewProject">
+  <form @submit.prevent="handleSubmit">
     <h4>Create new project</h4>
     <input type="text" placeholder="Project title" v-model="title" required>
     <textarea placeholder="Description" v-model="description" required></textarea>
     <label>Upload project image</label>
     <input type="file" @change="handleChange">
     <div class="error">{{ fileError }}</div>
-    <button>Add new project</button>
+    <button v-if="!isPending">Add new project</button>
+    <button v-if="isPending" class="loading">Uploading...</button>
   </form>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity'
+import useStorage from '../composables/useStorage'
+import useCollection from '../composables/useCollection'
+import getUser from '../composables/getUser'
+import { timestamp } from '../firebase/config'
 
 
 export default {
@@ -21,9 +26,32 @@ export default {
     const projectImage = ref(null)
     const fileTypes = ['image/png', 'image/jpeg']
     const fileError = ref(null)
+    const isPending = ref(false)
 
-    const addNewProject = async () => {
+    const { uploadImage, error, filePath, url } = useStorage()
+    const { addDoc } = useCollection('projects')
+    const { user } = getUser()
 
+    const handleSubmit = async () => {
+      if(projectImage.value){
+        isPending.value = true
+        await uploadImage(projectImage.value)
+        await addDoc({
+          title: title.value,
+          description: description.value,
+          userId: user.value.uid,
+          userName: user.value.displayName,
+          imageUrl: url.value,
+          filePath: filePath.value,
+          tasks: [],
+          createdAt: timestamp()
+        })
+        isPending.value = false
+      }
+      projectImage.value = null
+      title.value = ''
+      description.value = ''
+      fileError.value = null
     }
 
     const handleChange = (e) => {
@@ -37,7 +65,7 @@ export default {
       }
     }
 
-    return { title, description, projectImage, fileError, addNewProject, handleChange }
+    return { title, description, projectImage, fileError, handleSubmit, handleChange, error, isPending }
   }
 }
 </script>
