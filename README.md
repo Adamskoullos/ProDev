@@ -27,7 +27,7 @@ A light weight and zippy project management hub for small teams, the main featur
 
 * **Live Chat**: Bringing it all together and focusing the conversation is the built in real-time chat feature allowing team members to quickly discuss and respond to different tasks and issues.
 
-Overall the application is designed to be used within a developers daily operations and thus be mostly displayed for long periods of time via a laptop or desktop screen.  For this reason there is a dark mode option within the ui.  
+As the application is designed to be on a developers screen in conjunction with their code editor for long periods of time, the dark theme is the default mode, however this can be toggled directly in the main dashboard.   
 
 --------------------------------------------------
 
@@ -90,6 +90,7 @@ Overall the application is designed to be used within a developers daily operati
 * Developer performance reporting and analysis 
 * Multiple team authentication - so when a user logs in they only have access to their private team bubble
 * In app notifications of unread chat messages
+* Breaking out the theme mode property and adding a users object on the back end within firestore so the mode can be saved to a users profile and loaded on login
 
 ## User Stories
 
@@ -155,9 +156,6 @@ The overarching theme dark and light to be clean and subtle with an err towards 
 Whilst the main structure of the layout has hard edges, softened slightly by the box shadows the internal elements to have a slight rounded corner consistent through the application.  The main structure layout to have simple smooth transitions and the internal elements to be a little more dynamic with the use of GSAP.  
 
 To provide a transition between the hard edges of the main layout and the softer corners of buttons and internal elements the font to be clean, simple with slightly rounded ends. 
-
-The color pallette to be simple with one accent color for each theme plus a splash of functionality color from for example to show completed and open tasks etc.
-
 
 ## Wireframes
 
@@ -247,6 +245,35 @@ The project management for each sprint is implemented using Trello, this section
 
 
 ## Bugs and Solutions
+
+- [X] User display name not showing in top bar after first sign up. Firebase creates the user first then adds the displayName.  The onSnapshot for user updates was firing and triggering the render before the displayName had been returned from firebase.  
+
+**Solution**: Create a custom event within the sign in function to trigger after the user displayName has been returned from firebase.  Then back in the main dash view fire a callback to set a property to false and then true again using the boolean to show the top bar element. As the property becomes true the top bar is re-rendered showing the displayName 
+
+--------------------------------------------------
+
+- [X] On login the side bar is being shown even on smaller screens
+
+**Solution**: Added the following code using the Vue lifecycle hook:
+
+
+```js
+
+onBeforeUpdate(() => {
+          if(visualViewport.width < 1200){
+              showSideNav.value = false
+              showSideChat.value = false
+            }
+            if(visualViewport.width > 1200 && user.value){
+              showSideNav.value = true
+            }
+        })
+
+```
+
+-----------------------------------------
+
+- [] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer. 
 
 ## Unresolved Bugs
 

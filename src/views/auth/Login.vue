@@ -15,7 +15,7 @@ import useLogin from '../../composables/useLogin'
 import { useRouter } from 'vue-router'
 
 export default {
-  props:['light', 'showSideNav'],
+  props:['light'],
   setup(props){
     const email = ref('')
     const password = ref('')

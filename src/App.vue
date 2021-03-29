@@ -119,7 +119,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import { onBeforeMount, onUnmounted } from '@vue/runtime-core'
+import { onBeforeMount, onUnmounted, onBeforeUpdate } from '@vue/runtime-core'
 import Chat from './views/Chat'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
@@ -159,6 +159,16 @@ components: { Chat },
               router.push({ name: 'MyProjects' }) 
             }
           })
+        })
+        
+        onBeforeUpdate(() => {
+          if(visualViewport.width < 1200){
+              showSideNav.value = false
+              showSideChat.value = false
+            }
+            if(visualViewport.width > 1200 && user.value){
+              showSideNav.value = true
+            }
         })
 
         onUnmounted(() => {
@@ -498,7 +508,7 @@ components: { Chat },
   }
   .nav-item:hover{
     box-shadow: 2px 3px 8px rgba(50,50,50,0.3);
-    transform: scale(0.94);
+    transform: scale(0.96);
     transition: all ease 0.4s;
   }
 .nav-item span,
