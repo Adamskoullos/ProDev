@@ -61,7 +61,7 @@
     width: 100%;
     box-sizing: border-box;
     margin: 20px auto;
-    background: rgb(63, 63, 63)
+    background: rgb(63, 63, 63);
   }
 
   input:focus{

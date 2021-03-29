@@ -48,9 +48,11 @@ export default {
           tasks: [],
           createdAt: timestamp()
         })
-        isPending.value = false
-        router.push({ name: 'MyProjects' })
-      }
+        if(!error.value){
+          isPending.value = false
+          router.push({ name: 'MyProjects' })
+        }
+      } 
       projectImage.value = null
       title.value = ''
       description.value = ''

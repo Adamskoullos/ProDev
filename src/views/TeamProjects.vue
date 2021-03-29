@@ -26,5 +26,11 @@ export default {
 </script>
 
 <style>
-
+.wrapper{
+    background: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
 </style>
