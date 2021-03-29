@@ -1,20 +1,30 @@
 <template>
-<div class="main">
-    <h1>Team Projects</h1>
+<div class="wrapper">
+    <div class="projects-window">
+        <div v-if="error" class="error">
+            <h4>Cannot access the the projects database</h4>
+        </div>
+        <div v-if="documents" class="projects">
+            <ProjectsList :projects="documents" />
+        </div>
+    </div>
 </div>
 </template>
 
 <script>
-export default {
+import getCollection from '../composables/getCollection'
+import ProjectsList from '../components/ProjectsList'
 
+export default {
+    components: { ProjectsList },
+    setup(){
+        const { documents, error } = getCollection('projects')
+
+        return { documents, error }
+    }
 }
 </script>
 
 <style>
-.main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 </style>

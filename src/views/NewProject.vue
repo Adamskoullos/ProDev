@@ -17,6 +17,7 @@ import useStorage from '../composables/useStorage'
 import useCollection from '../composables/useCollection'
 import getUser from '../composables/getUser'
 import { timestamp } from '../firebase/config'
+import { useRouter } from 'vue-router'
 
 
 export default {
@@ -31,6 +32,7 @@ export default {
     const { uploadImage, error, filePath, url } = useStorage()
     const { addDoc } = useCollection('projects')
     const { user } = getUser()
+    const router = useRouter()
 
     const handleSubmit = async () => {
       if(projectImage.value){
@@ -47,6 +49,7 @@ export default {
           createdAt: timestamp()
         })
         isPending.value = false
+        router.push({ name: 'MyProjects' })
       }
       projectImage.value = null
       title.value = ''

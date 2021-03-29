@@ -9,6 +9,8 @@ import Chat from '../views/Chat'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 
+
+
 const routes = [
   {
     path: '/',
