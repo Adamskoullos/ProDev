@@ -9,7 +9,16 @@ import Chat from '../views/Chat'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 
+import { fAuth } from '../firebase/config'
 
+const requireAuth = (to, from, next) => {
+  const user = fAuth.currentUser
+  if(!user){
+    next({ name: 'Home' })
+  } else{
+    next()
+  }
+}
 
 const routes = [
   {
@@ -21,37 +30,43 @@ const routes = [
     path: '/team-projects',
     name: 'TeamProjects',
     component: TeamProjects,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/my-projects',
     name: 'MyProjects',
     component: MyProjects,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/new-project',
     name: 'NewProject',
     component: NewProject,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/bugs',
     name: 'Bugs',
     component: Bugs,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/new-bug',
     name: 'NewBug',
     component: NewBug,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/chat',
     name: 'Chat',
     component: Chat,
-    props: true
+    props: true,
+    beforeEnter: requireAuth
   },
   {
     path: '/login',
