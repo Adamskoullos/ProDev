@@ -4,7 +4,7 @@
         <div v-if="error" class="error">
             <h4>Cannot access the the projects database</h4>
         </div>
-        <div v-if="documents" class="projects">
+        <div v-if="documents" class="project">
             <ProjectsList :projects="documents" />
         </div>
     </div>
@@ -27,10 +27,22 @@ export default {
 
 <style>
 .wrapper{
-    background: chartreuse;
     display: flex;
+    flex: 1;
+    max-width: 95%;
+    box-sizing: border-box; 
     justify-content: center;
     align-items: center;
-   
+}
+.projects-window{
+    display: flex;
+    flex:1;
+}
+.project{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    
 }
 </style>
