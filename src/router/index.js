@@ -8,6 +8,7 @@ import NewBug from '../views/NewBug.vue'
 import Chat from '../views/Chat'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
+import SingleProject from '../views/SingleProject.vue'
 
 import { fAuth } from '../firebase/config'
 
@@ -27,23 +28,30 @@ const routes = [
     component: Home
   },
   {
-    path: '/team-projects',
+    path: '/projects',
     name: 'TeamProjects',
     component: TeamProjects,
     props: true,
     beforeEnter: requireAuth
   },
   {
-    path: '/my-projects',
+    path: '/projects/user',
     name: 'MyProjects',
     component: MyProjects,
     props: true,
     beforeEnter: requireAuth
   },
   {
-    path: '/new-project',
+    path: '/projects/new',
     name: 'NewProject',
     component: NewProject,
+    props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/projects/:id',
+    name: 'SingleProject',
+    component: SingleProject,
     props: true,
     beforeEnter: requireAuth
   },

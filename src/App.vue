@@ -142,33 +142,34 @@ components: { Chat },
         const { user } = getUser()
 
         onBeforeMount(()=> {
-            if(visualViewport.width < 1200){
+            if(visualViewport.width < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1200){
+            if(visualViewport.width > 1100){
                 showSideNav.value = true
             }
           })
 
           window.addEventListener('resize', () =>{
-            if(visualViewport.width < 1200){
+            if(visualViewport.width < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1200 && user.value){
+            if(visualViewport.width > 1100 && user.value){
               showSideNav.value = true
+              showSideChat.value = false
               router.push({ name: 'MyProjects' }) 
             }
           
         })
         
         onBeforeUpdate(() => {
-          if(visualViewport.width < 1200){
+          if(visualViewport.width < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1200 && user.value){
+            if(visualViewport.width > 1100 && user.value){
               showSideNav.value = true
             }
         })
@@ -285,11 +286,11 @@ components: { Chat },
         const handleLogin = () => {
           showTopBar.value = false
           showTopBar.value = true
-          if(visualViewport.width < 1200){
+          if(visualViewport.width < 1100){
               showSideNav.value = false
               showSideChat.value = false
           }
-          if(visualViewport.width > 1200 && user.value){
+          if(visualViewport.width > 1100 && user.value){
             showSideNav.value = true
           }
         }       
@@ -553,14 +554,14 @@ span.chat:hover{
   color: rgb(119, 0, 230);
 }
 span.chat-side-nav:hover{
-  color: rgb(160, 58, 255)
+  color: rgb(160, 58, 255);
 }
 .bugs:hover,
 span.bugs:hover{
-  color: rgb(45, 144, 236)
+  color: rgb(45, 144, 236);
 }
 span.util:hover{
-  color: rgb(255, 187, 0)
+  color: rgb(255, 187, 0);
 }
 /* Light mode nav items ************************/
 .nav-item.light{
