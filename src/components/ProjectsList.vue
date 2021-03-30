@@ -1,18 +1,20 @@
 <template>
   <div v-for="project in projects" :key="project.id" class="container-fluid project-list-wrapper">
-    <router-link :to="{ name: 'SingleProject', params: {id: project.id} }">
-      <div class=" single row">
-        <div class=" thumbnail col-12 col-sm-3">
-            <img :src="project.imageUrl" alt="project cover image">
+    <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
+      
+        <div class=" single row">
+          <div class=" thumbnail col-12 col-sm-3">
+              <img :src="project.imageUrl" alt="project cover image">
+          </div>
+          <div class="info col-12 col-sm-6">
+              <h3>{{ project.title }}</h3>
+              <p>Project lead: {{ project.userName }}</p>
+          </div>
+          <div class="tasks col-12 col-sm-3">
+              <p>Tasks: {{ project.tasks.length }}</p>
+          </div>
         </div>
-        <div class="info col-12 col-sm-6">
-            <h3>{{ project.title }}</h3>
-            <p>Project lead: {{ project.userName }}</p>
-        </div>
-        <div class="tasks col-12 col-sm-3">
-            <p>Tasks: {{ project.tasks.length }}</p>
-        </div>
-      </div>
+   
     </router-link>
   </div>
 </template>
@@ -30,7 +32,10 @@ export default {
   padding: 0 !important;
   display:flex;
   justify-content: center;
-  
+}
+a.route-tag{
+  display: flex;
+  flex: 1;
 }
 .single.row{
   margin: 10px auto;
@@ -43,15 +48,14 @@ export default {
     border-radius: 4px;
     background: rgb(63, 63, 63);
     box-shadow: 2px 2px 10px rgba(50,50,50,0.4);
-    /* margin:  15px auto !important; */
     transition: all ease 0.1s;
     width: 95%;
     
     
   }
   .single:hover {
-    box-shadow: 2px 2px 15px rgba(50,50,50,0.5);
-    transform: scale(1.02);
+    box-shadow: 3px 3px 12px rgba(50,50,50,0.5);
+    transform: scale(1.01);
     transition: all ease 0.3s;
     cursor: pointer;
   }
