@@ -369,6 +369,10 @@ components: { Chat },
 .top-bar-row{
   min-height: 60px;
   z-index: 3;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 .top-bar-col{
   display: flex;
@@ -383,6 +387,7 @@ components: { Chat },
   border-radius: 0px;
 }
 .content-row{
+  margin-top: 60px;
   background: var(--background-b);
   flex: 1;
   position: relative;
