@@ -14,7 +14,20 @@
                 <button v-if="ownership && !isPending" @click="handleDelete" class="complete big">Project Complete</button>
                 <button v-if="isPending" class="loading complete big">Completing...</button>
                 <div class="tasks col-12">
-                    <h3>Tasks</h3>
+                    <h4>Tasks</h4>
+                    <div v-for="task in document.tasks" :key="task.id" class="single-task">
+                        <div class="task" :class="{ complete: task.completed }">
+                            <div class="actions">
+                                <div class="details">
+                                    <p>{{ task.task }}</p>
+                                </div>
+                                <div class="icons" v-if="ownership">
+                                    <span class="material-icons" @click="handleDeleteTask(task.id)">delete</span> 
+                                    <span class="material-icons" @click="handleTaskComplete(task.id)">done</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <AddTask v-if="ownership" :projects="document"/>
                 </div>
             </div>
@@ -36,7 +49,7 @@ export default {
     components: { AddTask },
     setup(props){
         const { deleteImage } = useStorage()
-        const { deleteDoc, error } = useDocument('projects', props.id)
+        const { deleteDoc, updateDoc, error } = useDocument('projects', props.id)
         const { document } = getDocument('projects', props.id)
         const { user } = getUser()
         const router = useRouter()
@@ -54,7 +67,26 @@ export default {
             router.push({ name: 'MyProjects' })
         }
 
-        return { document, error, ownership, handleDelete, isPending }
+        const handleTaskComplete = async (id) => {
+            const tasks = document.value.tasks.map(task => {
+              if (task.id == id){
+                task.completed = !task.completed
+              }
+              return task
+            })
+            await updateDoc({
+              tasks: tasks
+            })
+        }
+
+        const handleDeleteTask = async (id) => {
+            const tasks = document.value.tasks.filter(task => task.id != id)
+            await updateDoc({
+              tasks: [...tasks]
+            })
+        }
+
+        return { document, error, ownership, handleDelete, isPending, handleTaskComplete, handleDeleteTask }
     }
 }
 </script>
@@ -102,10 +134,11 @@ export default {
       align-items: flex-start;
   }
   .info h3{
-      margin-top: 15px
+      margin-top: 5px;
+      margin-bottom: 3px;
   }
   p.user-name{
-      margin-top: 0px;
+      font-weight: 200;
   }
   .tasks{
       display: flex;
@@ -113,8 +146,9 @@ export default {
       justify-content: flex-start;
       align-items: stretch;
       width: 100%;
+      padding: 0;
   }
-  .tasks h3{
+  .tasks h4{
       margin: 15px auto;
   }
   .single button.big{
@@ -126,5 +160,44 @@ export default {
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
     transform: scale(0.98);
     transition: all ease 0.3s;
+  }
+  
+  .task{
+      background: rgb(63, 63, 63);
+      border-radius: 4px;
+      box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+  }
+  .actions{
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content:stretch;
+  }
+  .icons{
+      min-width: 75px;
+      display: flex;
+      align-items: center;
+      margin: auto 15px auto auto;
+  }
+  .material-icons{
+      font-size: 24px;
+      color: #bbb;
+      cursor: pointer;
+      margin: auto ;
+  }
+  .details{
+      display: flex;
+      align-items: center;
+      
+  }
+  .details p{
+      margin: auto auto auto 15px;
+      line-height: 2rem;
+      font-size: 1.25rem;
   }
 </style>
