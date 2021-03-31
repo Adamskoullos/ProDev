@@ -11,8 +11,8 @@
                     <p class="user-name">Project lead: {{ document.userName }}</p>
                     <p>{{ document.description }}</p>
                 </div>
-                <button v-if="ownership && !isPending" @click="handleDelete">Project Complete</button>
-                <button v-if="isPending" class="loading">Completing...</button>
+                <button v-if="ownership && !isPending" @click="handleDelete" class="complete">Project Complete</button>
+                <button v-if="isPending" class="loading complete">Completing...</button>
                 <div class="tasks col-12">
                     <h3>Tasks</h3>
                 </div>
@@ -116,5 +116,12 @@ export default {
   }
   .single button{
       margin: 15px auto;
+  }
+   .single button:hover {
+    
+    color: rgb(51, 179, 1);
+    box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
+    transform: scale(0.98);
+    transition: all ease 0.3s;
   }
 </style>
