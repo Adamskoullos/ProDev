@@ -19,7 +19,7 @@ import useDocument from '../composables/useDocument'
 export default {
   props: ['projects'],
   setup(props){
-    const { updateTasks } = useDocument('projects', props.project.id)
+    const { updateDoc } = useDocument('projects', props.projects.id)
     const task = ref('')
     const addTask = ref(false)
     const isPending = ref(false)
@@ -32,7 +32,7 @@ export default {
         completed: false,
         id: Math.floor(Math.random()*1000000000)
       }
-      await updateTasks({
+      await updateDoc({
         tasks: [...props.projects.tasks, newTask]
       })
       task.value = ''
@@ -47,18 +47,22 @@ export default {
 
 <style scoped>
 .add-task{
-    max-width: 100%;
-    margin-top: 40px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
-form{
-    max-width: 100%;
-    text-align: left;
+.add-task form{
+  min-width: 100%;
+  box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
 }
 .task-buttons{
     display: flex;
-    justify-content:flex-start;
+    justify-content: center;
+    align-items: center;
 }
-.task-buttons-close{
-    margin-left: 10px;
-}
+
+
 </style>

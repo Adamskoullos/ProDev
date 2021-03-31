@@ -11,8 +11,8 @@
                     <p class="user-name">Project lead: {{ document.userName }}</p>
                     <p>{{ document.description }}</p>
                 </div>
-                <button v-if="ownership && !isPending" @click="handleDelete" class="complete">Project Complete</button>
-                <button v-if="isPending" class="loading complete">Completing...</button>
+                <button v-if="ownership && !isPending" @click="handleDelete" class="complete big">Project Complete</button>
+                <button v-if="isPending" class="loading complete big">Completing...</button>
                 <div class="tasks col-12">
                     <h3>Tasks</h3>
                     <AddTask v-if="ownership" :projects="document"/>
@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .single.row{
   margin: 10px auto;
 }
@@ -111,15 +111,16 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
+      align-items: stretch;
+      width: 100%;
   }
   .tasks h3{
       margin: 15px auto;
   }
-  .single button{
+  .single button.big{
       margin: 15px auto;
   }
-   .single button:hover {
+   .single button.big:hover {
     
     color: rgb(51, 179, 1);
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
