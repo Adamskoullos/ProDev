@@ -38,7 +38,7 @@ export default {
       if(projectImage.value){
         isPending.value = true
         await uploadImage(projectImage.value)
-        await addDoc({
+        const res = await addDoc({
           title: title.value,
           description: description.value,
           userId: user.value.uid,
@@ -50,7 +50,7 @@ export default {
         })
         if(!error.value){
           isPending.value = false
-          router.push({ name: 'MyProjects' })
+          router.push({ name: 'SingleProject', params: { id: res.id } })
         }
       } 
       projectImage.value = null

@@ -24,6 +24,7 @@ import getCollection from '../composables/getCollection'
 import ProjectsList from '../components/ProjectsList'
 
 export default {
+    props: ['light'],
     components: { ProjectsList },
     setup(){
         const { documents, error } = getCollection('projects')

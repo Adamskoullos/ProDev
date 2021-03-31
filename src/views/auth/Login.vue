@@ -15,6 +15,7 @@ import useLogin from '../../composables/useLogin'
 import { useRouter } from 'vue-router'
 
 export default {
+  emits: ['login'],
   props:['light'],
   setup(props, context){
     const email = ref('')

@@ -1,7 +1,6 @@
 <template>
   <div v-for="project in projects" :key="project.id" class="container-fluid project-list-wrapper">
     <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
-      
         <div class=" single row">
           <div class=" thumbnail col-12 col-sm-3">
               <img :src="project.imageUrl" alt="project cover image">
@@ -14,7 +13,6 @@
               <p>Tasks: {{ project.tasks.length }}</p>
           </div>
         </div>
-   
     </router-link>
   </div>
 </template>
@@ -25,9 +23,8 @@ export default {
 }
 </script>
 
-<style>
-.container-fluid{
-}
+<style scoped>
+
 .project-list-wrapper{
   padding: 0 !important;
   display:flex;

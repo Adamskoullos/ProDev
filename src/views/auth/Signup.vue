@@ -16,6 +16,7 @@ import useSignup from '@/composables/useSignup'
 import { useRouter } from 'vue-router'
 
 export default {
+  emits: ['signedUp'],
   setup(props, context){
     const email = ref('')
     const password = ref('')
