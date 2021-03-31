@@ -11,8 +11,8 @@
                     <p class="user-name">Project lead: {{ document.userName }}</p>
                     <p>{{ document.description }}</p>
                 </div>
-                <button v-if="ownership && !isPending" @click="handleDelete" class="complete big">Project Complete</button>
-                <button v-if="isPending" class="loading complete big">Completing...</button>
+                <button v-if="ownership && !isPending" @click="handleDelete" class=" big">Project Complete</button>
+                <button v-if="isPending" class="loading big">Completing...</button>
                 <div class="tasks col-12">
                     <h4>Tasks</h4>
                     <div v-for="task in document.tasks" :key="task.id" class="single-task">
@@ -165,12 +165,13 @@ export default {
   .task{
       background: rgb(63, 63, 63);
       border-radius: 4px;
-      box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
+      box-shadow: 3px 3px 15px rgba(50,50,50,0.8);
       min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      
+      border-left: 6px solid rgb(119, 0, 230);
+      margin: 10px auto;
   }
   .actions{
       min-width: 100%;
@@ -189,6 +190,12 @@ export default {
       color: #bbb;
       cursor: pointer;
       margin: auto ;
+      display: block;
+  }
+  .material-icons:hover {
+    color: rgb(51, 179, 1);
+    transform: scale(1.3);
+    transition: all ease 0.2s;
   }
   .details{
       display: flex;
@@ -199,5 +206,8 @@ export default {
       margin: auto auto auto 15px;
       line-height: 2rem;
       font-size: 1.25rem;
+  }
+  .complete{
+      border-left: 6px solid rgb(51, 179, 1);
   }
 </style>

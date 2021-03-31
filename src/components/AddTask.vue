@@ -1,12 +1,12 @@
 <template>
   <div class="add-task">
-    <button v-if="!addTask" @click="addTask = true">Add tasks</button>
+    <button v-if="!addTask" @click="openForm">Add tasks</button>
     <form v-if="addTask" @submit.prevent="handleAddTask">
-      <input type="text" placeholder="Add task" v-model="task" required>
+      <input type="text" placeholder="Add task" v-model="task" autofocus required>
       <div class="task-buttons">
         <button v-if="!isPending" class="task-buttons">Add</button>
         <button v-if="isPending" class="task-buttons">Adding...</button>
-        <button v-if="addTask && !isPending" class="task-buttons" @click="addTask = false">Cancel</button>
+        <button v-if="addTask && !isPending" class="task-buttons" @click.prevent="addTask = false">Cancel</button>
       </div>
     </form>
   </div>
@@ -23,6 +23,11 @@ export default {
     const task = ref('')
     const addTask = ref(false)
     const isPending = ref(false)
+    const focusInput = ref()
+
+    const openForm = () => {
+      addTask.value = true
+    }
 
     const handleAddTask = async () => {
       isPending.value = true
@@ -40,7 +45,7 @@ export default {
       addTask.value = false
     }
 
-    return { handleAddTask, task, addTask, isPending  }
+    return { handleAddTask, task, addTask, isPending, openForm, focusInput  }
   }
 }
 </script>
@@ -63,6 +68,7 @@ export default {
     justify-content: center;
     align-items: center;
 }
-
+input{
+}
 
 </style>
