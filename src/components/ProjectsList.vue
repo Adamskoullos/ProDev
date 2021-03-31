@@ -2,7 +2,7 @@
   <div v-for="project in projects" :key="project.id" class="container-fluid project-list-wrapper">
     <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
         <div class=" single row">
-          <div class=" thumbnail col-12 col-sm-3">
+          <div class="thumbnail col-12 col-sm-3">
               <img :src="project.imageUrl" alt="project cover image">
           </div>
           <div class="info col-12 col-sm-6">
@@ -95,6 +95,7 @@ a.route-tag{
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 150px;
   }
   .tasks p{
     margin: auto;

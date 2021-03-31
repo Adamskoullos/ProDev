@@ -708,14 +708,14 @@ span.material-icons{
   transform: translateX(-1500px);
 }
 .route-enter-active{
-  transition: all 0.2s ease-out;
+  transition: all 0.3s ease-out;
 }
 .route-leave-to{
   opacity: 0;
   transform: translateX(1500px);
 }
 .route-leave-active{
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 

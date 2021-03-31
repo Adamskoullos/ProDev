@@ -23,21 +23,22 @@
 
 <script>
 import useStorage from '../composables/useStorage'
-import useDocument from '../composables/getDocument'
+import useDocument from '../composables/useDocument'
 import getDocument from '../composables/getDocument'
 import getUser from '../composables/getUser'
 import { useRouter } from 'vue-router'
-import { computed } from '@vue/runtime-core'
+import { computed, ref } from '@vue/runtime-core'
 
 export default {
     props: ['id', 'light'],
     components: {},
     setup(props){
         const { deleteImage } = useStorage()
-        const { deleteDoc, isPending } = useDocument('projects', props.id)
-        const { document, error } = getDocument('projects', props.id)
+        const { deleteDoc, error } = useDocument('projects', props.id)
+        const { document } = getDocument('projects', props.id)
         const { user } = getUser()
         const router = useRouter()
+        const isPending =ref(false)
 
         const ownership = computed(()=> {
             return document.value && user.value && user.value.uid == document.value.userId
@@ -82,6 +83,7 @@ export default {
     overflow: hidden;
     border-radius: 4px;
     border: 1px;
+    background: rgb(63, 63, 63);
   }
   img {
     flex:1;
@@ -89,6 +91,7 @@ export default {
     margin-right: auto;
     max-width: 150px;
     border-radius: 4px;
+    border: 1px;
   }
   .info{
       display: flex;
