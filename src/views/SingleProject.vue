@@ -163,7 +163,7 @@ export default {
   }
   
   .task{
-      background: rgb(63, 63, 63);
+      background: rgb(75, 75, 75);
       border-radius: 4px;
       box-shadow: 3px 3px 15px rgba(50,50,50,0.8);
       min-height: 50px;
@@ -203,9 +203,9 @@ export default {
       
   }
   .details p{
-      margin: auto auto auto 15px;
+      margin: 5px auto 5px 15px;
       line-height: 2rem;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
   }
   .complete{
       border-left: 6px solid rgb(51, 179, 1);
