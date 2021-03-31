@@ -15,6 +15,7 @@
                 <button v-if="isPending" class="loading complete">Completing...</button>
                 <div class="tasks col-12">
                     <h3>Tasks</h3>
+                    <AddTask v-if="ownership" :projects="document"/>
                 </div>
             </div>
         </div>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import AddTask from '../components/AddTask'
 import useStorage from '../composables/useStorage'
 import useDocument from '../composables/useDocument'
 import getDocument from '../composables/getDocument'
@@ -31,7 +33,7 @@ import { computed, ref } from '@vue/runtime-core'
 
 export default {
     props: ['id', 'light'],
-    components: {},
+    components: { AddTask },
     setup(props){
         const { deleteImage } = useStorage()
         const { deleteDoc, error } = useDocument('projects', props.id)
