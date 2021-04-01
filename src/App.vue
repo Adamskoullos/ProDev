@@ -396,18 +396,20 @@ components: { Chat },
 .content-col{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 0;
   background: rgb(75, 75, 75);
+  padding-top: 30px;
 }
 .chat-col{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: var(--background-b);
   z-index: 1;
   background: rgb(75, 75, 75);
   box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
+  padding-top: 30px;
 }
 
 /** Light mode ***************************************/

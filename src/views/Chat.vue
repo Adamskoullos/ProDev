@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-chat-window" ref="messages">
     <Messages :light="light"/>
     <NewMessage :light="light"/>
   </div>
@@ -16,6 +16,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.main-chat-window{
+  flex:1;
+}
 </style>

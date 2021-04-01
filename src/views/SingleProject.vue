@@ -92,6 +92,9 @@ export default {
 </script>
 
 <style scoped>
+.container-fluid{
+    box-sizing: border-box;
+}
 .single.row{
   margin: 10px auto;
 }
@@ -101,23 +104,19 @@ export default {
     justify-content: space-between;
     padding: 20px;
     border-radius: 4px;
-    background: rgb(63, 63, 63);
-    box-shadow: 2px 2px 20px rgba(50,50,50,0.4);
-    width: 95%;
+    background: rgb(63, 63, 63, 0.0);
   }
   
   .thumbnail {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
-    max-width: 150px;
     min-width: 100px;
     min-height: 100px;
     max-height: 150px;
     overflow: hidden;
     border-radius: 4px;
     border: 1px;
-    background: rgb(63, 63, 63);
   }
   img {
     flex:1;
@@ -131,7 +130,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
   }
   .info h3{
       margin-top: 5px;
@@ -163,9 +162,9 @@ export default {
   }
   
   .task{
-      background: rgb(75, 75, 75);
+      background: rgb(63, 63, 63, 0.3);
       border-radius: 4px;
-      box-shadow: 3px 3px 15px rgba(50,50,50,0.8);
+      box-shadow: 1px 1px 10px rgba(50,50,50,0.8);
       min-height: 50px;
       display: flex;
       align-items: center;

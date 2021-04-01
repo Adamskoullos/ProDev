@@ -47,7 +47,7 @@ export default {
     flex: 1;
     max-width: 95%;
     box-sizing: border-box; 
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
 }
 .projects-window{

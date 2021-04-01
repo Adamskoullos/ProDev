@@ -3,7 +3,7 @@
         <textarea
         v-model="message"
         placeholder="Type your message and hit enter"
-        @keydown.enter.prevent="handleSubmit">
+        @keydown.enter.prevent="handleSubmit" required>
         </textarea>
         <div class="error">{{ error }}</div>
     </form>
@@ -17,6 +17,7 @@ import { timestamp } from '../firebase/config'
 
 
 export default {
+    props: ['light'],
     setup(){
         const message = ref('')
         const { addDoc, error } = useCollection('messages')
@@ -34,11 +35,21 @@ export default {
             }
         }
 
-        return { addDoc, error, handleSubmit }
+        return { addDoc, error, handleSubmit, message }
     }
 }
 </script>
 
-<style>
+<style scoped>
 
+form{
+    padding: 0px;
+    flex:1;
+    margin: 10px auto;
+    min-width: 100%;
+}
+textarea{
+    margin: 5px 0;
+    border-radius: 4px;
+}
 </style>

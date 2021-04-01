@@ -43,8 +43,7 @@ a.route-tag{
     justify-content: space-between;
     padding: 20px;
     border-radius: 4px;
-    background: rgb(63, 63, 63);
-    box-shadow: 2px 2px 10px rgba(50,50,50,0.4);
+    background: rgb(63, 63, 63, 0.5);
     transition: all ease 0.1s;
     width: 95%;
     
