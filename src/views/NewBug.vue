@@ -37,6 +37,7 @@ export default {
         userId: user.value.uid,
         userName: user.value.displayName,
         solution: '',
+        solved: false,
         createdAt: timestamp()
       })
       if(!error.value){
