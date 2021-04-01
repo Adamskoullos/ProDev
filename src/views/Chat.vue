@@ -1,23 +1,21 @@
 <template>
-  
-  <div class="box">
-    <h1 class="">Live Chat View</h1>
+  <div>
+    <Messages :light="light"/>
+    <NewMessage :light="light"/>
   </div>
 </template>
 
 <script>
+import NewMessage from '../components/NewMessage'
+import Messages from '../components/Messages'
+
 export default {
-  props: ['dark']
+  components: { NewMessage, Messages },
+  props: ['light']
 
 }
 </script>
 
 <style>
-.box{
-  height: 600px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 </style>
