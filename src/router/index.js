@@ -9,6 +9,7 @@ import Chat from '../views/Chat'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import SingleProject from '../views/SingleProject.vue'
+import SingleBug from '../views/SingleBug.vue'
 
 import { fAuth } from '../firebase/config'
 
@@ -63,9 +64,16 @@ const routes = [
     beforeEnter: requireAuth
   },
   {
-    path: '/new-bug',
+    path: '/bugs/new',
     name: 'NewBug',
     component: NewBug,
+    props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/bugs/:id',
+    name: 'SingleBug',
+    component: SingleBug,
     props: true,
     beforeEnter: requireAuth
   },

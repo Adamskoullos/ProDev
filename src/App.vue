@@ -293,7 +293,7 @@ components: { Chat },
           if(visualViewport.width > 1100 && user.value){
             showSideNav.value = true
           }
-        }       
+        } 
         
 
         return { 
@@ -565,10 +565,11 @@ span.chat-side-nav:hover{
 }
 .bugs:hover,
 span.bugs:hover{
-  color: rgb(45, 144, 236);
+  /* color: rgb(45, 144, 236); */
+  color: rgb(17,116,221);
 }
 span.util:hover{
-  color: rgb(255, 187, 0);
+  color: rgb(216, 158, 0);
 }
 /* Light mode nav items ************************/
 .nav-item.light{
