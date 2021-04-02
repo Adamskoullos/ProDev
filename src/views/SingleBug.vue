@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div class="outside">
         <div v-if="error" class="error">{{ error }}</div>
-        <div v-if="document" class="container-fluid">
+        <div v-if="document" class="outer-wrapper">
             <div class=" single row">
                 <div class="info col-12">
                     <h3>{{ document.title }}</h3>
                     <p class="user-name">By: {{ document.userName }}</p>
                     <span v-if="document.solved" class="material-icons">done</span>
+                    <button v-if="ownership" @click="handleSolved">Solved</button>
                 </div>
                 <h6>Issue description</h6>
-                <div class="single-bug">
+                <div class="single-bug col-12">
                     <div class="bug">
                         <div class="actions">
                             <div class="details">
@@ -19,7 +20,7 @@
                     </div>
                 </div>
                 <h6>Error message</h6>
-                <div class="single-bug">
+                <div class="single-bug col-12">
                     <div class="bug">
                         <div class="actions">
                             <div class="details">
@@ -43,13 +44,7 @@
                         <img :src="document.imageUrl" alt="project cover image">
                     </div>
                 </div>
-                <AddSolution v-if="ownership && showSolution" :bug="document"/>
-            </div>
-            <div class="buttons">
-                <button v-if="!document.solved && ownership && !showSolution" @click="showSolution = true">Add Solution</button>
-                <button v-if="ownership && !showSolution" @click="handleSolved">Solved</button>
-                <button v-if="ownership && showSolution" @click="showSolution = false">Submit solution</button>
-                <button v-if="ownership && showSolution" @click="showSolution = false">Cancel</button>
+                <AddSolution v-if="ownership" :bug="document"/>
             </div>
         </div>
     </div>
@@ -71,7 +66,6 @@ export default {
     const { document } = getDocument('bugs', props.id)
     const { user } = getUser()
     const router = useRouter()
-    const showSolution = ref(false)
 
     const ownership = computed(()=> {
         return document.value && user.value && user.value.uid == document.value.userId
@@ -81,22 +75,26 @@ export default {
 
     const handleSolved = async () => {
       document.solved = !document.solved
-      console.log(document.solved)
       await updateDoc({
         solved: document.solved
       })
     }
 
-    return { ownership, error, document, user, handleSolved, showSolution }
+    return { ownership, error, document, user, handleSolved }
   }
 }
 </script>
 
 
 <style scoped>
-.container-fluid{
-    box-sizing: border-box;
-    padding: auto auto;
+.outside{
+    flex:1;
+}
+.outer-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
 }
 h6{
     margin: auto;
@@ -108,19 +106,24 @@ h6{
 }
 .single.row{
     margin: 10px auto;
-    padding-right: calc(var(--bs-gutter-x)/ 3);
-    padding-left: calc(var(--bs-gutter-x)/ 3);
+    min-width: 100%;
+    display: flex;
+    justify-content:stretch;
+    flex:1;
 }
 .single {
+    flex:1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
     padding: 20px;
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.0);
   }
   .single-bug{
     padding: 0;
+    flex:1;
+
   }
   .thumbnail {
     display: flex;
@@ -165,6 +168,16 @@ h6{
   .bugs h4{
       margin: 15px auto;
   }
+  button{
+   margin: 15px 0;
+  }
+  button:hover{
+    color: rgb(51, 179, 1);
+    box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
+    transform: scale(0.98);
+    transition: all ease 0.2s;
+  }
+  
   .buttons{
       display: flex;
       align-items: center;

@@ -92,6 +92,7 @@ export default {
 </script>
 
 <style scoped>
+
 .single.row{
   margin: 10px auto;
 }
