@@ -3,12 +3,14 @@
         <div v-if="error" class="error">{{ error }}</div>
         <div v-if="document" class="container-fluid">
             <div class=" single row">
-                <div class="info col-12 col-sm-8">
+                <div class="info col-12">
                     <h3>{{ document.title }}</h3>
                     <p class="user-name">By: {{ document.userName }}</p>
+                    <span v-if="document.solved" class="material-icons">done</span>
                 </div>
-                <div class="single-task">
-                    <div class="task" :class="{ complete: task.completed }">
+                <h6>Issue description</h6>
+                <div class="single-bug">
+                    <div class="bug">
                         <div class="actions">
                             <div class="details">
                                 <p>{{ document.description }}</p>
@@ -16,8 +18,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="single-task">
-                    <div class="task" :class="{ complete: task.completed }">
+                <h6>Error message</h6>
+                <div class="single-bug">
+                    <div class="bug">
                         <div class="actions">
                             <div class="details">
                                 <p>{{ document.errorMessage }}</p>
@@ -25,11 +28,10 @@
                         </div>
                     </div>
                 </div>
-                <button v-if="ownership && !isPending" @click="handleSolved" class=" big">Solved</button>
-                <div class="tasks col-12">
+                <div v-if="document.solved" class="bugs col-12">
                     <h4>Solution</h4>
-                    <div class="single-task">
-                        <div class="task" :class="{ complete: task.completed }">
+                    <div class="single-bug">
+                        <div class="bug" :class="{ complete: document.solved }">
                             <div class="actions">
                                 <div class="details">
                                     <p>{{ document.solution }}</p>
@@ -37,11 +39,17 @@
                             </div>
                         </div>
                     </div>
-                    <div  class=" thumbnail col-12 col-sm-4">
+                    <div v-if="document.imageUrl" class=" thumbnail col-12 col-sm-4">
                         <img :src="document.imageUrl" alt="project cover image">
                     </div>
-                    <h2>Edit Bug component to go here</h2>
                 </div>
+                <AddSolution v-if="ownership && showSolution" :bug="document"/>
+            </div>
+            <div class="buttons">
+                <button v-if="!document.solved && ownership && !showSolution" @click="showSolution = true">Add Solution</button>
+                <button v-if="ownership && !showSolution" @click="handleSolved">Solved</button>
+                <button v-if="ownership && showSolution" @click="showSolution = false">Submit solution</button>
+                <button v-if="ownership && showSolution" @click="showSolution = false">Cancel</button>
             </div>
         </div>
     </div>
@@ -52,29 +60,34 @@ import useDocument from '../composables/useDocument'
 import getDocument from '../composables/getDocument'
 import getUser from '../composables/getUser'
 import { useRouter } from 'vue-router'
-import { computed } from '@vue/runtime-core'
+import { computed, ref } from '@vue/runtime-core'
+import AddSolution from '../components/AddSolution'
 
 export default {
   props: ['id', 'light'],
+  components: { AddSolution },
   setup(props){
-    const { updateDoc, error } = useDocument('bug', props.id)
+    const { updateDoc, error } = useDocument('bugs', props.id)
     const { document } = getDocument('bugs', props.id)
     const { user } = getUser()
-    // const router = useRouter()
+    const router = useRouter()
+    const showSolution = ref(false)
 
     const ownership = computed(()=> {
         return document.value && user.value && user.value.uid == document.value.userId
     })
 
-    const handleSolved = async (id) => {
-      const solved = document.value.solved = !document.value.solved
-      console.log(solved)
+    
+
+    const handleSolved = async () => {
+      document.solved = !document.solved
+      console.log(document.solved)
       await updateDoc({
-        solved: solved
+        solved: document.solved
       })
     }
 
-    return { ownership, error, document, user, handleSolved }
+    return { ownership, error, document, user, handleSolved, showSolution }
   }
 }
 </script>
@@ -83,9 +96,20 @@ export default {
 <style scoped>
 .container-fluid{
     box-sizing: border-box;
+    padding: auto auto;
+}
+h6{
+    margin: auto;
+    font-weight: 200;
+}
+.info span{
+    font-size: 30px;
+    color: rgb(51, 179, 1);
 }
 .single.row{
-  margin: 10px auto;
+    margin: 10px auto;
+    padding-right: calc(var(--bs-gutter-x)/ 3);
+    padding-left: calc(var(--bs-gutter-x)/ 3);
 }
 .single {
     display: flex;
@@ -95,7 +119,9 @@ export default {
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.0);
   }
-  
+  .single-bug{
+    padding: 0;
+  }
   .thumbnail {
     display: flex;
     justify-content:center;
@@ -128,7 +154,7 @@ export default {
   p.user-name{
       font-weight: 200;
   }
-  .tasks{
+  .bugs{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -136,13 +162,18 @@ export default {
       width: 100%;
       padding: 0;
   }
-  .tasks h4{
+  .bugs h4{
       margin: 15px auto;
   }
-  .single button.big{
-      margin: 15px auto;
+  .buttons{
+      display: flex;
+      align-items: center;
+      justify-content: center;
   }
-   .single button.big:hover {
+  .buttons button{
+      margin: 5px;
+  }
+   .buttons button:hover {
     
     color: rgb(51, 179, 1);
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
@@ -150,15 +181,14 @@ export default {
     transition: all ease 0.3s;
   }
   
-  .task{
-      background: rgb(63, 63, 63, 0.3);
+  .bug{
+      background: rgb(63, 63, 63, 0.2);
       border-radius: 4px;
-      box-shadow: 1px 1px 10px rgba(50,50,50,0.8);
+      box-shadow: 1px 1px 5px rgba(50,50,50,0.8);
       min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-left: 6px solid rgb(119, 0, 230);
       margin: 10px auto;
   }
   .actions{

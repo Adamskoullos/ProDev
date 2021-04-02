@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="error" class="error">{{ error }}</div>
-        <div v-if="document" class="container-fluid">
+        <div v-if="document" class="">
             <div class=" single row">
                 <div class=" thumbnail col-12 col-sm-4">
                     <img :src="document.imageUrl" alt="project cover image">
@@ -92,9 +92,6 @@ export default {
 </script>
 
 <style scoped>
-.container-fluid{
-    box-sizing: border-box;
-}
 .single.row{
   margin: 10px auto;
 }
@@ -102,7 +99,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 0px 20px;
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.0);
   }

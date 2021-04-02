@@ -10,7 +10,7 @@
             <h4>Cannot access the the Bugs database</h4>
         </div>
         <div v-if="documents" class="Bugs">
-            <BugsList :Bugs="documents" />
+            <BugsList :bugs="documents" />
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@ export default {
     props: ['light'],
     components: { BugsList },
     setup(){
-        const { documents, error } = getCollection('Bugs')
+        const { documents, error } = getCollection('bugs')
 
         return { documents, error }
     }

@@ -2,7 +2,7 @@
   <div class="add-task">
     <button v-if="!addTask" @click="openForm">Add tasks</button>
     <form v-if="addTask" @submit.prevent="handleAddTask">
-      <input type="text" placeholder="Add task" v-model="task" autofocus required>
+      <input type="text" placeholder="Add task" v-model="task" ref="inputEl" autofocus required>
       <div class="task-buttons">
         <button v-if="!isPending" class="task-buttons">Add</button>
         <button v-if="isPending" class="task-buttons">Adding...</button>
@@ -23,7 +23,7 @@ export default {
     const task = ref('')
     const addTask = ref(false)
     const isPending = ref(false)
-    const focusInput = ref()
+    const inputEl = ref<Element>(null)
 
     const openForm = () => {
       addTask.value = true
@@ -45,7 +45,7 @@ export default {
       addTask.value = false
     }
 
-    return { handleAddTask, task, addTask, isPending, openForm, focusInput  }
+    return { handleAddTask, task, addTask, isPending, inputEl, openForm  }
   }
 }
 </script>

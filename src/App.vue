@@ -566,7 +566,6 @@ span.chat-side-nav:hover{
 }
 .bugs:hover,
 span.bugs:hover{
-  /* color: rgb(45, 144, 236); */
   color: rgb(17,116,221);
 }
 span.util:hover{
