@@ -392,6 +392,7 @@ components: { Chat },
   flex: 1;
   position: relative;
   background: rgb(75, 75, 75);
+  height: 100vh;
 }
 .content-col{
   display: flex;

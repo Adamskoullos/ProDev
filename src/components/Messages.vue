@@ -53,9 +53,22 @@ export default {
     justify-content: flex-end;
 }
 .messages{
-    max-height: 80vh;
+    max-height: 70vh;
     box-sizing: border-box;
     overflow:auto;
+}
+.messages::-webkit-scrollbar {
+    width: 0px;               /* width of the entire scrollbar */
+}
+
+.messages::-webkit-scrollbar-track {
+background: rgb(75,75,75);        /* color of the tracking area */
+}
+
+.messages::-webkit-scrollbar-thumb {
+background-color: rgb(75,75,75);    /* color of the scroll thumb */
+border-radius: 20px;       /* roundness of the scroll thumb */
+border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 }
 .single{
     background: rgb(63, 63, 63, 0.4);
@@ -75,7 +88,7 @@ export default {
 }
 .timestamp span{
     font-weight: 200;
-    margin: auto 15px;
+    margin: 5px 15px 0 15px;
 }
 span.message{
     line-height: 1.1rem;

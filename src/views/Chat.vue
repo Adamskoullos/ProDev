@@ -19,5 +19,6 @@ export default {
 <style scoped>
 .main-chat-window{
   flex:1;
+  max-height: 100vh;
 }
 </style>
