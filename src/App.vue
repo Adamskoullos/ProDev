@@ -124,7 +124,7 @@
 import { ref } from '@vue/reactivity'
 import { onBeforeMount, onUnmounted, onBeforeUpdate, onUpdated } from '@vue/runtime-core'
 import Chat from './views/Chat'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import gsap from 'gsap'
 import useLogout from './composables/useLogout'
 import getUser from './composables/getUser'
@@ -140,6 +140,7 @@ components: { Chat },
         const light =ref(false)
         const { logout, error, isPending } = useLogout()
         const { user } = getUser()
+        const route = useRoute()
 
         onBeforeMount(()=> {
             if(visualViewport.width < 1100){
@@ -158,8 +159,7 @@ components: { Chat },
             }
             if(visualViewport.width > 1100 && user.value){
               showSideNav.value = true
-              showSideChat.value = false
-              router.push({ name: 'MyProjects' }) 
+              router.push({ name: 'MyProjects' })
             }
           
         })

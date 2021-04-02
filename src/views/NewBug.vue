@@ -38,6 +38,8 @@ export default {
         userName: user.value.displayName,
         solution: '',
         solved: false,
+        imageUrl: null,
+        filePath: null,
         createdAt: timestamp()
       })
       if(!error.value){

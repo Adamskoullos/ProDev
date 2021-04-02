@@ -17,6 +17,7 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.13.12",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
