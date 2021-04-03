@@ -1,13 +1,15 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <h4>Create new bug</h4>
-    <input type="text" placeholder="Bug title" v-model="title" required>
-    <textarea placeholder="Description of the issue" v-model="description" required></textarea>
-    <textarea placeholder="Paste error message here" v-model="errorMessage" required></textarea>
-    <div v-if="error" class="error">{{ error }}</div>
-    <button v-if="!isPending">Add new bug</button>
-    <button v-if="isPending" class="loading">Uploading...</button>
-  </form>
+  <div class="row">
+    <form @submit.prevent="handleSubmit" class="col-12">
+      <h4>Create new bug</h4>
+      <input type="text" placeholder="Bug title" v-model="title" required>
+      <textarea placeholder="Description of the issue" v-model="description" required></textarea>
+      <textarea placeholder="Paste error message here" v-model="errorMessage" required></textarea>
+      <div v-if="error" class="error">{{ error }}</div>
+      <button v-if="!isPending">Add new bug</button>
+      <button v-if="isPending" class="loading">Uploading...</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -57,10 +59,16 @@ export default {
 </script>
 
 <style scoped>
+.row{
+    flex:1;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 95%;
+}
 form{
   flex:1;
   margin-top: 10vh;
-  min-width: 95%;
+  width: 100%;
   max-width: 600px;
 }
 </style>

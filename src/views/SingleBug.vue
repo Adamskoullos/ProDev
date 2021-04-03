@@ -6,7 +6,8 @@
                 <div class="info col-12">
                     <h3>{{ document.title }}</h3>
                     <p class="user-name">By: {{ document.userName }}</p>
-                    <span v-if="document.solved" class="material-icons">done</span>
+                    <span v-if="!document.solved" class="material-icons not-solved">build_circle</span>
+                    <span v-if="document.solved" class="material-icons">verified</span>
                     <button v-if="ownership" @click="handleSolved">Solved</button>
                 </div>
                 <h6>Issue description</h6>
@@ -29,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="document.solved" class="bugs col-12">
+                <div v-if="document.solution" class="bugs col-12">
                     <h4>Solution</h4>
                     <div class="single-bug">
                         <div class="bug" :class="{ complete: document.solved }">
@@ -44,7 +45,7 @@
                         <img :src="document.imageUrl" alt="project cover image">
                     </div>
                 </div>
-                <AddSolution v-if="ownership" :bug="document"/>
+                <AddSolution v-if="!document.Solved" :bug="document"/>
             </div>
         </div>
     </div>
@@ -104,6 +105,10 @@ h6{
     font-size: 30px;
     color: rgb(51, 179, 1);
 }
+.info span.not-solved{
+    font-size: 30px;
+    color: rgb(45, 144, 236);
+}
 .single.row{
     margin: 10px auto;
     min-width: 100%;
@@ -126,6 +131,7 @@ h6{
 
   }
   .thumbnail {
+    margin:15px auto;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -166,7 +172,7 @@ h6{
       padding: 0;
   }
   .bugs h4{
-      margin: 15px auto;
+      margin: 10px auto;
   }
   button{
    margin: 15px 0;

@@ -1,14 +1,16 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <h4>Create new project</h4>
-    <input type="text" placeholder="Project title" v-model="title" required>
-    <textarea placeholder="Description" v-model="description" required></textarea>
-    <label>Upload project image</label>
-    <input type="file" @change="handleChange">
-    <div class="error">{{ fileError }}</div>
-    <button v-if="!isPending">Add new project</button>
-    <button v-if="isPending" class="loading">Uploading...</button>
-  </form>
+  <div class="row">
+    <form @submit.prevent="handleSubmit" class="col-12">
+      <h4>Create new project</h4>
+      <input type="text" placeholder="Project title" v-model="title" required>
+      <textarea placeholder="Description" v-model="description" required></textarea>
+      <label>Upload project image</label>
+      <input type="file" @change="handleChange">
+      <div class="error">{{ fileError }}</div>
+      <button v-if="!isPending">Add new project</button>
+      <button v-if="isPending" class="loading">Uploading...</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -76,7 +78,15 @@ export default {
 </script>
 
 <style scoped>
+.row{
+    flex:1;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 95%;
+}
 form{
   margin-top: 10vh;
+  width: 100%;
+  max-width: 600px;
 }
 </style>

@@ -1,19 +1,18 @@
 <template>
-  <div v-for="bug in bugs" :key="bug.id" class="container-fluid bug-list-wrapper">
+  <input type="text" v-model="search" placeholder="Title search">
+  <div v-for="bug in bugSearch" :key="bug.id" class="container-fluid bug-list-wrapper">
     <router-link :to="{ name: 'SingleBug', params: {id: bug.id} }" class="route-tag">
         <div class=" single row">
           <div class="top-row">
-            <div v-if="bug.imageUrl" class="thumbnail col-12 col-sm-3">
-              <img :src="bug.imageUrl" alt="project cover image">
-            </div>
             <div class="info col-12">
-                <h3>{{ bug.title }}</h3>
-                <p>Issued by: {{ bug.userName }}</p>
+              <span v-if="!bug.solved" class="material-icons not-solved">build_circle</span>
+              <span v-if="bug.solved" class="material-icons">verified</span>
+              <h3>{{ bug.title }}</h3>
+              <p>Issued by: {{ bug.userName }}</p>
             </div>
           </div>
           <div class="description col-12">
               <p>{{ bug.description }}</p>
-              <span v-if="bug.solved" class="material-icons">done</span>
           </div>
         </div>
     </router-link>
@@ -21,9 +20,22 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
 
 export default {
-  props: ['bugs']
+  props: ['bugs'],
+  setup(props){
+    const search = ref('')
+
+    const bugSearch = computed(() => {
+      return props.bugs.filter(bug => {
+        return bug.title.toLowerCase().match(search.value.toLowerCase())
+      })
+    })
+
+    return { search, bugSearch }
+  }
 }
 </script>
 
@@ -45,7 +57,7 @@ a.route-tag{
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.5);
     transition: all ease 0.1s;
@@ -107,8 +119,16 @@ a.route-tag{
     margin: auto;
     text-align:justify;
   }
-  .description span{
+  .info span{
     color: rgb(51, 179, 1);
     font-size: 30px;
   }
+  .info span.not-solved{
+    font-size: 30px;
+    color: rgb(45, 144, 236);
+}
+input{
+  width: 95%;
+  margin: 10px;
+}
 </style>

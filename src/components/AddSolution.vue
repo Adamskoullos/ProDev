@@ -39,7 +39,7 @@ export default {
 
         onMounted(() => {
             if(props.bug.solved){
-                showSolution.value = true
+                showSolution.value = false
             }
         })
 

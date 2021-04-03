@@ -32,6 +32,9 @@
               <li class="nav-item" :class="{light: light}">
                   <router-link :to="{ name: 'NewBug' }" :class="{light: light}" class="bugs">New Bug</router-link>
               </li>
+              <li class="nav-item" :class="{light: light}">
+                  <router-link :to="{ name: 'Email' }" :class="{light: light}" class="util">Report Issue</router-link>
+              </li>
             </ul>
           </nav>
           <div class="dark-mode" :class="{light: light}">
@@ -571,6 +574,9 @@ span.bugs:hover{
 span.util:hover{
   color: rgb(216, 158, 0);
 }
+ a.util:hover{
+    color: rgb(216, 158, 0);
+  }
 /* Light mode nav items ************************/
 .nav-item.light{
   background:rgb(255, 255, 255);
