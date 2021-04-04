@@ -177,11 +177,11 @@
     width: 100%;
     box-sizing: border-box;
     margin: 20px auto;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--primary);
   }
   input.light:focus{
-    border: 2px solid rgb(172, 172, 172);
+    border: 2px solid rgb(255, 255, 255);
   }
   
  
