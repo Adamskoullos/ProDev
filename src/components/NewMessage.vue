@@ -1,6 +1,7 @@
 <template>
-    <form>
+    <form :class="{light: light}">
         <textarea
+        :class="{light: light}"
         v-model="message"
         placeholder="Type your message and hit enter"
         @keydown.enter.prevent="handleSubmit" required>
@@ -48,8 +49,27 @@ form{
     margin: 10px auto;
     min-width: 100%;
 }
+form.light{
+    padding: 0px;
+    flex:1;
+    margin: 10px auto;
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+}
 textarea{
     margin: 5px 0;
     border-radius: 4px;
+}
+textarea.light{
+    margin: 5px 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(216, 216, 216);
+}
+textarea.light:focus{
+    margin: 5px 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(255, 255, 255);
 }
 </style>

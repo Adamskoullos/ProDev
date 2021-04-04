@@ -93,7 +93,7 @@
         <div class="row content-row" :class="{light: light}">
           <div class="col content-col" :class="{light: light}">
             <div class="col-12 chat-col side-chat-window" :class="{light: light}" v-if="showSideChat && !showSideNav">
-              <Chat />
+              <Chat :light="light" />
             </div>
             <router-view :light="light" 
             @signedUp="handleLogin"
@@ -114,7 +114,7 @@
           @before-leave="sideChatBeforeLeave"
           @leave="sideChatLeave">
             <div class="col-12 col-md-4 chat-col side-chat-window" :class="{light: light}" v-if="showSideChat && showSideNav">
-              <Chat />
+              <Chat :light="light" />
             </div>
           </transition>
         </div>

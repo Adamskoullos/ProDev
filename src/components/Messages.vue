@@ -2,12 +2,12 @@
     <div class="chat-window">
         <div v-if="error" class="error">{{ error }}</div>
         <div v-if="documents" class="messages" ref="messages">
-            <div v-for="doc in formattedDocuments" :key="doc.id" class="single">
-                <div class="timestamp">
-                    <span class="created-at">{{ doc.createdAt }}</span>
-                    <span class="name">{{ doc.name }}</span>
+            <div v-for="doc in formattedDocuments" :key="doc.id" class="single" :class="{light: light}">
+                <div class="timestamp" :class="{light: light}">
+                    <span class="created-at" :class="{light: light}">{{ doc.createdAt }}</span>
+                    <span class="name" :class="{light: light}">{{ doc.name }}</span>
                 </div>
-                <span class="message">{{ doc.message }}</span>
+                <span class="message" :class="{light: light}">{{ doc.message }}</span>
             </div>
         </div>
     </div>
@@ -80,6 +80,16 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
     justify-content: space-between;
     margin: 10px auto;
     padding: 20px auto;
+}
+.single.light{
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.9);
+}
+.single span.light{
+    color: var(--primary);
+}
+.timestamp span.light{
+    color: var(--primary);
 }
 .timestamp{
     flex:1;

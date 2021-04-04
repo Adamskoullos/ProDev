@@ -125,6 +125,9 @@ img {
 .tasks p{
   margin: auto;
 }
+.tasks.light p{
+  color: var(--primary)
+}
 input[data-v-0b85af30]{
 width: 100%;
 margin: 10px;
