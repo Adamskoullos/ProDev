@@ -60,7 +60,7 @@
     margin: 0 auto;
     padding: 30px;
     border-radius: 4px;
-    box-shadow: 4px 4px 12px rgba(50,50,50,0.4);
+    box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
     border: 0px solid  var(--secondary);
     background: rgb(63, 63, 63);
   }

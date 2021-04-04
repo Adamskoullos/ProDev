@@ -162,7 +162,10 @@ components: { Chat },
             }
             if(visualViewport.width > 1100 && user.value){
               showSideNav.value = true
-              router.push({ name: 'MyProjects' })
+              if(route.name == 'Chat'){
+                router.push({ name: 'MyProjects' })
+                showSideChat.value = true
+              }
             }
           
         })

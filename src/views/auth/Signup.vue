@@ -44,6 +44,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+form{
+  margin-top: 10vh;
+}
 </style>
