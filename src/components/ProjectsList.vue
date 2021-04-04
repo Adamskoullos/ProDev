@@ -1,5 +1,6 @@
 <template>
-  <div v-for="project in projects" :key="project.id" class="container-fluid project-list-wrapper">
+  <input type="text" v-model="search" placeholder="Title search">
+  <div v-for="project in projectSearch" :key="project.id" class="container-fluid project-list-wrapper">
     <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
         <div class=" single row">
           <div class="thumbnail col-12 col-sm-3">
@@ -18,8 +19,21 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
 export default {
-    props: ['projects']
+    props: ['projects'],
+    setup(props){
+      const search = ref('')
+
+      const projectSearch = computed(() => {
+        return props.projects.filter(project => {
+          return project.title.toLowerCase().match(search.value.toLowerCase())
+        })
+      })
+
+      return { search, projectSearch }
+    }
 }
 </script>
 
@@ -35,7 +49,7 @@ a.route-tag{
   flex: 1;
 }
 .single.row{
-  margin: 10px auto;
+  margin: 10px 0;
 }
 .single {
     display: flex;
@@ -45,7 +59,7 @@ a.route-tag{
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.5);
     transition: all ease 0.1s;
-    width: 95%;
+    width: 100%;
     
     
   }
@@ -99,4 +113,8 @@ a.route-tag{
   .tasks p{
     margin: auto;
   }
+  input[data-v-0b85af30]{
+  width: 100%;
+  margin: 10px;
+}
 </style>

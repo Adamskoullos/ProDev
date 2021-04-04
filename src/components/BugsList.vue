@@ -50,7 +50,7 @@ a.route-tag{
   flex: 1;
 }
 .single.row{
-  margin: 10px auto;
+  margin: 10px 0;
 }
 .single {
     display: flex;
@@ -61,7 +61,7 @@ a.route-tag{
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.5);
     transition: all ease 0.1s;
-    width: 95%;
+    width: 100%;
   }
   .single:hover {
     box-shadow: 3px 3px 12px rgba(50,50,50,0.5);
@@ -128,7 +128,7 @@ a.route-tag{
     color: rgb(45, 144, 236);
 }
 input{
-  width: 95%;
+  width: 100%;
   margin: 10px;
 }
 </style>
