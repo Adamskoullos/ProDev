@@ -348,6 +348,7 @@ components: { Chat },
     box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
   }
 .side-nav{
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -362,6 +363,7 @@ components: { Chat },
   box-shadow: 4px 1px 17px rgba(0, 0, 0, 0.5);
   color: rgb(188, 202, 170);
 }
+
 .main-row{
   max-height: 100vh;
   position: relative;
@@ -624,22 +626,28 @@ ul li a{
   display: block;
 }
 span.util.light:hover{
-  color: rgb(216, 158, 0)
+  color: var(--primary);
+}
+a.light.util:hover{
+  color: var(--primary);
 }
 a.light.projects:hover{
-  color: rgb(51, 179, 1);
+  color: var(--primary);
+}
+a.light.bugs:hover{
+  color: var(--primary);
 }
 span.projects.light:hover{
-  color: rgb(51, 179, 1);
+  color: var(--primary);
 }
 span.bugs.light:hover{
-  color: rgb(45, 144, 236);
+  color: var(--primary);
 }
 span.chat.light:hover{
-  color: rgb(119, 0, 230);
+  color: var(--primary);
 }
 span.chat-side-nav.light:hover{
-  color: rgb(119, 0, 230);
+  color: var(--primary);
 }
 h1.light, h2.light,
 h3.light, h4.light{

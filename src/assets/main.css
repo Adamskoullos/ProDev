@@ -79,7 +79,6 @@
   }
 
   input:focus{
-    /* border: 2px solid rgb(101, 0, 160); */
     border: 2px solid rgb(119, 0, 230);
   }
   textarea:focus{
@@ -125,10 +124,13 @@
   a.light {
     color: var(--primary);
   }
+  a.light:hover {
+    color: var(--primary);
+  }
   
   /* buttons */
   button.light, .btn { 
-    background: rgb(188, 202, 170);
+    background: rgb(216, 216, 216);
     color: var(--primary);
     border-radius: 8px;
     border: 0;
@@ -143,7 +145,7 @@
   }
   button.light:hover, .btn:hover {
     
-    color: white;
+    /* color: rgb(51, 179, 1); */
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.96);
     transition: all ease 0.3s;
@@ -168,13 +170,18 @@
   }
   input.light, textarea.light {
     border: 0;
-    border-bottom: 1px solid var(--secondary);
+    border: 2px solid rgb(216, 216, 216);
     padding: 10px;
     outline: none;
     display: block;
     width: 100%;
     box-sizing: border-box;
     margin: 20px auto;
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--primary);
+  }
+  input.light:focus{
+    border: 2px solid rgb(172, 172, 172);
   }
   
  

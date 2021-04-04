@@ -1,5 +1,5 @@
 <template>
-  <input type="text" v-model="search" placeholder="Title search">
+  <input type="text" v-model="search" placeholder="Title search" :class="{light: light}">
   <div v-for="project in projectSearch" :key="project.id" class="container-fluid project-list-wrapper">
     <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
         <div class=" single row">
@@ -22,7 +22,7 @@
 import { ref } from '@vue/reactivity'
 import { computed } from '@vue/runtime-core'
 export default {
-    props: ['projects'],
+    props: ['projects', 'light'],
     setup(props){
       const search = ref('')
 

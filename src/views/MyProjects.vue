@@ -2,10 +2,10 @@
 <div class="wrapper">
     <div class="button-wrapper">
         <router-link :to="{ name: 'TeamProjects' }" :class="{light: light}">
-            <button>Team Projects</button>
+            <button :class="{light: light}">Team Projects</button>
         </router-link>
         <router-link :to="{ name: 'NewProject' }" :class="{light: light}">
-            <button>New Project</button>
+            <button :class="{light: light}">New Project</button>
         </router-link>
     </div>
     <div class="projects-window">
@@ -13,7 +13,7 @@
             <h4>Cannot access the the projects database</h4>
         </div>
         <div v-if="documents" class="project">
-            <ProjectsList :projects="documents" />
+            <ProjectsList :light="light" :projects="documents" />
         </div>
     </div>
 </div>
