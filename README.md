@@ -273,7 +273,9 @@ onBeforeUpdate(() => {
 
 -----------------------------------------
 
-- [] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer. 
+- [X] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer.
+
+**Solution**: For both the chat window (col) and the main content window (col) I gave the container div a max height of the VH and then overflow: auto.  This separated them from the side bar without having to fix position the side bar which creates a whole lot of other issues.  This was great and really added to the dashboard feel. I then hid the scroll bars to give a really clean look.
 
 ## Unresolved Bugs
 
