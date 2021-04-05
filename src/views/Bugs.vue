@@ -2,7 +2,7 @@
 <div class="wrapper">
     <div class="button-wrapper">
         <router-link :to="{ name: 'NewBug' }" :class="{light: light}">
-            <button>New Bug</button>
+            <button :class="{light: light}">New Bug</button>
         </router-link>
     </div>
     <div class="Bugs-window">
@@ -10,7 +10,7 @@
             <h4>Cannot access the the Bugs database</h4>
         </div>
         <div v-if="documents" class="Bugs">
-            <BugsList :bugs="documents" />
+            <BugsList :bugs="documents" :light="light" />
         </div>
     </div>
 </div>

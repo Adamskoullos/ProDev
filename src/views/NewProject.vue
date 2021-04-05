@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <form @submit.prevent="handleSubmit" class="col-12">
-      <h4>Create new project</h4>
-      <input type="text" placeholder="Project title" v-model="title" required>
-      <textarea placeholder="Description" v-model="description" required></textarea>
-      <label for="file-upload" class="file-upload-button">Upload project image</label>
+    <form @submit.prevent="handleSubmit" class="col-12" :class="{light: light}">
+      <h4 :class="{light: light}">Create new project</h4>
+      <input type="text" placeholder="Project title" v-model="title" :class="{light: light}" required>
+      <textarea placeholder="Description" v-model="description" :class="{light: light}" required></textarea>
+      <label :class="{light: light}" for="file-upload" class="file-upload-button">Upload project image</label>
       <input id="file-upload" type="file" @change="handleChange">
       <div class="error">{{ fileError }}</div>
-      <button v-if="!isPending">Add new project</button>
-      <button v-if="isPending" class="loading">Uploading...</button>
+      <button :class="{light: light}" v-if="!isPending">Add new project</button>
+      <button :class="{light: light}" v-if="isPending" class="loading">Uploading...</button>
     </form>
   </div>
 </template>
@@ -23,6 +23,7 @@ import { useRouter } from 'vue-router'
 
 
 export default {
+  props: ['light'],
   setup(){
     const title = ref('')
     const description = ref('')
@@ -89,20 +90,28 @@ form{
   width: 100%;
   max-width: 600px;
 }
+form.light{
+  margin-top: 10vh;
+  width: 100%;
+  max-width: 600px;
+}
+h4.light{
+  color: var(--primary)
+}
 input[type="file"]{
   display: none;
 }
 .file-upload-button{
   background: rgb(75, 75, 75);
   color:rgb(206, 206, 206);
-  border-radius: 4px;
+  border-radius: 8px;
   border: 0;
   padding: 10px 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-block;
   margin: auto 5px;
-  box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.5);
   border: 0px solid  var(--secondary);
   transition: all ease 0.2s;
 }
@@ -111,5 +120,15 @@ input[type="file"]{
   box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
   transform: scale(0.94);
   transition: all ease 0.3s;
+}
+button.light{
+  background: white;
+}
+.file-upload-button.light{
+  background: white;
+  color: var(--primary);
+}
+.file-upload-button.light:hover{
+  color: var(--primary);
 }
 </style>

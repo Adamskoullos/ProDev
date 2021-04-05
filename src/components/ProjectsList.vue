@@ -56,7 +56,7 @@ a.route-tag{
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   background: rgb(63, 63, 63, 0.5);
   transition: all ease 0.1s;
   width: 100%;
@@ -66,7 +66,7 @@ a.route-tag{
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
   transition: all ease 0.1s;
   width: 100%;
@@ -86,7 +86,7 @@ a.route-tag{
   min-height: 100px;
   max-height: 150px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px;
   margin: auto;
 }
@@ -95,7 +95,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   max-width: 150px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 .info {
   flex-grow: 1;
@@ -129,7 +129,16 @@ img {
   color: var(--primary)
 }
 input[data-v-0b85af30]{
-width: 100%;
-margin: 10px;
+  width: 100%;
+  margin: 10px;
+}
+
+input[data-v-0b85af30].light{
+  width: 100%;
+  margin: 10px;
+  border: 2px solid rgb(216, 216, 216)
+}
+input[data-v-0b85af30].light:focus{
+  border: 2px solid white;
 }
 </style>
