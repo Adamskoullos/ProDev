@@ -58,17 +58,17 @@ form.light{
 }
 textarea{
     margin: 5px 0;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 textarea.light{
     margin: 5px 0;
-    border-radius: 4px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(216, 216, 216);
+    border: 2px solid rgb(255, 255, 255, 0.2);
 }
 textarea.light:focus{
     margin: 5px 0;
-    border-radius: 4px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(255, 255, 255);
 }

@@ -57,7 +57,7 @@ a.route-tag{
   justify-content: space-between;
   padding: 20px;
   border-radius: 8px;
-  background: rgb(63, 63, 63, 0.5);
+  background: rgb(63, 63, 63, 0.9);
   transition: all ease 0.1s;
   width: 100%;
 }
@@ -72,10 +72,13 @@ a.route-tag{
   width: 100%;
 }
 .single:hover {
-  box-shadow: 3px 3px 12px rgba(50,50,50,0.5);
-  transform: scale(1.01);
+  box-shadow: 1px 2px 12px rgba(50,50,50,0.2);
+  transform: scale(1.02);
   transition: all ease 0.3s;
   cursor: pointer;
+}
+.single.light:hover{
+
 }
 .thumbnail {
   display: flex;
@@ -136,7 +139,7 @@ input[data-v-0b85af30]{
 input[data-v-0b85af30].light{
   width: 100%;
   margin: 10px;
-  border: 2px solid rgb(216, 216, 216)
+  border: 2px solid rgb(255, 255, 255, 0.1)
 }
 input[data-v-0b85af30].light:focus{
   border: 2px solid white;

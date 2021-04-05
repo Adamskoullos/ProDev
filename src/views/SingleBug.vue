@@ -4,39 +4,39 @@
         <div v-if="document" class="outer-wrapper">
             <div class=" single row">
                 <div class="info col-12">
-                    <h3>{{ document.title }}</h3>
-                    <p class="user-name">By: {{ document.userName }}</p>
+                    <h3 :class="{light: light}">{{ document.title }}</h3>
+                    <p class="user-name" :class="{light: light}">By: {{ document.userName }}</p>
                     <span v-if="!document.solved" class="material-icons not-solved">build_circle</span>
                     <span v-if="document.solved" class="material-icons">verified</span>
                     <button v-if="ownership" @click="handleSolved">Solved</button>
                 </div>
-                <h6>Issue description</h6>
+                <h6 :class="{light: light}">Issue description</h6>
                 <div class="single-bug col-12">
-                    <div class="bug">
+                    <div class="bug" :class="{light: light}">
                         <div class="actions">
                             <div class="details">
-                                <p>{{ document.description }}</p>
+                                <p :class="{light: light}">{{ document.description }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h6>Error message</h6>
+                <h6 :class="{light: light}">Error message</h6>
                 <div class="single-bug col-12">
-                    <div class="bug">
+                    <div class="bug" :class="{light: light}">
                         <div class="actions">
                             <div class="details">
-                                <p>{{ document.errorMessage }}</p>
+                                <p :class="{light: light}">{{ document.errorMessage }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-if="document.solution" class="bugs col-12">
-                    <h4>Solution</h4>
+                    <h4 :class="{light: light}">Solution</h4>
                     <div class="single-bug">
-                        <div class="bug" :class="{ complete: document.solved }">
+                        <div class="bug" :class="{ complete: document.solved, light: light}">
                             <div class="actions">
                                 <div class="details">
-                                    <p>{{ document.solution }}</p>
+                                    <p :class="{light: light}">{{ document.solution }}</p>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                         <img :src="document.imageUrl" alt="project cover image">
                     </div>
                 </div>
-                <AddSolution v-if="!document.Solved" :bug="document"/>
+                <AddSolution v-if="!document.Solved" :bug="document" :light="light" />
             </div>
         </div>
     </div>
@@ -101,6 +101,9 @@ h6{
     margin: auto;
     font-weight: 200;
 }
+h6.light{
+    color: var(--primary)
+}
 .info span{
     font-size: 30px;
     color: rgb(51, 179, 1);
@@ -122,7 +125,7 @@ h6{
     align-items: center;
     justify-content: stretch;
     padding: 20px;
-    border-radius: 4px;
+    border-radius: 8px;
     background: rgb(63, 63, 63, 0.0);
   }
   .single-bug{
@@ -139,7 +142,7 @@ h6{
     min-height: 100px;
     max-height: 150px;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px;
   }
   img {
@@ -147,7 +150,7 @@ h6{
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px;
   }
   .info{
@@ -201,14 +204,18 @@ h6{
   }
   
   .bug{
-      background: rgb(63, 63, 63, 0.2);
-      border-radius: 4px;
+      background: rgb(63, 63, 63, 0.6);
+      border-radius: 8px;
       box-shadow: 1px 1px 5px rgba(50,50,50,0.8);
       min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin: 10px auto;
+  }
+  .bug.light{
+      background: rgb(255,255,255);
+      box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
   }
   .actions{
       min-width: 100%;

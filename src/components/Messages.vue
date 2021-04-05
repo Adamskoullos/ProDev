@@ -71,8 +71,8 @@ border-radius: 20px;       /* roundness of the scroll thumb */
 border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 }
 .single{
-    background: rgb(63, 63, 63, 0.4);
-    border-radius: 4px;
+    background: rgb(63, 63, 63, 0.9);
+    border-radius: 8px;
     min-height: 50px;
     display: flex;
     flex-direction: column;

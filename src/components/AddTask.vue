@@ -78,7 +78,11 @@ input {
     align-items: center;
 }
 .task-buttons button.light{
-  background: rgb(216, 216, 216);
+  background: rgb(216, 216, 216, 0.5);
+  box-shadow: 1px 1px 5px rgba(50,50,50,0.5);
 }
-
+.task-buttons button.light:hover{
+  box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
+  transform: scale(0.97);
+}
 </style>

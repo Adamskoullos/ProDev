@@ -80,7 +80,7 @@
                   </router-link>
                 </div>
               </nav>
-            <div class="user-name" :class="{light: light}" >
+            <div class="user-name" :class="{light: light}" @click="toggleMode" >
               <h3 :class="{light: light}" v-if="user">{{ user.displayName }}</h3>
             </div>
             <div class="logout" :class="{light: light}" v-if="user" @click="handleLogout">
@@ -633,6 +633,9 @@ span.util:hover{
   align-items: flex-start;
   justify-content: start;
 }
+.logo h3.light:hover{
+  color: var(--primary);
+}
 ul li {
   margin: 10px auto 10px 0;
   min-width: 130px;
@@ -679,6 +682,20 @@ span.material-icons.light{
 }
 .user-name{
   margin: auto 5px auto auto;
+  transition: all ease 0.2s;
+}
+.user-name:hover{
+  cursor: pointer;
+  transform: scale(1.13);
+  transition: all ease 0.2s;
+}
+.user-name h3:hover{
+  color: rgb(0, 221, 37);
+  /* color: rgb(51, 179, 1); */
+}
+.user-name h3.light:hover{
+  /* color: rgb(160, 58, 255); */
+  color: rgb(122, 40, 253);
 }
 .logout span{
   margin: auto 10px auto 12px;
