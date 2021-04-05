@@ -1,12 +1,12 @@
 <template>
-  <div class="add-task">
-    <button v-if="!addTask" @click="openForm">Add tasks</button>
-    <form v-if="addTask" @submit.prevent="handleAddTask">
-      <input type="text" placeholder="Add task" v-model="task" ref="inputEl" autofocus required>
+  <div class="add-task" :class="{light: light}">
+    <button v-if="!addTask" @click="openForm" :class="{light: light}">Add tasks</button>
+    <button v-if="addTask && !isPending" @click.prevent="addTask = false" :class="{light: light}">Cancel</button>
+    <form v-if="addTask" @submit.prevent="handleAddTask" :class="{light: light}">
+      <input type="text" placeholder="Add task" v-model="task" ref="inputEl" :class="{light: light}" autofocus required>
       <div class="task-buttons">
-        <button v-if="!isPending" class="task-buttons">Add</button>
-        <button v-if="isPending" class="task-buttons">Adding...</button>
-        <button v-if="addTask && !isPending" class="task-buttons" @click.prevent="addTask = false">Cancel</button>
+        <button v-if="!isPending" class="task-buttons" :class="{light: light}">Add</button>
+        <button v-if="isPending" class="task-buttons" :class="{light: light}">Adding...</button>
       </div>
     </form>
   </div>
@@ -17,7 +17,7 @@ import { ref } from '@vue/reactivity'
 import useDocument from '../composables/useDocument'
 
 export default {
-  props: ['projects'],
+  props: ['projects', 'light'],
   setup(props){
     const { updateDoc } = useDocument('projects', props.projects.id)
     const task = ref('')
@@ -59,14 +59,26 @@ export default {
     align-items: center;
     
 }
+form,
+form.light{
+  margin-top: 25px;
+  padding: 15px;
+}
+input {
+  padding: 10px;
+  margin: 10px 0 15px 0;
+}
 .add-task form{
   min-width: 100%;
-  box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
+  box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
 }
 .task-buttons{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.task-buttons button.light{
+  background: rgb(216, 216, 216);
 }
 
 </style>

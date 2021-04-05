@@ -158,6 +158,9 @@ export default {
     transform: scale(0.98);
     transition: all ease 0.3s;
   }
+  .single button.big.light:hover{
+      color: var(--primary);
+  }
   
   .task{
       background: rgb(63, 63, 63, 0.3);
