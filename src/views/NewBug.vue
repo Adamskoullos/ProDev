@@ -1,13 +1,13 @@
 <template>
   <div class="row">
-    <form @submit.prevent="handleSubmit" class="col-12">
-      <h4>Create new bug</h4>
-      <input type="text" placeholder="Bug title" v-model="title" required>
-      <textarea placeholder="Description of the issue" v-model="description" required></textarea>
-      <textarea placeholder="Paste error message here" v-model="errorMessage" required></textarea>
+    <form @submit.prevent="handleSubmit" class="col-12" :class="{light: light}">
+      <h4 :class="{light: light}">Create new bug</h4>
+      <input type="text" placeholder="Bug title" v-model="title" :class="{light: light}" required>
+      <textarea placeholder="Description of the issue" v-model="description" :class="{light: light}" required></textarea>
+      <textarea placeholder="Paste error message here" v-model="errorMessage" :class="{light: light}" required></textarea>
       <div v-if="error" class="error">{{ error }}</div>
-      <button v-if="!isPending">Add new bug</button>
-      <button v-if="isPending" class="loading">Uploading...</button>
+      <button v-if="!isPending" :class="{light: light}">Add new bug</button>
+      <button v-if="isPending" class="loading" :class="{light: light}">Uploading...</button>
     </form>
   </div>
 </template>
@@ -20,6 +20,7 @@ import { timestamp } from '../firebase/config'
 import { useRouter } from 'vue-router'
 
 export default {
+  props: ['light'],
   setup(){
     const title = ref('')
     const description = ref('')
@@ -70,5 +71,8 @@ form{
   margin-top: 10vh;
   width: 100%;
   max-width: 600px;
+}
+button.light{
+  background: white;
 }
 </style>
