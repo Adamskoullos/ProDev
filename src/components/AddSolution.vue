@@ -21,8 +21,6 @@
 <script>
 import { ref } from '@vue/reactivity'
 import useStorage from '../composables/useStorage'
-import getUser from '../composables/getUser'
-import { useRouter } from 'vue-router'
 import useDocument from '../composables/useDocument'
 import { onMounted } from '@vue/runtime-core'
 

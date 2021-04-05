@@ -1,6 +1,24 @@
 # ProDev
 
-------------------- Cover image to go here ----------------------------------
+## Development images for Mentor:
+
+![dark-main](https://user-images.githubusercontent.com/73107656/113576672-e6787400-9617-11eb-84d0-a67d478a7e03.png)
+
+![light-main](https://user-images.githubusercontent.com/73107656/113576678-eaa49180-9617-11eb-95ba-3988c3c762d6.png)
+
+![without-chat](https://user-images.githubusercontent.com/73107656/113576688-ef694580-9617-11eb-905e-58ff8ef19dcf.png)
+
+![bugs](https://user-images.githubusercontent.com/73107656/113576706-f7c18080-9617-11eb-831d-4654abd89be8.png)
+
+![mobile](https://user-images.githubusercontent.com/73107656/113576738-05770600-9618-11eb-8327-9e6a05e1d066.png)
+
+![mobile-bugs](https://user-images.githubusercontent.com/73107656/113576747-0871f680-9618-11eb-9ff4-0fae6e69fd8e.png)
+
+![mobile-chat](https://user-images.githubusercontent.com/73107656/113576751-0ad45080-9618-11eb-80ec-1b619b00fa80.png)
+
+![single-project-mobile](https://user-images.githubusercontent.com/73107656/113576762-0dcf4100-9618-11eb-9ea9-4e144ae97c3e.png)
+
+![solved-bug](https://user-images.githubusercontent.com/73107656/113576775-1162c800-9618-11eb-83b3-110310189a55.png)
 
 ## Table of Contents:
 
@@ -159,25 +177,7 @@ To provide a transition between the hard edges of the main layout and the softer
 
 ## Wireframes
 
-Early trials and testing have left me with the main foundation with the `router-view` window ready to be filled with each view.  Therefore below is the main dashboard template so far and below them the wireframes for the views:
-
-
-![Screenshot from 2021-03-24 11-17-51](https://user-images.githubusercontent.com/73107656/112303646-70c5ed00-8c94-11eb-9fd4-2f5ecb040372.png)
-
-
-![light-chat](https://user-images.githubusercontent.com/73107656/112303654-74597400-8c94-11eb-9f58-6c27c6cb25d5.png)
-
-
-![light-mobile](https://user-images.githubusercontent.com/73107656/112303665-77546480-8c94-11eb-862e-98ecbd801c81.png)
-
-
-![dark](https://user-images.githubusercontent.com/73107656/112303673-7b808200-8c94-11eb-882a-fed0d7949ba6.png)
-
-
-![dark-chat](https://user-images.githubusercontent.com/73107656/112303695-7fac9f80-8c94-11eb-8df2-98ab73412329.png)
-
-
-![dark-tablet-2](https://user-images.githubusercontent.com/73107656/112303708-82a79000-8c94-11eb-818e-bea99a047ffa.png)
+Below are the early wireframes: 
 
 ![image](https://user-images.githubusercontent.com/73107656/112324787-0ec4b200-8cab-11eb-93b5-daec29b746aa.png)
 
@@ -200,7 +200,7 @@ Below is a visual map of the planned structure for the project. The blue boxes a
 
 My only regret so far is that I did not extract the side-nav and top-bar into separate components from the start.  I miss judged the volume of code it would take in building the custom navigation for the project, next time I will start the nav build as a component or two depending on the project. Sitting down and creating this visual map has reinforced just how reusable functions can be if they are created with that in mind.
 
-![image](https://user-images.githubusercontent.com/73107656/112342244-f7d98c00-8cb9-11eb-88ae-f35ad358091d.png)
+![image](https://user-images.githubusercontent.com/73107656/113575732-3f470d00-9616-11eb-8a16-49e62b35beda.png)
 
 Digging slightly deeper into the composables in the above map:
 

@@ -6,7 +6,7 @@
       <input type="text" placeholder="Add task" v-model="task" ref="inputEl" :class="{light: light}" autofocus required>
       <div class="task-buttons">
         <button v-if="!isPending" class="task-buttons" :class="{light: light}">Add</button>
-        <button v-if="isPending" class="task-buttons" :class="{light: light}">Adding...</button>
+        <button v-if="isPending" class="task-buttons loading" :class="{light: light}">Adding...</button>
       </div>
     </form>
   </div>

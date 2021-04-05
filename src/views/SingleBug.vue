@@ -204,9 +204,9 @@ h6.light{
   }
   
   .bug{
-      background: rgb(63, 63, 63, 0.6);
+      background: rgb(63, 63, 63, 0.8);
       border-radius: 8px;
-      box-shadow: 1px 1px 5px rgba(50,50,50,0.8);
+      box-shadow: 1px 1px 5px rgba(50,50,50,0);
       min-height: 50px;
       display: flex;
       align-items: center;

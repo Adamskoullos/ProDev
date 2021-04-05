@@ -137,6 +137,9 @@ export default {
   p.user-name{
       font-weight: 200;
   }
+  .info p{
+      text-align: center;
+  }
   .tasks{
       display: flex;
       flex-direction: column;

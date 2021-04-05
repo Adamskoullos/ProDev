@@ -5,7 +5,7 @@
         <textarea type="text" placeholder="Please describe the issue" v-model="message" :class="{light: light}"/>
         <div class="error">{{ error }}</div>
         <button v-if="!isPending" :class="{light: light}">Submit issue</button>
-        <button v-if="isPending" :class="{light: light}">Submitting...</button>
+        <button v-if="isPending" :class="{light: light}" class="loading">Submitting...</button>
     </form>
 </div>
 </template>
