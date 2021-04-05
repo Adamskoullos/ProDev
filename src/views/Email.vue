@@ -56,7 +56,7 @@ h3{
     margin: 10px auto 0 15px;
 }
 form{
-    margin: 40px auto;
+    margin: 10vh auto;
     width: 100%;
     max-width: 600px;
 }

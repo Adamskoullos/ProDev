@@ -341,19 +341,31 @@ components: { Chat },
 }
 
 /* Basic layout and responsiveness for main window - Main view, side chat, side nav, top bar */ 
+.content-col::-webkit-scrollbar {
+    width: 0px;               /* width of the entire scrollbar */
+}
 
+.content-col::-webkit-scrollbar-track {
+background: rgb(75,75,75);        /* color of the tracking area */
+}
+
+.content-col::-webkit-scrollbar-thumb {
+background-color: rgb(75,75,75);    /* color of the scroll thumb */
+border-radius: 20px;       /* roundness of the scroll thumb */
+border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
+}
 /** Default dark mode  ****************/
 
-  .chat-col{
-    box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
-  }
+.chat-col{
+  box-shadow: -3px 3px 16px rgba(50,50,50,0.6);
+}
 .side-nav{
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: flex-start;
   background: rgb(63, 63, 63);
   max-width: 200px;
   margin: 0px;
@@ -365,7 +377,7 @@ components: { Chat },
 }
 
 .main-row{
-  max-height: 100vh;
+  min-height: 100vh;
   position: relative;
   background: rgb(75, 75, 75);
 }
@@ -395,14 +407,16 @@ components: { Chat },
   border-radius: 0px;
 }
 .content-row{
-  margin-top: 60px;
+  padding-top: 60px;
   background: var(--background-b);
   flex: 1;
   position: relative;
   background: rgb(75, 75, 75);
-  height: 100vh;
+  max-height: 100vh;
 }
 .content-col{
+  max-height: 90vh;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -430,7 +444,7 @@ components: { Chat },
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: flex-start;
   background: rgb(255, 255, 255);
   max-width: 200px;
   margin: 0px;
@@ -470,16 +484,17 @@ components: { Chat },
   position: relative;
 }
 .content-col.light{
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 0;
   background: rgb(216, 216, 216);
 }
 .chat-col.light{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: rgb(216, 216, 216);
   box-shadow: -3px 1px 13px rgba(50,50,50,0.3);
   z-index: 1;

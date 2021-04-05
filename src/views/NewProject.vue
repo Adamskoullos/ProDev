@@ -4,8 +4,8 @@
       <h4>Create new project</h4>
       <input type="text" placeholder="Project title" v-model="title" required>
       <textarea placeholder="Description" v-model="description" required></textarea>
-      <label>Upload project image</label>
-      <input type="file" @change="handleChange">
+      <label for="file-upload" class="file-upload-button">Upload project image</label>
+      <input id="file-upload" type="file" @change="handleChange">
       <div class="error">{{ fileError }}</div>
       <button v-if="!isPending">Add new project</button>
       <button v-if="isPending" class="loading">Uploading...</button>
@@ -88,5 +88,28 @@ form{
   margin-top: 10vh;
   width: 100%;
   max-width: 600px;
+}
+input[type="file"]{
+  display: none;
+}
+.file-upload-button{
+  background: rgb(75, 75, 75);
+  color:rgb(206, 206, 206);
+  border-radius: 4px;
+  border: 0;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  margin: auto 5px;
+  box-shadow: 1px 2px 10px rgba(50,50,50,0.8);
+  border: 0px solid  var(--secondary);
+  transition: all ease 0.2s;
+}
+.file-upload-button:hover{
+  color: rgb(51, 179, 1);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
+  transform: scale(0.94);
+  transition: all ease 0.3s;
 }
 </style>
