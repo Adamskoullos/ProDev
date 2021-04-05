@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <form @submit.prevent="handleEmail" class="col-12 contact-form">
-        <h3>Thank you for reporting a ProDev issue</h3>
-        <textarea type="text" placeholder="Please describe the issue" v-model="message"/>
+    <form @submit.prevent="handleEmail" class="col-12 contact-form" :class="{light: light}">
+        <h3 :class="{light: light}">Thank you for reporting a ProDev issue</h3>
+        <textarea type="text" placeholder="Please describe the issue" v-model="message" :class="{light: light}"/>
         <div class="error">{{ error }}</div>
-        <button v-if="!isPending">Submit issue</button>
-        <button v-if="isPending">Submitting...</button>
+        <button v-if="!isPending" :class="{light: light}">Submit issue</button>
+        <button v-if="isPending" :class="{light: light}">Submitting...</button>
     </form>
 </div>
 </template>
@@ -16,6 +16,7 @@ import emailjs from 'emailjs-com';
 import { useRouter } from 'vue-router';
 
 export default {
+    props: ['light'],
     setup(){
         const router = useRouter()
         const isPending = ref(false)
@@ -59,6 +60,9 @@ form{
     margin: 10vh auto;
     width: 100%;
     max-width: 600px;
+}
+button.light{
+    background: white;
 }
 
 </style>

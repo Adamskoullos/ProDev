@@ -6,7 +6,7 @@ import NewProject from '../views/NewProject.vue'
 import Bugs from '../views/Bugs.vue'
 import NewBug from '../views/NewBug.vue'
 import Chat from '../views/Chat'
-import Email from '../views/Email'
+import ReportIssue from '../views/ReportIssue'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import SingleProject from '../views/SingleProject.vue'
@@ -86,9 +86,9 @@ const routes = [
     beforeEnter: requireAuth
   },
   {
-    path: '/email',
-    name: 'Email',
-    component: Email,
+    path: '/issue',
+    name: 'ReportIssue',
+    component: ReportIssue,
     props: true
   },
   {

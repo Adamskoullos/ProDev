@@ -123,6 +123,9 @@
   h3.light,h4.light{
     color: var(--primary);
   }
+  p.light{
+    color: var(--primary);
+  }
   a.light {
     color: var(--primary);
   }

@@ -33,7 +33,7 @@
                   <router-link :to="{ name: 'NewBug' }" :class="{light: light}" class="bugs">New Bug</router-link>
               </li>
               <li class="nav-item" :class="{light: light}">
-                  <router-link :to="{ name: 'Email' }" :class="{light: light}" class="util">Report Issue</router-link>
+                  <router-link :to="{ name: 'ReportIssue' }" :class="{light: light}" class="util">Report Issue</router-link>
               </li>
             </ul>
           </nav>
@@ -346,11 +346,11 @@ components: { Chat },
 }
 
 .content-col::-webkit-scrollbar-track {
-background: rgb(75,75,75);        /* color of the tracking area */
+background: rgb(75,75,75, 0.0);        /* color of the tracking area */
 }
 
 .content-col::-webkit-scrollbar-thumb {
-background-color: rgb(75,75,75);    /* color of the scroll thumb */
+background-color: rgb(75,75,75, 0.0);    /* color of the scroll thumb */
 border-radius: 20px;       /* roundness of the scroll thumb */
 border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 }
@@ -416,7 +416,7 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 }
 .content-col{
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -508,7 +508,7 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
   height: 50px;
 }
 .dark-mode{
-  margin-top: 100px;
+  margin-top: 10px;
 }
 .navbar{
   display: flex;
@@ -528,7 +528,7 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: flex-start;
   min-height: 100vh;
 }
 .logo{

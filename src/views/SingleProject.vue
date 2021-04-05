@@ -2,33 +2,33 @@
     <div>
         <div v-if="error" class="error">{{ error }}</div>
         <div v-if="document" class="">
-            <div class=" single row">
-                <div class=" thumbnail col-12 col-sm-4">
-                    <img :src="document.imageUrl" alt="project cover image">
+            <div class=" single row" :class="{light: light}">
+                <div class=" thumbnail col-12 col-sm-4" :class="{light: light}">
+                    <img :src="document.imageUrl" alt="project cover image" :class="{light: light}">
                 </div>
                 <div class="info col-12 col-sm-8">
-                    <h3>{{ document.title }}</h3>
-                    <p class="user-name">Project lead: {{ document.userName }}</p>
-                    <p>{{ document.description }}</p>
+                    <h3 :class="{light: light}">{{ document.title }}</h3>
+                    <p class="user-name" :class="{light: light}">Project lead: {{ document.userName }}</p>
+                    <p :class="{light: light}">{{ document.description }}</p>
                 </div>
-                <button v-if="ownership && !isPending" @click="handleDelete" class=" big">Project Complete</button>
-                <button v-if="isPending" class="loading big">Completing...</button>
+                <button v-if="ownership && !isPending" @click="handleDelete" class=" big" :class="{light: light}">Project Complete</button>
+                <button v-if="isPending" class="loading big" :class="{light: light}">Completing...</button>
                 <div class="tasks col-12">
-                    <h4>Tasks</h4>
+                    <h4 :class="{light: light}">Tasks</h4>
                     <div v-for="task in document.tasks" :key="task.id" class="single-task">
-                        <div class="task" :class="{ complete: task.completed }">
+                        <div class="task" :class="{ complete: task.completed, light: light}">
                             <div class="actions">
                                 <div class="details">
-                                    <p>{{ task.task }}</p>
+                                    <p :class="{light: light}">{{ task.task }}</p>
                                 </div>
                                 <div class="icons" v-if="ownership">
-                                    <span class="material-icons" @click="handleDeleteTask(task.id)">delete</span> 
-                                    <span class="material-icons" @click="handleTaskComplete(task.id)">done</span>
+                                    <span class="material-icons" @click="handleDeleteTask(task.id)" :class="{light: light}">delete</span> 
+                                    <span class="material-icons" @click="handleTaskComplete(task.id)" :class="{light: light}">done</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <AddTask v-if="ownership" :projects="document"/>
+                    <AddTask v-if="ownership" :projects="document" :light="light"/>
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@ export default {
     min-height: 100px;
     max-height: 150px;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px;
   }
   img {
@@ -121,7 +121,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px;
   }
   .info{
@@ -169,6 +169,10 @@ export default {
       justify-content: space-between;
       border-left: 6px solid rgb(119, 0, 230);
       margin: 10px auto;
+  }
+  .task.light{
+      background: white;
+      box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
   }
   .actions{
       min-width: 100%;
