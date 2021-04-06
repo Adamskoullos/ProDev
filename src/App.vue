@@ -552,7 +552,7 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
     color: var(--primary);
   }
   .nav-item:hover{
-    box-shadow: 2px 3px 8px rgba(50,50,50,0.3);
+    box-shadow: 2px 2px 6px rgba(50,50,50,0.8);
     transform: scale(0.97);
     transition: all ease 0.2s;
   }

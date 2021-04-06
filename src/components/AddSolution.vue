@@ -3,19 +3,21 @@
         <button v-if="showSolution" @click="handleCloseForm" :class="{light: light}">Cancel</button>
         <button v-if="!bug.solved && !showSolution" @click="showSolution = true" :class="{light: light}">Add Solution</button>
     </div>
-    <form v-if="showSolution" @submit.prevent="handleSubmit" :class="{light: light}">
-        <h5 :class="{light: light}">Add solution details</h5>
-        <textarea placeholder="Solution details" v-model="solution" required :class="{light: light}"></textarea>
-        <div class="buttons">
-            <label for="file-upload" class="file-upload-button" :class="{light: light}">Upload solution image</label>
-            <input id="file-upload" type="file" @change="handleChange">
-        </div>
-        <div class="error">{{ fileError }}</div>
-        <div class="buttons">
-            <button v-if="!isPending" :class="{light: light}">Submit solution</button>
-            <button v-if="isPending" class="loading" :class="{light: light}">Uploading...</button>  
-        </div>
-    </form>
+    <transition name="fade">
+        <form v-if="showSolution" @submit.prevent="handleSubmit" :class="{light: light}">
+            <h5 :class="{light: light}">Add solution details</h5>
+            <textarea placeholder="Solution details" v-model="solution" required :class="{light: light}"></textarea>
+            <div class="buttons">
+                <label for="file-upload" class="file-upload-button" :class="{light: light}">Upload solution image</label>
+                <input id="file-upload" type="file" @change="handleChange">
+            </div>
+            <div class="error">{{ fileError }}</div>
+            <div class="buttons">
+                <button v-if="!isPending" :class="{light: light}">Submit solution</button>
+                <button v-if="isPending" class="loading" :class="{light: light}">Uploading...</button>  
+            </div>
+        </form>
+    </transition>
 </template>
 
 <script>
@@ -142,5 +144,21 @@ input[type="file"]{
   box-shadow: 1px 2px 4px rgba(50,50,50,0.3);
   transform: scale(0.97);
   transition: all ease 0.3s;
+}
+/* New task form transition in/out */
+
+.fade-enter-from,
+.fade-leave-to{
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from{
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active{
+  transition: all 1.5s ease;
 }
 </style>

@@ -8,7 +8,7 @@
                     <p class="user-name" :class="{light: light}">By: {{ document.userName }}</p>
                     <span v-if="!document.solved" class="material-icons not-solved">build_circle</span>
                     <span v-if="document.solved" class="material-icons">verified</span>
-                    <button v-if="ownership" @click="handleSolved">Solved</button>
+                    <button v-if="ownership" @click="handleSolved" :class="{light: light}">Solved</button>
                 </div>
                 <h6 :class="{light: light}">Issue description</h6>
                 <div class="single-bug col-12">
@@ -111,6 +111,9 @@ h6.light{
 .info span.not-solved{
     font-size: 30px;
     color: rgb(45, 144, 236);
+}
+.info button.light{
+    margin-top: 15px;
 }
 .single.row{
     margin: 10px auto;

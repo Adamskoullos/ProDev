@@ -2,13 +2,15 @@
   <div class="add-task" :class="{light: light}">
     <button v-if="!addTask" @click="openForm" :class="{light: light}">Add tasks</button>
     <button v-if="addTask && !isPending" @click.prevent="addTask = false" :class="{light: light}">Cancel</button>
-    <form v-if="addTask" @submit.prevent="handleAddTask" :class="{light: light}">
-      <input type="text" placeholder="Add task" v-model="task" ref="inputEl" :class="{light: light}" autofocus required>
-      <div class="task-buttons">
-        <button v-if="!isPending" class="task-buttons" :class="{light: light}">Add</button>
-        <button v-if="isPending" class="task-buttons loading" :class="{light: light}">Adding...</button>
-      </div>
-    </form>
+    <transition name="fade">
+      <form v-if="addTask" @submit.prevent="handleAddTask" :class="{light: light}">
+        <input type="text" placeholder="Add task" v-model="task" ref="inputEl" :class="{light: light}" autofocus required>
+        <div class="task-buttons">
+          <button v-if="!isPending" class="task-buttons" :class="{light: light}">Add</button>
+          <button v-if="isPending" class="task-buttons loading" :class="{light: light}">Adding...</button>
+        </div>
+      </form>
+    </transition>
   </div>
 </template>
 
@@ -84,5 +86,21 @@ input {
 .task-buttons button.light:hover{
   box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
   transform: scale(0.97);
+}
+/* New task form transition in/out */
+
+.fade-enter-from,
+.fade-leave-to{
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from{
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active{
+  transition: all 1.5s ease;
 }
 </style>
