@@ -141,9 +141,7 @@ h6.light{
     display: flex;
     justify-content:center;
     align-items: center;
-    min-width: 100px;
-    min-height: 100px;
-    max-height: 150px;
+    width: 100%;
     overflow: hidden;
     border-radius: 8px;
     border: 1px;
@@ -152,7 +150,7 @@ h6.light{
     flex:1;
     margin-left: auto;
     margin-right: auto;
-    max-width: 150px;
+    width: 100%;
     border-radius: 8px;
     border: 1px;
   }
