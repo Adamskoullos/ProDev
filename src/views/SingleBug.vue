@@ -217,8 +217,8 @@ h6.light{
       margin: 10px auto;
   }
   .bug.light{
-      background: rgb(255,255,255);
-      box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
+      background: rgb(255,255,255, 0.9);
+      box-shadow: 1px 1px 10px rgba(50,50,50,0);
   }
   .actions{
       min-width: 100%;

@@ -15,19 +15,21 @@
                 <button v-if="isPending" class="loading big" :class="{light: light}">Completing...</button>
                 <div class="tasks col-12">
                     <h4 :class="{light: light}">Tasks</h4>
-                    <div v-for="task in document.tasks" :key="task.id" class="single-task">
-                        <div class="task" :class="{ complete: task.completed, light: light}">
-                            <div class="actions">
-                                <div class="details">
-                                    <p :class="{light: light}">{{ task.task }}</p>
-                                </div>
-                                <div class="icons" v-if="ownership">
-                                    <span class="material-icons" @click="handleDeleteTask(task.id)" :class="{light: light}">delete</span> 
-                                    <span class="material-icons" @click="handleTaskComplete(task.id)" :class="{light: light}">done</span>
+                    <transition-group name="list" appear>
+                        <div v-for="task in document.tasks" :key="task.id" class="single-task">
+                            <div class="task" :class="{ complete: task.completed, light: light}">
+                                <div class="actions">
+                                    <div class="details">
+                                        <p :class="{light: light}">{{ task.task }}</p>
+                                    </div>
+                                    <div class="icons" v-if="ownership">
+                                        <span class="material-icons" @click="handleDeleteTask(task.id)" :class="{light: light}">delete</span> 
+                                        <span class="material-icons" @click="handleTaskComplete(task.id)" :class="{light: light}">done</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </transition-group>
                     <AddTask v-if="ownership" :projects="document" :light="light"/>
                 </div>
             </div>
@@ -148,6 +150,7 @@ export default {
       width: 100%;
       padding: 0;
   }
+
   .tasks h4{
       margin: 15px auto;
   }
@@ -217,4 +220,27 @@ export default {
   .complete{
       border-left: 6px solid rgb(51, 179, 1);
   }
+  /* List transitions for adding and removing tasks */
+
+.list-enter-from,
+.list-leave-to{
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.list-enter-to,
+.list-leave-from{
+  opacity: 1;
+  transform: scale(1);
+}
+.list-leave-active{
+   transition: all 0.5s ease; 
+   /* position: absolute; */
+}
+.list-enter-active{
+  transition: all 0.5s ease;
+}
+.list-move{
+    transition: all 0.2s ease;
+}
 </style>

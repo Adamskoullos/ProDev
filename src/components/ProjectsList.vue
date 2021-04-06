@@ -1,21 +1,21 @@
 <template>
   <input type="text" v-model="search" placeholder="Title search" :class="{light: light}">
-  <div v-for="project in projectSearch" :key="project.id" class="container-fluid project-list-wrapper">
-    <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
-        <div class=" single row" :class="{light: light}">
-          <div class="thumbnail col-12 col-sm-3">
-              <img :src="project.imageUrl" alt="project cover image">
+    <div v-for="(project, index) in projectSearch" :key="project.id" :data-index="index" class="container-fluid project-list-wrapper">
+      <router-link :to="{ name: 'SingleProject', params: {id: project.id} }" class="route-tag">
+          <div class=" single row" :class="{light: light}">
+            <div class="thumbnail col-12 col-sm-3">
+                <img :src="project.imageUrl" alt="project cover image">
+            </div>
+            <div class="info col-12 col-sm-6" :class="{light: light}">
+                <h3>{{ project.title }}</h3>
+                <p>Project lead: {{ project.userName }}</p>
+            </div>
+            <div class="tasks col-12 col-sm-3" :class="{light: light}">
+                <p>Tasks: {{ project.tasks.length }}</p>
+            </div>
           </div>
-          <div class="info col-12 col-sm-6" :class="{light: light}">
-              <h3>{{ project.title }}</h3>
-              <p>Project lead: {{ project.userName }}</p>
-          </div>
-          <div class="tasks col-12 col-sm-3" :class="{light: light}">
-              <p>Tasks: {{ project.tasks.length }}</p>
-          </div>
-        </div>
-    </router-link>
-  </div>
+      </router-link>
+    </div>
 </template>
 
 <script>

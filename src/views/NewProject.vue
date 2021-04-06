@@ -116,7 +116,7 @@ input[type="file"]{
   transition: all ease 0.2s;
 }
 .file-upload-button:hover{
-  color: rgb(51, 179, 1);
+  color: rgb(206, 206, 206);
   box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
   transform: scale(0.94);
   transition: all ease 0.3s;

@@ -2,13 +2,15 @@
     <div class="chat-window">
         <div v-if="error" class="error">{{ error }}</div>
         <div v-if="documents" class="messages" ref="messages">
-            <div v-for="doc in formattedDocuments" :key="doc.id" class="single" :class="{light: light}">
-                <div class="timestamp" :class="{light: light}">
-                    <span class="created-at" :class="{light: light}">{{ doc.createdAt }}</span>
-                    <span class="name" :class="{light: light}">{{ doc.name }}</span>
+            <transition-group name="list" appear>
+                <div v-for="doc in formattedDocuments" :key="doc.id" class="single" :class="{light: light}">
+                    <div class="timestamp" :class="{light: light}">
+                        <span class="created-at" :class="{light: light}">{{ doc.createdAt }}</span>
+                        <span class="name" :class="{light: light}">{{ doc.name }}</span>
+                    </div>
+                    <span class="message" :class="{light: light}">{{ doc.message }}</span>
                 </div>
-                <span class="message" :class="{light: light}">{{ doc.message }}</span>
-            </div>
+            </transition-group>
         </div>
     </div>
 </template>
@@ -103,5 +105,27 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 span.message{
     line-height: 1.1rem;
     margin: 10px 15px;
+}
+  /* List transitions for adding and removing tasks */
+
+.list-enter-from,
+.list-leave-to{
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.list-enter-to,
+.list-leave-from{
+  opacity: 1;
+  transform: scale(1);
+}
+.list-leave-active{
+   transition: all 0.5s ease; 
+}
+.list-enter-active{
+  transition: all 0.7s ease;
+}
+.list-move{
+    transition: all 0.3s ease;
 }
 </style>

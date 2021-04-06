@@ -21,7 +21,7 @@
     text-decoration: none;
   }
   a:hover{
-    color: rgb(51, 179, 1);
+    color: rgb(206, 206, 206);
   }
    /* error text */
    .error {
@@ -79,7 +79,7 @@
     background: rgb(63, 63, 63);
   }
   input:focus{
-    border: 2px solid rgb(119, 0, 230);
+    border: 2px solid rgb(45, 160, 0);
   }
   textarea:focus{
     border: 2px solid rgb(45, 160, 0)
@@ -101,14 +101,14 @@
   }
   button:hover, .btn:hover {
     
-    color: rgb(51, 179, 1);
+    color: rgb(206, 206, 206);
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.94);
     transition: all ease 0.3s;
   }
   button:focus {
     
-    color: rgb(51, 179, 1);
+    color: rgb(206, 206, 206);
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.94);
     transition: all ease 0.3s;

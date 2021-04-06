@@ -92,15 +92,17 @@ input {
 .fade-enter-from,
 .fade-leave-to{
   opacity: 0;
+  transform: scale(0.1);
 }
 
 .fade-enter-to,
 .fade-leave-from{
   opacity: 1;
+  transform: scale(1);
 }
 
 .fade-enter-active,
 .fade-leave-active{
-  transition: all 1.5s ease;
+  transition: all 0.3s ease;
 }
 </style>

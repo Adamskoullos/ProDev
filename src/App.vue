@@ -255,14 +255,14 @@ components: { Chat },
 
         const sideChatBeforeEnter = (el) => {
           el.style.transform = 'translateX(600px)'
-          el.style.opacity = 0
+          el.style.opacity = 1
         }
 
         const sideChatEnter = (el) => {
           gsap.to(el, {
             x:0,
             opacity: 1,
-            duration: 0.1,
+            duration: 0.2,
             ease: 'sine',
             
           })
@@ -276,8 +276,8 @@ components: { Chat },
         const sideChatLeave = (el) => {
           gsap.to(el, {
             x:600,
-            opacity: 0,
-            duration: 0.1,
+            opacity: 1,
+            duration: 0.2,
             ease: 'sine',
             
           })
@@ -563,10 +563,10 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
     border-radius: 4px;
   }
   .nav-item span:hover{
-    color: rgb(51, 179, 1);
+    color: rgb(206, 206, 206);
   }
   span.material-icons:hover{
-  color: rgb(51, 179, 1);
+  color: rgb(206, 206, 206);
 }
 .no-auth h3:hover{
   color: rgb(226, 226, 226);
@@ -575,27 +575,27 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
   color: rgb(236, 236, 236);
 }
 .logo h3:hover{
-  color: rgb(45, 144, 236);
+  color: rgb(206, 206, 206);
 }
 .projects a:hover{
-  color: rgb(51, 179, 1);
+  color: rgb(206, 206, 206);
 }
 
 span.chat:hover{
-  color: rgb(119, 0, 230);
+  color: rgb(206, 206, 206);
 }
 span.chat-side-nav:hover{
-  color: rgb(160, 58, 255);
+  color: rgb(206, 206, 206);
 }
 .bugs:hover,
 span.bugs:hover{
-  color: rgb(17,116,221);
+  color: rgb(206, 206, 206);
 }
 span.util:hover{
-  color: rgb(216, 158, 0);
+  color: rgb(206, 206, 206);
 }
  a.util:hover{
-    color: rgb(216, 158, 0);
+    color: rgb(206, 206, 206);
   }
 /* Light mode nav items ************************/
 .nav-item.light{
@@ -672,7 +672,7 @@ h3.light, h4.light{
   color: var(--primary)
 }
 span.material-icons.light{
-  color: var(--primary);
+  color: #919191;
 }
 /* Top Bar *******************************************/
 .top-nav{
@@ -690,12 +690,10 @@ span.material-icons.light{
   transition: all ease 0.2s;
 }
 .user-name h3:hover{
-  color: rgb(0, 221, 37);
-  /* color: rgb(51, 179, 1); */
+  color: rgb(0, 192, 32);
 }
 .user-name h3.light:hover{
-  /* color: rgb(160, 58, 255); */
-  color: rgb(122, 40, 253);
+  color: rgb(93, 15, 219);
 }
 .logout span{
   margin: auto 10px auto 12px;
@@ -761,24 +759,24 @@ span.material-icons{
 
 /* View transition ******************************************/
 .route-enter-from{
-  opacity: 0;
-  transform: translateX(-1500px);
+  opacity: 1;
+  transform: scale(0)
 }
 .route-enter-active{
   transition: all 0.3s ease-out;
 }
 .route-leave-to{
-  opacity: 0;
-  transform: translateX(1500px);
+  opacity: 1;
+  transform: scale(0)
 }
 .route-leave-active{
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 
 /* Side chat slider */
 .slideSideChat{
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
 }
 
 
