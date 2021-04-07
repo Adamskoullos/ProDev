@@ -123,12 +123,17 @@ input[type="file"]{
   border: 0px solid  var(--secondary);
   transition: all ease 0.2s;
 }
-.file-upload-button[data-v-6761eb8c].light{
+.file-upload-button:hover{
+  box-shadow: 1px 2px 4px rgba(50,50,50,0.3);
+  transform: scale(0.97);
+  transition: all ease 0.3s;
+}
+.file-upload-button.light{
     background: rgb(216, 216, 216, 0.5);
     color: var(--primary);
     box-shadow: 1px 1px 5px rgba(50,50,50,0.5);
 }
-.file-upload-button[data-v-6761eb8c].light:hover{
+.file-upload-button.light:hover{
     box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
     transform: scale(0.97);
 }
@@ -139,14 +144,7 @@ input[type="file"]{
     box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
     transform: scale(0.97);
 }
-.file-upload-button{
-    background: rgb(216, 216, 216, 0.5);
-}
-.file-upload-button:hover{
-  box-shadow: 1px 2px 4px rgba(50,50,50,0.3);
-  transform: scale(0.97);
-  transition: all ease 0.3s;
-}
+
 /* Form transition in/out */
 
 .fade-enter-from,
