@@ -148,7 +148,7 @@ input{
 input.light{
   width: 100%;
   margin: 10px;
-  border: 2px solid rgb(255, 255, 255, 0.2)
+  border: 2px solid rgb(255, 255, 255, 0.2);
 }
 input.light:focus{
   border: 2px solid white;

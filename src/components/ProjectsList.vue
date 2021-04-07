@@ -128,16 +128,16 @@ img {
 .tasks.light p{
   color: var(--primary)
 }
-input[data-v-0b85af30]{
+input{
   width: 100%;
   margin: 10px;
 }
-input[data-v-0b85af30].light{
+input.light{
   width: 100%;
   margin: 10px;
-  border: 2px solid rgb(255, 255, 255, 0.1)
+  border: 2px solid rgb(255, 255, 255, 0.1);
 }
-input[data-v-0b85af30].light:focus{
+input.light:focus{
   border: 2px solid white;
 }
 </style>

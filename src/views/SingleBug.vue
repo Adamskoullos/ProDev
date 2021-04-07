@@ -159,6 +159,7 @@ img {
 .info h3{
     margin-top: 5px;
     margin-bottom: 3px;
+    text-align: center;
 }
 p.user-name{
     font-weight: 200;

@@ -139,6 +139,9 @@ input[type="file"]{
     box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
     transform: scale(0.97);
 }
+.file-upload-button{
+    background: rgb(216, 216, 216, 0.5);
+}
 .file-upload-button:hover{
   box-shadow: 1px 2px 4px rgba(50,50,50,0.3);
   transform: scale(0.97);

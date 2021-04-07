@@ -166,7 +166,7 @@
   }
   input.light, textarea.light {
     border: 0;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255,255,255);
     border-bottom: 2px solid rgb(216, 216, 216, 0.5);
     padding: 10px;
     outline: none;
