@@ -84,14 +84,6 @@ As the application is designed to be on a developers screen in conjunction with 
 
 # UX Design
 
-**Note**: The current release would be akin to the initial alpha or beta and as such is focused on the main user, the developer and the minimum viable features for their daily workflows. Key features not incorporated in the current deployment that have been pushed back are:
-
-* Admin authentication and UI for project manager roles
-* Developer performance reporting and analysis 
-* Multiple team authentication - so when a user logs in they only have access to their private team bubble
-* In app notifications of unread chat messages
-* Breaking out the theme mode property and adding a users object on the back end within firestore so the mode can be saved to a users profile and loaded on login
-
 ## User Stories
 
 ### First time visitor goals:
@@ -141,7 +133,7 @@ On to the views:
     - Description
     - Solution
     - file upload for solution images
-    - Open/closed property
+    - Open/Solved property
 
 - Team Live-Chat: When the viewport is larger than the main break point, on laptops and desktop screens the `Chat` component is taken out of the main `router-view` and displays on the toggled side-chat window.  When the viewport is the size of tablets and phones the `Chat` component is added as a main view.  There were a few issues to overcome here but now when screens go below the main breakpoint the chat will not wrap below the main router-view, so gives a more mobile focused experience on smaller screens, while also offering full functionality on larger screens.
 
@@ -188,7 +180,7 @@ Digging slightly deeper into the composables in the above map:
 
 Composables extract much of the logic keeping each component cleaner and easier to maintain.  Structured as ES6 modules they take advantage of closure and simply return the function which once invoked within a component returns the required properties/functions.  There is a consistent structure used when creating composables.
 
-Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks is be used as normal.  
+Firebase has its own methods to connect to their api's so the normal rest api patterns are not used, however the `async` and `await` pattern using `try` `catch` blocks is used as normal.  
 
 - **getUser** The composable returns the `getUser` function which through destructuring returns the current user object. First firebase authentication is queried to check if there is a user logged in and if so grabs the current user and saves it to the `user` object which is returned. If no user is logged in, the value of `user` is null. 
 
@@ -255,11 +247,15 @@ onBeforeUpdate(() => {
 
 -----------------------------------------
 
-- [X] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer.
+- [X] When the main-content window (col) the main router-view has content greatr than the vh, scrolling content also scrolled the side-nav and side-chat.  Fixing the position of the side-nav worked while the page maintained the same view width but as the viewport width hit the break point it all went wrong.
 
 **Solution**: For both the chat window (col) and the main content window (col) I gave the container div a max height of the VH and then overflow: auto.  This separated them from the side bar without having to fix position the side bar which creates a whole lot of other issues.  This was great and really added to the dashboard feel. I then hid the scroll bars to give a really clean look.
 
 ## Unresolved Bugs
+
+- [] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer.
+
+- [] Working with DOM elements within the Vue 3 composition api setup function is done via template ref's.  Simple tasks such as auto focusing an input as the form is opened proved really awkward as I struggled to use basic JS with element ref's.  This is one of the simpler parts of Vue to get your head around so spending 10's of hours on this and not conquering the issue was frustrating. Most of the time I was able to use the other ref() (not to be confused with template refs) to pass and work with data, so on a positive I have had a lot of practice passing props down and emitting events up which has given me a great understanding of managing state at the simplest level.
 
 ## Testing
 
