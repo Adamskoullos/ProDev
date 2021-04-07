@@ -144,7 +144,7 @@ input[type="file"]{
   transform: scale(0.97);
   transition: all ease 0.3s;
 }
-/* New task form transition in/out */
+/* Form transition in/out */
 
 .fade-enter-from,
 .fade-leave-to{

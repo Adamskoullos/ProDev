@@ -74,7 +74,7 @@ textarea.light:focus{
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(255, 255, 255);
 }
-  /* List transitions for adding and removing tasks */
+  /* load transition of new message form */
 
 .list-enter-from,
 .list-leave-to{

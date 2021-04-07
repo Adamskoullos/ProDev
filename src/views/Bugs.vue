@@ -1,19 +1,19 @@
 <template>
-<div class="wrapper">
-    <div class="button-wrapper">
-        <router-link :to="{ name: 'NewBug' }" :class="{light: light}">
-            <button :class="{light: light}">New Bug</button>
-        </router-link>
-    </div>
-    <div class="Bugs-window">
-        <div v-if="error" class="error">
-            <h4>Cannot access the the Bugs database</h4>
+    <div class="wrapper">
+        <div class="button-wrapper">
+            <router-link :to="{ name: 'NewBug' }" :class="{light: light}">
+                <button :class="{light: light}">New Bug</button>
+            </router-link>
         </div>
-        <div v-if="documents" class="Bugs">
-            <BugsList :bugs="documents" :light="light" />
+        <div class="Bugs-window">
+            <div v-if="error" class="error">
+                <h4>Cannot access the the Bugs database</h4>
+            </div>
+            <div v-if="documents" class="Bugs">
+                <BugsList :bugs="documents" :light="light" />
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -57,6 +57,5 @@ export default {
     flex: 1;
     justify-content: center;
     align-items: center;
-    
 }
 </style>

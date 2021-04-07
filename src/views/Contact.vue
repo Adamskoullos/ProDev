@@ -1,18 +1,18 @@
 <template>
-  <div class="row">
-       <h2 class="heading">ProDev Premium can be customised to suit your teams needs</h2>
-       <h5>Get in touch and let us know what features and functionality would best fit your operations and we can get you up and running with a private environment</h5>
-       <p>Thankyou for contacting ProDev, once we receive your request we will contact you to arrange an initial virtual consultation to discuss the details</p>
-    <form @submit.prevent="handleEmail" class="col-12 contact-form">
-        <input type="text" placeholder="Name" v-model="name" required>
-        <input type="text" placeholder="Email" v-model="email" required>
-        <input type="number" placeholder="Number of team members" v-model="teamMembers">
-        <textarea type="text" placeholder="Please let us know any further info about your requirements" v-model="message" />
-        <div class="error">{{ error }}</div>
-        <button v-if="!isPending">Submit request</button>
-        <button v-if="isPending" class="loading">Submitting...</button>
-    </form>
-</div>
+    <div class="row">
+        <h2 class="heading">ProDev Premium can be customised to suit your teams needs</h2>
+        <h5>Get in touch and let us know what features and functionality would best fit your operations and we can get you up and running with a private environment</h5>
+        <p>Thankyou for contacting ProDev, once we receive your request we will contact you to arrange an initial virtual consultation to discuss the details</p>
+        <form @submit.prevent="handleEmail" class="col-12 contact-form">
+            <input type="text" placeholder="Name" v-model="name" required>
+            <input type="text" placeholder="Email" v-model="email" required>
+            <input type="number" placeholder="Number of team members" v-model="teamMembers">
+            <textarea type="text" placeholder="Please let us know any further info about your requirements" v-model="message" />
+            <div class="error">{{ error }}</div>
+            <button v-if="!isPending">Submit request</button>
+            <button v-if="isPending" class="loading">Submitting...</button>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -82,5 +82,4 @@ form{
     width: 100%;
     max-width: 600px;
 }
-
 </style>

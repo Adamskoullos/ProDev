@@ -55,8 +55,7 @@
 import useDocument from '../composables/useDocument'
 import getDocument from '../composables/getDocument'
 import getUser from '../composables/getUser'
-import { useRouter } from 'vue-router'
-import { computed, ref } from '@vue/runtime-core'
+import { computed } from '@vue/runtime-core'
 import AddSolution from '../components/AddSolution'
 
 export default {
@@ -66,13 +65,10 @@ export default {
     const { updateDoc, error } = useDocument('bugs', props.id)
     const { document } = getDocument('bugs', props.id)
     const { user } = getUser()
-    const router = useRouter()
 
     const ownership = computed(()=> {
         return document.value && user.value && user.value.uid == document.value.userId
     })
-
-    
 
     const handleSolved = async () => {
       document.solved = !document.solved
@@ -130,13 +126,13 @@ h6.light{
     padding: 20px;
     border-radius: 8px;
     background: rgb(63, 63, 63, 0.0);
-  }
-  .single-bug{
+}
+.single-bug{
     padding: 0;
     flex:1;
 
-  }
-  .thumbnail {
+}
+.thumbnail {
     margin:15px auto;
     display: flex;
     justify-content:center;
@@ -145,114 +141,112 @@ h6.light{
     overflow: hidden;
     border-radius: 8px;
     border: 1px;
-  }
-  img {
+}
+img {
     flex:1;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     border-radius: 8px;
     border: 1px;
-  }
-  .info{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
-  .info h3{
-      margin-top: 5px;
-      margin-bottom: 3px;
-  }
-  p.user-name{
-      font-weight: 200;
-  }
-  .bugs{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
-      width: 100%;
-      padding: 0;
-  }
-  .bugs h4{
-      margin: 10px auto;
-  }
-  button{
-   margin: 15px 0;
-  }
-  button:hover{
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info h3{
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+p.user-name{
+    font-weight: 200;
+}
+.bugs{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    padding: 0;
+}
+.bugs h4{
+    margin: 10px auto;
+}
+button{
+    margin: 15px 0;
+}
+button:hover{
     color: rgb(51, 179, 1);
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
     transform: scale(0.98);
     transition: all ease 0.2s;
-  }
-  
-  .buttons{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-  .buttons button{
-      margin: 5px;
-  }
-   .buttons button:hover {
-    
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons button{
+    margin: 5px;
+}
+.buttons button:hover {
     color: rgb(51, 179, 1);
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
     transform: scale(0.98);
     transition: all ease 0.3s;
-  }
-  
-  .bug{
-      background: rgb(63, 63, 63, 0.8);
-      border-radius: 8px;
-      box-shadow: 1px 1px 5px rgba(50,50,50,0);
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px auto;
-  }
-  .bug.light{
-      background: rgb(255,255,255, 0.9);
-      box-shadow: 1px 1px 10px rgba(50,50,50,0);
-  }
-  .actions{
-      min-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content:stretch;
-  }
-  .icons{
-      min-width: 75px;
-      display: flex;
-      align-items: center;
-      margin: auto 15px auto auto;
-  }
-  .material-icons{
-      font-size: 24px;
-      color: #bbb;
-      cursor: pointer;
-      margin: auto ;
-      display: block;
-  }
-  .material-icons:hover {
+}
+.bug{
+    background: rgb(63, 63, 63, 0.8);
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgba(50,50,50,0);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+.bug.light{
+    background: rgb(255,255,255, 0.9);
+    box-shadow: 1px 1px 10px rgba(50,50,50,0);
+}
+.actions{
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:stretch;
+}
+.icons{
+    min-width: 75px;
+    display: flex;
+    align-items: center;
+    margin: auto 15px auto auto;
+}
+.material-icons{
+    font-size: 24px;
+    color: #bbb;
+    cursor: pointer;
+    margin: auto ;
+    display: block;
+}
+.material-icons:hover {
     color: rgb(51, 179, 1);
     transform: scale(1.3);
     transition: all ease 0.2s;
-  }
-  .details{
-      display: flex;
-      align-items: center;
-      
-  }
-  .details p{
-      margin: 5px auto 5px 15px;
-      line-height: 2rem;
-      font-size: 1.15rem;
-  }
-  .complete{
-      border-left: 6px solid rgb(51, 179, 1);
-  }
+}
+.details{
+    display: flex;
+    align-items: center;
+    
+}
+.details p{
+    margin: 5px auto 5px 15px;
+    line-height: 2rem;
+    font-size: 1.15rem;
+}
+.complete{
+    border-left: 6px solid rgb(51, 179, 1);
+}
 </style>

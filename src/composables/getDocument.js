@@ -2,8 +2,6 @@ import { ref } from "@vue/reactivity"
 import { watchEffect } from "@vue/runtime-core"
 import { fStore } from "../firebase/config"
 
-
-
 const getDocument = (collection, id) => {
     const document = ref(null)
     const error = ref(null)

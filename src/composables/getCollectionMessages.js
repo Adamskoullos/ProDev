@@ -2,8 +2,6 @@ import { ref } from "@vue/reactivity"
 import { watchEffect } from "@vue/runtime-core"
 import { fStore } from "../firebase/config"
 
-
-
 const getCollectionMessages = (collection, query) => {
     const documents = ref(null)
     const error = ref(null)

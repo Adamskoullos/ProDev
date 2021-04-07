@@ -125,7 +125,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import { onBeforeMount, onUnmounted, onBeforeUpdate, onUpdated } from '@vue/runtime-core'
+import { onBeforeMount, onUnmounted, onBeforeUpdate } from '@vue/runtime-core'
 import Chat from './views/Chat'
 import { useRoute, useRouter } from 'vue-router'
 import gsap from 'gsap'
@@ -301,7 +301,6 @@ components: { Chat },
           }
         } 
         
-
         return { 
           toggleSideChat, 
           showSideChat, 
@@ -375,7 +374,6 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
   box-shadow: 4px 1px 17px rgba(0, 0, 0, 0.5);
   color: rgb(188, 202, 170);
 }
-
 .main-row{
   min-height: 100vh;
   position: relative;
@@ -539,34 +537,34 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 }
 /** Dark mode nav items ************************/
 .nav-item{
-    box-shadow: 3px 6px 10px rgba(50,50,50,0.9);
-    transition: all ease 0.2s;
-    background:rgb(64, 64, 64);
-    border-radius: 8px;
-    border: 0;
-    padding: 0px 0px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-block;
-    width: 100%;
-    color: var(--primary);
-  }
-  .nav-item:hover{
-    box-shadow: 2px 2px 6px rgba(50,50,50,0.8);
-    transform: scale(0.97);
-    transition: all ease 0.2s;
-  }
+  box-shadow: 3px 6px 10px rgba(50,50,50,0.9);
+  transition: all ease 0.2s;
+  background:rgb(64, 64, 64);
+  border-radius: 8px;
+  border: 0;
+  padding: 0px 0px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  color: var(--primary);
+}
+.nav-item:hover{
+  box-shadow: 2px 2px 6px rgba(50,50,50,0.8);
+  transform: scale(0.97);
+  transition: all ease 0.2s;
+}
 .nav-item span,
 .nav-item a{
-    display: block;
-    padding: 10px 12px;
-    border-radius: 4px;
-  }
-  .nav-item span:hover{
-    color: rgb(206, 206, 206);
-  }
-  span.material-icons:hover{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+.nav-item span:hover{
   color: rgb(206, 206, 206);
+}
+span.material-icons:hover{
+color: rgb(206, 206, 206);
 }
 .no-auth h3:hover{
   color: rgb(226, 226, 226);
@@ -580,7 +578,6 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
 .projects a:hover{
   color: rgb(206, 206, 206);
 }
-
 span.chat:hover{
   color: rgb(206, 206, 206);
 }
@@ -773,11 +770,8 @@ span.material-icons{
   transition: all 0.2s ease-in;
 }
 
-
 /* Side chat slider */
 .slideSideChat{
   transition: all 0.2s ease;
 }
-
-
 </style>

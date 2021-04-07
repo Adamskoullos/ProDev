@@ -12,7 +12,6 @@ import Messages from '../components/Messages'
 export default {
   components: { NewMessage, Messages },
   props: ['light']
-
 }
 </script>
 

@@ -1,7 +1,6 @@
 import { ref } from '@vue/reactivity'
 import { fStore } from '../firebase/config'
 
-
 const useCollection = (collection) => {
     const error = ref(null)
     const isPending = ref(false)

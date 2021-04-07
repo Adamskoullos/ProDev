@@ -80,10 +80,10 @@ export default {
 
 <style scoped>
 .row{
-    flex:1;
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 95%;
+  flex:1;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 95%;
 }
 form{
   margin-top: 10vh;

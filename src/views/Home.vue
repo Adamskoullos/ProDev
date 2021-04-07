@@ -122,8 +122,7 @@
 
 
 export default {
-  name: 'Home',
-  components: {}
+  name: 'Home'
 }
 </script>
 
@@ -147,9 +146,7 @@ export default {
   background: rgb(100,100,100,0.3);
   margin: 40px auto;
 }
-
 .header{
-  /* background: blueviolet; */
   min-height: 100px;
   flex:1;
   display: flex;
@@ -168,7 +165,6 @@ export default {
   font-weight: 600;
   margin: 0 auto 15px auto;
 }
-
 .info{
   display: flex;
   flex-direction: column;
@@ -191,10 +187,7 @@ div.line{
 div.line h5{
   margin: auto auto auto 20px;
 }
-
 .image{
-  /* background: chocolate; */
-  /* min-height: 300px; */
   display: flex;
   justify-content: center;
   align-items: center;

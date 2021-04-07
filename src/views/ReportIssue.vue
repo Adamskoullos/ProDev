@@ -1,13 +1,13 @@
 <template>
-  <div class="row">
-    <form @submit.prevent="handleEmail" class="col-12 contact-form" :class="{light: light}">
-        <h3 :class="{light: light}">Thank you for reporting a ProDev issue</h3>
-        <textarea type="text" placeholder="Please describe the issue" v-model="message" :class="{light: light}"/>
-        <div class="error">{{ error }}</div>
-        <button v-if="!isPending" :class="{light: light}">Submit issue</button>
-        <button v-if="isPending" :class="{light: light}" class="loading">Submitting...</button>
-    </form>
-</div>
+    <div class="row">
+        <form @submit.prevent="handleEmail" class="col-12 contact-form" :class="{light: light}">
+            <h3 :class="{light: light}">Thank you for reporting a ProDev issue</h3>
+            <textarea type="text" placeholder="Please describe the issue" v-model="message" :class="{light: light}"/>
+            <div class="error">{{ error }}</div>
+            <button v-if="!isPending" :class="{light: light}">Submit issue</button>
+            <button v-if="isPending" :class="{light: light}" class="loading">Submitting...</button>
+        </form>
+    </div>
 </template>
 
 <script>

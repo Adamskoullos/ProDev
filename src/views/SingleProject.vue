@@ -105,9 +105,8 @@ export default {
     padding: 0px 20px;
     border-radius: 4px;
     background: rgb(63, 63, 63, 0.0);
-  }
-  
-  .thumbnail {
+}
+.thumbnail {
     display: flex;
     justify-content:center;
     align-items: center;
@@ -117,110 +116,109 @@ export default {
     overflow: hidden;
     border-radius: 8px;
     border: 1px;
-  }
-  img {
+}
+img {
     flex:1;
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
     border-radius: 8px;
     border: 1px;
-  }
-  .info{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
-  .info h3{
-      margin-top: 5px;
-      margin-bottom: 3px;
-  }
-  p.user-name{
-      font-weight: 200;
-  }
-  .info p{
-      text-align: center;
-  }
-  .tasks{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
-      width: 100%;
-      padding: 0;
-  }
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info h3{
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+p.user-name{
+    font-weight: 200;
+}
+.info p{
+    text-align: center;
+}
+.tasks{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    padding: 0;
+}
 
-  .tasks h4{
-      margin: 15px auto;
-  }
-  .single button.big{
-      margin: 15px auto;
-  }
-   .single button.big:hover {
-    
+.tasks h4{
+    margin: 15px auto;
+}
+.single button.big{
+    margin: 15px auto;
+}
+.single button.big:hover {
     color: rgb(51, 179, 1);
     box-shadow: 1px 2px 5px rgba(50,50,50,0.3);
     transform: scale(0.98);
     transition: all ease 0.3s;
-  }
-  .single button.big.light:hover{
-      color: var(--primary);
-  }
-  
-  .task{
-      background: rgba(63, 63, 63, 0.6);
-      border-radius: 8px;
-      box-shadow: 1px 1px 5px rgba(50,50,50,0.8);
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-left: 6px solid rgb(119, 0, 230);
-      margin: 10px auto;
-  }
-  .task.light{
-      background: white;
-      box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
-  }
-  .actions{
-      min-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content:stretch;
-  }
-  .icons{
-      min-width: 75px;
-      display: flex;
-      align-items: center;
-      margin: auto 15px auto auto;
-  }
-  .material-icons{
-      font-size: 24px;
-      color: #bbb;
-      cursor: pointer;
-      margin: auto ;
-      display: block;
-  }
-  .material-icons:hover {
+}
+.single button.big.light:hover{
+    color: var(--primary);
+}
+
+.task{
+    background: rgba(63, 63, 63, 0.6);
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px rgba(50,50,50,0.8);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 6px solid rgb(119, 0, 230);
+    margin: 10px auto;
+}
+.task.light{
+    background: white;
+    box-shadow: 1px 1px 10px rgba(50,50,50,0.3);
+}
+.actions{
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:stretch;
+}
+.icons{
+    min-width: 75px;
+    display: flex;
+    align-items: center;
+    margin: auto 15px auto auto;
+}
+.material-icons{
+    font-size: 24px;
+    color: #bbb;
+    cursor: pointer;
+    margin: auto ;
+    display: block;
+}
+.material-icons:hover {
     color: rgb(51, 179, 1);
     transform: scale(1.3);
     transition: all ease 0.2s;
-  }
-  .details{
-      display: flex;
-      align-items: center;
-      
-  }
-  .details p{
-      margin: 5px auto 5px 15px;
-      line-height: 2rem;
-      font-size: 1.15rem;
-  }
-  .complete{
-      border-left: 6px solid rgb(51, 179, 1);
-  }
-  /* List transitions for adding and removing tasks */
+}
+.details{
+    display: flex;
+    align-items: center;
+    
+}
+.details p{
+    margin: 5px auto 5px 15px;
+    line-height: 2rem;
+    font-size: 1.15rem;
+}
+.complete{
+    border-left: 6px solid rgb(51, 179, 1);
+}
+/* List transitions for adding and removing tasks */
 
 .list-enter-from,
 .list-leave-to{
@@ -235,7 +233,6 @@ export default {
 }
 .list-leave-active{
    transition: all 0.5s ease; 
-   /* position: absolute; */
 }
 .list-enter-active{
   transition: all 0.5s ease;

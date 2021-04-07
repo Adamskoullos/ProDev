@@ -29,8 +29,6 @@
     font-size: 14px;
     margin: 16px 0;
   }
-
-
   h1,h2,h3,h4{
     margin-bottom: 0;
   }
@@ -55,7 +53,6 @@
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 0px solid orange;  /* creates padding around scroll thumb */
   }
-
   form {
     max-width: 400px;
     margin: 0 auto;
@@ -84,7 +81,6 @@
   textarea:focus{
     border: 2px solid rgb(45, 160, 0);
   }
-
   button, .btn { 
     background: rgb(75, 75, 75);
     color:rgb(206, 206, 206);
@@ -100,14 +96,12 @@
     transition: all ease 0.2s;
   }
   button:hover, .btn:hover {
-    
     color: rgb(206, 206, 206);
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.94);
     transition: all ease 0.3s;
   }
   button:focus {
-    
     color: rgb(206, 206, 206);
     box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
     transform: scale(0.94);
@@ -116,7 +110,6 @@
   .loading{
     color: rgb(45, 160, 0) !important;
   }
-
 
   /* Light mode  *********************************************/
   h1.light,h2.light,
@@ -149,8 +142,6 @@
     transition: all ease 0.2s;
   }
   button.light:hover, .btn:hover {
-    
-    /* color: rgb(51, 179, 1); */
     box-shadow: 1px 2px 3px rgba(50,50,50,0.3);
     transform: scale(0.96);
     transition: all ease 0.3s;

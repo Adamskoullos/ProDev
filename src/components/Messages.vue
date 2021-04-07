@@ -59,6 +59,7 @@ export default {
     box-sizing: border-box;
     overflow:auto;
 }
+/* Hiding the scrollbar to maintain a clean look */
 .messages::-webkit-scrollbar {
     width: 0px;               /* width of the entire scrollbar */
 }
@@ -106,7 +107,7 @@ span.message{
     line-height: 1.1rem;
     margin: 10px 15px;
 }
-  /* List transitions for adding and removing tasks */
+/* Transitions for new messages as well as loading message elements */
 
 .list-enter-from,
 .list-leave-to{

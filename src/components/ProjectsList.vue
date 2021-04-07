@@ -77,9 +77,6 @@ a.route-tag{
   transition: all ease 0.3s;
   cursor: pointer;
 }
-.single.light:hover{
-
-}
 .thumbnail {
   display: flex;
   justify-content: center;
@@ -135,7 +132,6 @@ input[data-v-0b85af30]{
   width: 100%;
   margin: 10px;
 }
-
 input[data-v-0b85af30].light{
   width: 100%;
   margin: 10px;
