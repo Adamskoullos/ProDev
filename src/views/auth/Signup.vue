@@ -46,6 +46,6 @@ export default {
 
 <style scoped>
 form{
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 </style>

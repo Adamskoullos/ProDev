@@ -415,7 +415,7 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
   max-height: 100vh;
 }
 .content-col{
-  max-height: 90vh;
+  max-height: 93vh;
   overflow: auto;
   display: flex;
   justify-content: center;

@@ -7,8 +7,9 @@ import Bugs from '../views/Bugs.vue'
 import NewBug from '../views/NewBug.vue'
 import Chat from '../views/Chat'
 import ReportIssue from '../views/ReportIssue'
-import Login from '../views/auth/Login'
-import Signup from '../views/auth/Signup'
+import Contact from '../views/Contact.vue'
+import Login from '../views/auth/Login.vue'
+import Signup from '../views/auth/Signup.vue'
 import SingleProject from '../views/SingleProject.vue'
 import SingleBug from '../views/SingleBug.vue'
 
@@ -89,6 +90,13 @@ const routes = [
     path: '/issue',
     name: 'ReportIssue',
     component: ReportIssue,
+    props: true,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
     props: true
   },
   {

@@ -35,7 +35,7 @@
         <div class="col-12 col-md-4 info">
           <div class="line">
             <span class="material-icons">fiber_manual_record</span>
-            <h5>Click user name in the top right bar to toggle theme</h5>
+            <h5>Click user-name in the top bar to toggle theme</h5>
           </div>
           <div class="line">
             <span class="material-icons">fiber_manual_record</span>
@@ -44,10 +44,6 @@
           <div class="line">
             <span class="material-icons">fiber_manual_record</span>
             <h5>View team members projects and tasks</h5>
-          </div>
-          <div class="line">
-            <span class="material-icons">fiber_manual_record</span>
-            <h5>Views for both user projects and team projects</h5>
           </div>
         </div>
         <div class="col-12 col-md-8 image">
@@ -111,6 +107,13 @@
         </div>
       </div>
       <div class="divider"></div>
+      <div class="contact">
+        <h3>ProDev is free to demo, just sign up!</h3>
+        <h5>Contact us to upgrade and set up a private bubble for your team</h5>
+        <router-link :to="{ name: 'Contact' }">
+          <button>Get in touch</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -126,6 +129,7 @@ export default {
 
 <style scoped>
 .main{
+  min-height: 100vh;
   flex:1;
   display: flex;
   flex-direction: column;
@@ -134,7 +138,7 @@ export default {
   justify-content: stretch;
   min-height: 100vh;
   background: rgb(70, 70, 70);
-  box-shadow: 0px 0px 100px rgba(50,50,50,0.4);
+  box-shadow: 0px 0px 100px rgba(50,50,50,0.5);
   border-radius: 8px;
 }
 .divider{
@@ -199,5 +203,19 @@ div.line h5{
 .image img{
   width: 100%;
   border-radius: 8px;
+}
+.contact{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact h5,
+.contact h3{
+  text-align: center;
+  margin: 10px auto;
+}
+.contact button{
+  margin: 20px auto;
 }
 </style>
