@@ -261,6 +261,12 @@ onBeforeUpdate(() => {
 
 ### HTML & CSS
 
+Both HTML CSS has been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed. 
+
+I found testing the live site with Lighthouse got some confusing results as again the component nature of the build did not play well.  Overall accessibility scored 98 and best practices 100.
+
+The landing page images could be condensed to improve initial loading times but in practice the loading time for the page seems fast. 
+
 ### Testing User Stories
 
 ### Device Testing
@@ -278,14 +284,13 @@ The project is built in `vscode` and set up via the `Vue cli` which included: th
 
 The project is built using the `Vue 3 composition api`.
 
-`Firebase` is installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` are used within this project.
+`Firebase` tools is installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` are used within this project.
 
 `GitHub` is used for version control and `Trello` for managing the project and each sprint.
 
 --------------------------------------------------
 
 ### Project setup
-
 
 ```
 npm install

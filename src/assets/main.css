@@ -74,6 +74,7 @@
     box-sizing: border-box;
     margin: 20px auto;
     background: rgb(63, 63, 63);
+    box-shadow: none !important;
   }
   input:focus{
     border: 2px solid rgb(45, 160, 0);
