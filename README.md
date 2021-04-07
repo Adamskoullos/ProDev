@@ -1,41 +1,6 @@
 # ProDev
 
-## Development images for Mentor:
 
-### Main dash in dark mode showing team-projects in the main router-view with the side-chat toggled open:
-![dark-main](https://user-images.githubusercontent.com/73107656/113576672-e6787400-9617-11eb-84d0-a67d478a7e03.png)
-
-
-### Same thing in light mode:
-![light-main](https://user-images.githubusercontent.com/73107656/113576678-eaa49180-9617-11eb-95ba-3988c3c762d6.png)
-
-
-### Same again without side-chat open:
-![without-chat](https://user-images.githubusercontent.com/73107656/113576688-ef694580-9617-11eb-905e-58ff8ef19dcf.png)
-
-
-### Bugs list view:
-![bugs](https://user-images.githubusercontent.com/73107656/113576706-f7c18080-9617-11eb-831d-4654abd89be8.png)
-
-
-### Projects-list view on mobile:
-![mobile](https://user-images.githubusercontent.com/73107656/113576738-05770600-9618-11eb-8327-9e6a05e1d066.png)
-
-
-### Bugs-list view on mobile:
-![mobile-bugs](https://user-images.githubusercontent.com/73107656/113576747-0871f680-9618-11eb-9ff4-0fae6e69fd8e.png)
-
-
-### Chat-window is full screen on mobile:
-![mobile-chat](https://user-images.githubusercontent.com/73107656/113576751-0ad45080-9618-11eb-80ec-1b619b00fa80.png)
-
-
-### Single-project view:
-![single-project-mobile](https://user-images.githubusercontent.com/73107656/113576762-0dcf4100-9618-11eb-9ea9-4e144ae97c3e.png)
-
-
-### Single bug view of a bug that has been solved:
-![solved-bug](https://user-images.githubusercontent.com/73107656/113576775-1162c800-9618-11eb-83b3-110310189a55.png)
 
 ## Table of Contents:
 
