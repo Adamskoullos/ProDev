@@ -351,6 +351,32 @@ Mobile and tablet devices:
 
 ## Credits
 
+* **CSS-Trick** - https://css-tricks.com/custom-scrollbars-in-webkit/
+
+The above link is to a page that breaks down the available properties that can be modified for browser scrollbars.  Really helped me out
+
+* On top of the **Code Institute** Javascript module I have undertaken many tutorials and mini projects and courses in preparation for this project:
+
+**Advanced JS mostly covering OOP**:
+
+![UC-7b1a8f5a-5d3d-49d9-b88f-bfa22f70c6e3](https://user-images.githubusercontent.com/73107656/114020871-f1294800-9867-11eb-8de1-093f082049d8.jpg)
+
+**Functional Programming**: 
+
+![UC-06438674-3733-445e-9c6c-b819765ec7d4](https://user-images.githubusercontent.com/73107656/114021189-58df9300-9868-11eb-801c-956327eb4461.jpg)
+
+
+**Vue 3 & Firebase**:
+
+![UC-4e6c8262-31bd-4897-92df-ab7ff084033e](https://user-images.githubusercontent.com/73107656/114021319-7c0a4280-9868-11eb-9f6b-b36f6b85bd6e.jpg)
+
+**Vue 3 Animations**: https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu
+
+
+**Firebase basics**: https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB
+
+------------------------------------------------
+
 ## Deployment
 
 The project is deployed with Firebase.
@@ -390,21 +416,4 @@ The project is built using the `Vue 3 composition api` with all views and compon
 
 --------------------------------------------------
 
-### Project setup
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
