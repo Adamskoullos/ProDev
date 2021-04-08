@@ -68,11 +68,6 @@ export default {
 background: rgb(75,75,75);        /* color of the tracking area */
 }
 
-.messages::-webkit-scrollbar-thumb {
-background-color: rgb(75,75,75);    /* color of the scroll thumb */
-border-radius: 20px;       /* roundness of the scroll thumb */
-border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
-}
 .single{
     background: rgb(63, 63, 63, 0.9);
     border-radius: 8px;
@@ -82,7 +77,6 @@ border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
     align-items: stretch;
     justify-content: space-between;
     margin: 10px auto;
-    padding: 20px auto;
 }
 .single.light{
     color: var(--primary);

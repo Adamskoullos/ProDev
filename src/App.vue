@@ -348,11 +348,6 @@ components: { Chat },
 background: rgb(75,75,75, 0.0);        /* color of the tracking area */
 }
 
-.content-col::-webkit-scrollbar-thumb {
-background-color: rgb(75,75,75, 0.0);    /* color of the scroll thumb */
-border-radius: 20px;       /* roundness of the scroll thumb */
-border: 0px solid rbg(75,75,75);  /* creates padding around scroll thumb */
-}
 /** Default dark mode  ****************/
 
 .chat-col{

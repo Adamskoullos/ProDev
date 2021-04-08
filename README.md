@@ -255,21 +255,56 @@ onBeforeUpdate(() => {
 
 - [] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer.
 
-- [] Working with DOM elements within the Vue 3 composition api setup function is done via template ref's.  Simple tasks such as auto focusing an input as the form is opened proved really awkward as I struggled to use basic JS with element ref's.  This is one of the simpler parts of Vue to get your head around so spending 10's of hours on this and not conquering the issue was frustrating. Most of the time I was able to use the other ref() (not to be confused with template refs) to pass and work with data, so on a positive I have had a lot of practice passing props down and emitting events up which has given me a great understanding of managing state at the simplest level.
+- [] Working with DOM elements within the Vue 3 composition api setup function is done via template ref's.  Simple tasks such as auto focusing an input as the form is opened proved really awkward as using template ref's I struggled to grab and work with elements inside the setup function. The setup function is scoped so using basic JS to grab and manipulate elements has to be done through template refs.  This is one of the simpler parts of Vue to get your head around so spending 10's of hours on this and not conquering the issue was frustrating. Most of the time I was able to use the other ref() (not to be confused with template refs) to pass and work with data, so on a positive I have had a lot of practice passing props down and emitting events up which has given me a great understanding of managing state at the simplest level.
 
 ## Testing
 
 ### HTML & CSS
 
-Both HTML CSS has been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed. 
+Both HTML CSS has been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed after some minor alterations. 
 
 I found testing the live site with Lighthouse got some confusing results as again the component nature of the build did not play well.  Overall accessibility scored 98 and best practices 100.
 
-The landing page images could be condensed to improve initial loading times but in practice the loading time for the page seems fast. 
+Lighthouse highlighted the landing page images could be condensed to improve initial loading times but in practice the loading time for the page seems fast, I may come back to do this as testing continues. 
 
-### Testing User Stories
+### Browser Testing
+
+**Chrome**: The app is working as expected
+
+**Brave**: The app is working as expected
+
+**Safari**: The app is working as expected
+
+**Edge**: The app is working as expected
+
+**Firefox**: Initial testing highlighted one serious issue and two minor issues:
+
+1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
+
+2. **Minor issue**: Firefox does not recognise the webkit-scrollbar CSS property hiding the scrollbars, however scrollbar color properties are so at least they are in keeping with the color theme.
+
+3. **Linux only**: Firefox shows red box-shadows on required inputs and textarea's, not solved by simply setting box-shadows to none.
+
 
 ### Device Testing
+
+The app is fully responsive on all devices:
+
+Mobile and tablet devices:
+![1](https://user-images.githubusercontent.com/73107656/113994093-ffb63600-984c-11eb-8425-5d3b7d538e7c.png)
+
+![2](https://user-images.githubusercontent.com/73107656/113994100-02189000-984d-11eb-83a9-389dd07f84b2.png)
+
+![3](https://user-images.githubusercontent.com/73107656/113994112-047aea00-984d-11eb-9c70-bed1ad0c12b2.png)
+14" Laptop:
+![14 -laptop](https://user-images.githubusercontent.com/73107656/113994118-0644ad80-984d-11eb-9914-bf4c7e3b7502.png)
+24" Display:
+![24 -display](https://user-images.githubusercontent.com/73107656/113994132-08a70780-984d-11eb-8a19-2e8e4ab9220a.png)
+
+
+
+
+### Testing User Stories
 
 ## Credits
 

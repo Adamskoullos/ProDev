@@ -58,7 +58,7 @@
         <div class="col-12 col-md-4 info">
           <div class="line">
             <span class="material-icons">fiber_manual_record</span>
-            <h5>All data stored and retrieved from Firebase real-time cloud storage</h5>
+            <h5>Powered with a Firebase back-end for real-time data updates</h5>
           </div>
           <div class="line">
             <span class="material-icons">fiber_manual_record</span>
