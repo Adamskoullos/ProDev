@@ -283,9 +283,13 @@ Lighthouse highlighted the landing page images could be condensed to improve ini
 
     1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
 
+        - **Solution**: window.innerWidth is recognised by all browsers and advised by mozilla. Works as expected in all browsers now
+
     2. **Minor issue**: Firefox does not recognise the webkit-scrollbar CSS property hiding the scrollbars, however scrollbar color properties are so at least they are in keeping with the color theme.
 
     3. **Linux only**: Firefox shows red box-shadows on required inputs and textarea's, not solved by simply setting box-shadows to none.
+
+        - **Solution**: The Firefox version from the debian repo is an old version, I updated my machine using the snap repo and this issue has gone away
 
 -----------------------------------------------------------------------------
 
@@ -350,6 +354,8 @@ Mobile and tablet devices:
 ------------------------------------------------------------
 
 ## Credits
+
+* My mentor Antonio for guiding me in the right direction when figuring out the Firefox visualViewport issue.  
 
 * **CSS-Trick** - https://css-tricks.com/custom-scrollbars-in-webkit/
 
