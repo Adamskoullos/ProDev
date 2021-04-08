@@ -257,6 +257,8 @@ onBeforeUpdate(() => {
 
 - [] Working with DOM elements within the Vue 3 composition api setup function is done via template ref's.  Simple tasks such as auto focusing an input as the form is opened proved really awkward as using template ref's I struggled to grab and work with elements inside the setup function. The setup function is scoped so using basic JS to grab and manipulate elements has to be done through template refs.  This is one of the simpler parts of Vue to get your head around so spending 10's of hours on this and not conquering the issue was frustrating. Most of the time I was able to use the other ref() (not to be confused with template refs) to pass and work with data, so on a positive I have had a lot of practice passing props down and emitting events up which has given me a great understanding of managing state at the simplest level.
 
+--------------------------------------------------------------------------
+
 ## Testing
 
 ### HTML & CSS
@@ -269,22 +271,23 @@ Lighthouse highlighted the landing page images could be condensed to improve ini
 
 ### Browser Testing
 
-**Chrome**: The app is working as expected
+* **Chrome**: The app is working as expected
 
-**Brave**: The app is working as expected
+* **Brave**: The app is working as expected
 
-**Safari**: The app is working as expected
+* **Safari ios**: The app is working as expected
 
-**Edge**: The app is working as expected
+* **Edge**: The app is working as expected
 
-**Firefox**: Initial testing highlighted one serious issue and two minor issues:
+* **Firefox**: Initial testing highlighted one serious issue and two minor issues:
 
-1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
+    1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
 
-2. **Minor issue**: Firefox does not recognise the webkit-scrollbar CSS property hiding the scrollbars, however scrollbar color properties are so at least they are in keeping with the color theme.
+    2. **Minor issue**: Firefox does not recognise the webkit-scrollbar CSS property hiding the scrollbars, however scrollbar color properties are so at least they are in keeping with the color theme.
 
-3. **Linux only**: Firefox shows red box-shadows on required inputs and textarea's, not solved by simply setting box-shadows to none.
+    3. **Linux only**: Firefox shows red box-shadows on required inputs and textarea's, not solved by simply setting box-shadows to none.
 
+-----------------------------------------------------------------------------
 
 ### Device Testing
 
@@ -301,14 +304,72 @@ Mobile and tablet devices:
 24" Display:
 ![24 -display](https://user-images.githubusercontent.com/73107656/113994132-08a70780-984d-11eb-8a19-2e8e4ab9220a.png)
 
-
-
+---------------------------------------------------------------------------
 
 ### Testing User Stories
+
+#### First time visitor goals:
+* To quickly and easily be able absorb content that answers the question: what does this tool do?
+    * There is a short headline on the landing page followed by a series of images each with short bullet points
+* To be able to easily see how to sign in or sign up in order to get access to the application
+    * The login/signup buttons are always visible via the fixed top-bar 
+* The application to be easy and intuitive to navigate and get familiar with
+    * Top-bar on mobile has three main tabs: Projects, Bugs, Chat and the side-nav can navigate to any page with one click
+* To get up and running quickly
+    * Complete login or signup form and go straight to `use projects` page. Signup has three inputs, user name, email and password.
+
+#### Returning visitor goals
+* To be able to quickly and smoothly sign in
+    * Users can sign in with two inputs, their email and password and then they get taken straight to their projects page
+* To clearly see when they are logged in and for any user profile settings to be loaded on login
+    * Username displays in the right of the top-bar and is omnipresent
+    * There is no user object within firestore in the end.  The user display name is saved within the firebase authentication object
+    * The user settings would have been the theme mode, however due to the nature of the app being an SPA the chosen theme does not reset on page changes.  However the theme is not stored and on page reloads this reverts back to the default dark mode.  This may be something that gets upgraded in the future. Now the theme switch functionality is in place, changing a user property at source can be easily integrated.   
+* To easily develop workflow patterns of efficiency and fold them into their daily processes
+    * The application can be viewed on many display sizes and ratios allowing the user to integrate the dashboard into their screen real-estate and their current set-up.
+    * All features and views can be easily accessed and switching between features is fast and snappy
+    * The dashboard allows users to quickly sign in, check the live-chat, scan team projects and then dive into their own projects list.
+    * Users can quickly check for bugs within the bugs journal, add new bugs and contribute to existing unsolved bugs 
+    * The live-chat can be toggled out of sight to maximise the room for other features or when a developer does not want to get distracted 
+
+#### Frequent visitor goals
+* For ProDev to become an integral cog to the users daily operations
+    * Users can log in check the teams overall projects and where they are at, update themselves on their own projects and tasks. They can scan the live-chat to get updated with any new news and then crack on with their own list of jobs 
+* To at a glance get up to speed with the overall project and any changes
+    * A single point of contact for focused discussion, related tasks and issues allows the whole team to be connected and for updates to be disseminated quickly, in real-time and in one go. 
+* To efficiently share ideas and support team members
+    * Issues can be easily shared and solved as a team and ideas can be easily discussed via the live-chat
+    * Users can see what their team members are currently working on and what of their tasks are yet to be complete, allowing resources to be quickly reallocated for the greater good of the overall project  
+* To quickly receive support and reduce downtime
+    *Issues posted can be viewed by all team members so other team members that have already overcome the issue can quickly share their knowledge and get the project rolling again
+* To manage tasks and maintain high levels of productivity through staying organised and focused
+    * Each project has it's own task list providing the team and each developer focus direction
+* To maintain transparency and accountability
+    * As each project and it's tasks can be viewed by every team member all team members are accountable to each other for their contribution and productivity 
+
+------------------------------------------------------------
 
 ## Credits
 
 ## Deployment
+
+The project is deployed with Firebase.
+
+First use the Vue cli to compile and minify the project for production:
+
+```
+npm run build
+```
+
+Now Vue has created a `dist` folder with the production project which needs to be used as the public folder for Firebase.  At this point make sure the `firebase.json` file has `"public": "dist"` in the hosting object.  Then deploy to firebase:
+
+```
+firebase deploy
+```
+
+Once deployed, firebase provides a url within the terminal, this can also be found in the firebase console, within hosting.
+
+For any teething issues during the build, make any changes and then just re-build and re-deploy as above.
 
 
 --------------------------------------------------------------
@@ -317,9 +378,13 @@ Mobile and tablet devices:
 
 The project is built in `vscode` and set up via the `Vue cli` which included: the `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
 
-The project is built using the `Vue 3 composition api`.
+The project is built using the `Vue 3 composition api` with all views and components utilising the `setup()` function. `ref()` properties were heavily used to make data reactive and `props` are used to pass data between components. 
+
+`ES6 modules` were used when extracting component functions and creating composables. As each module is its own scope, closure was heavily taken advantage of in this process allowing each component to stay clutter free and relatively easy to reason about.
 
 `Firebase` tools is installed globally on the machine via npm in order to link with the firebase project on the back end during development. Firebase services: `Firestore`, `Authentication` and `Storage` are used within this project.
+
+`Email.js` is used for both the `report issue` and `get in touch` forms.  The async/await with try/catch block pattern was used when connecting to the email.js api and sending form data.
 
 `GitHub` is used for version control and `Trello` for managing the project and each sprint.
 
