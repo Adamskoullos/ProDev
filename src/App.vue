@@ -146,21 +146,21 @@ components: { Chat },
         const route = useRoute()
 
         onBeforeMount(()=> {
-            if(visualViewport.width < 1100){
+            if(window.innerWidth < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1100){
+            if(window.innerWidth > 1100){
                 showSideNav.value = true
             }
           })
 
           window.addEventListener('resize', () =>{
-            if(visualViewport.width < 1100){
+            if(window.innerWidth < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1100 && user.value){
+            if(window.innerWidth > 1100 && user.value){
               showSideNav.value = true
               if(route.name == 'Chat'){
                 router.push({ name: 'MyProjects' })
@@ -171,11 +171,11 @@ components: { Chat },
         })
         
         onBeforeUpdate(() => {
-          if(visualViewport.width < 1100){
+          if(window.innerWidth < 1100){
               showSideNav.value = false
               showSideChat.value = false
             }
-            if(visualViewport.width > 1100 && user.value){
+            if(window.innerWidth > 1100 && user.value){
               showSideNav.value = true
             }
         })
@@ -292,11 +292,11 @@ components: { Chat },
         const handleLogin = () => {
           showTopBar.value = false
           showTopBar.value = true
-          if(visualViewport.width < 1100){
+          if(window.innerWidth < 1100){
               showSideNav.value = false
               showSideChat.value = false
           }
-          if(visualViewport.width > 1100 && user.value){
+          if(window.innerWidth > 1100 && user.value){
             showSideNav.value = true
           }
         } 

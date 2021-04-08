@@ -381,7 +381,7 @@ The above link is to a page that breaks down the available properties that can b
 
 The project is deployed with Firebase.
 
-First use the Vue cli to compile and minify the project for production:
+First compile and minify the project for production:
 
 ```
 npm run build
