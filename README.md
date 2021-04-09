@@ -121,7 +121,7 @@ As the application is designed to be on a developers screen in conjunction with 
 
 - The main dashboard includes top bar with user name and logout button, side nav with direct links to all views and the toggle button for the side chat and dark mode. The main `router-vew` is nested within this structure as the center piece
 
-At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue lifecycle hooks in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application as managed by Bootstrap rows and columns.         
+At the time of development component libraries that support Vue 3 are few and far between and I could not find suitable navigation options. I was not keen on Bootstraps options so decided to custom build a responsive side-nav and top-bar set-up for the project.  This was done during the early planning to identify the landscape I was working with. I used a combination of Vue lifecycle hooks in conjunction with native JS `window.AddEventListener('resize')` to monitor the viewport width and manage breakpoints. The internal nav-bar and top-bar are built using flexbox and the responsiveness of the whole application is managed by Bootstrap rows and columns.         
 
 On to the views:
 
@@ -141,11 +141,11 @@ The Chat component itself will take the traditional style of newest message at t
 
 ## Styling
 
-There is a focus on creating a neutral look to the dashboard with subtle styling and an emphasis on using box shadows to create a layered look and feel. There is also a focus on using transitions and transforms to create subtle switches that provide a tactile experience (a kind of digital mechanical switch). Also element transitions to be used to give a tactile and snappy experience when navigating the application. 
+There is a focus on creating a neutral look to the dashboard with subtle styling and an emphasis on using box shadows to create a layered look and feel. There is also a focus on using transitions and transforms to create subtle switches that provide a tactile experience (a kind of virtual mechanical switch). Also element transitions to be used to give a tactile and snappy experience when navigating the application. 
 
 The overarching theme dark and light to be clean and subtle with an err towards a dimmed look on the dark theme.
 
-Whilst the main structure of the layout has hard edges, softened slightly by the box shadows the internal elements to have a slight rounded corner consistent through the application.  The main structure layout to have simple smooth transitions and the internal elements to be a little more dynamic with the use of GSAP.  
+Whilst the main structure of the layout has hard edges, softened slightly by the box shadows the internal elements to have rounded corners consistent throughout the application.  The main structure layout to have simple smooth transitions and the internal elements to be a little more dynamic with the use of GSAP.  
 
 To provide a transition between the hard edges of the main layout and the softer corners of buttons and internal elements the font to be clean, simple with slightly rounded ends. 
 
@@ -321,13 +321,13 @@ Mobile and tablet devices:
 * The application to be easy and intuitive to navigate and get familiar with
     * Top-bar on mobile has three main tabs: Projects, Bugs, Chat and the side-nav can navigate to any page with one click
 * To get up and running quickly
-    * Complete login or signup form and go straight to `use projects` page. Signup has three inputs, user name, email and password.
+    * Complete login or signup form and go straight to `user projects` page. Signup has three inputs, user name, email and password.
 
 #### Returning visitor goals
 * To be able to quickly and smoothly sign in
     * Users can sign in with two inputs, their email and password and then they get taken straight to their projects page
 * To clearly see when they are logged in and for any user profile settings to be loaded on login
-    * Username displays in the right of the top-bar and is omnipresent
+    * User name displays in the right of the top-bar and is omnipresent
     * There is no user object within firestore in the end.  The user display name is saved within the firebase authentication object
     * The user settings would have been the theme mode, however due to the nature of the app being an SPA the chosen theme does not reset on page changes.  However the theme is not stored and on page reloads this reverts back to the default dark mode.  This may be something that gets upgraded in the future. Now the theme switch functionality is in place, changing a user property at source can be easily integrated.   
 * To easily develop workflow patterns of efficiency and fold them into their daily processes
@@ -346,9 +346,9 @@ Mobile and tablet devices:
     * Issues can be easily shared and solved as a team and ideas can be easily discussed via the live-chat
     * Users can see what their team members are currently working on and what of their tasks are yet to be complete, allowing resources to be quickly reallocated for the greater good of the overall project  
 * To quickly receive support and reduce downtime
-    *Issues posted can be viewed by all team members so other team members that have already overcome the issue can quickly share their knowledge and get the project rolling again
+    * Issues posted can be viewed by all team members so other team members that have already overcome the issue can quickly share their knowledge and get the project rolling again
 * To manage tasks and maintain high levels of productivity through staying organised and focused
-    * Each project has it's own task list providing the team and each developer focus direction
+    * Each project has it's own task list providing the team and each developer focus and direction
 * To maintain transparency and accountability
     * As each project and it's tasks can be viewed by every team member all team members are accountable to each other for their contribution and productivity 
 
@@ -358,29 +358,34 @@ Mobile and tablet devices:
 
 * My mentor Antonio for guiding me in the right direction when figuring out the Firefox visualViewport issue.  
 
-* **CSS-Trick** - https://css-tricks.com/custom-scrollbars-in-webkit/
+* **CSS-Tricks** - https://css-tricks.com/custom-scrollbars-in-webkit/
 
 The above link is to a page that breaks down the available properties that can be modified for browser scrollbars.  Really helped me out
 
-* On top of the **Code Institute** Javascript module I have undertaken many tutorials and mini projects and courses in preparation for this project:
+* Once completing the **Code Institute** Javascript module I took a side track to build on that foundation in preparation for this project:
 
-**Advanced JS mostly covering OOP**:
+**Advanced JS mostly covering OOP**: This course gave me an in depth practical understanding from factory functions to constructor functions and classes including prototype inheritance and the prototype chain. 
+I got my head around closure and how it was traditionally used in module patterns like the namespace pattern and the use of IIfe's.  Then lastly how evolution has brought us to ES6 modules:
 
 ![UC-7b1a8f5a-5d3d-49d9-b88f-bfa22f70c6e3](https://user-images.githubusercontent.com/73107656/114020871-f1294800-9867-11eb-8de1-093f082049d8.jpg)
 
-**Functional Programming**: 
+**Functional Programming**: I learnt how to build singular re-usable functions, chain them passing data in and retuning the new value without mutating the original property.  I then learned how to build larger functions using singular functions and compose them into a pipe. Then lastly the course touches on currying when multiple inputs need to be passed.  
 
 ![UC-06438674-3733-445e-9c6c-b819765ec7d4](https://user-images.githubusercontent.com/73107656/114021189-58df9300-9868-11eb-801c-956327eb4461.jpg)
 
 
-**Vue 3 & Firebase**:
+**Vue 3 & Firebase**: This course taught me how build components, composables and use many of the Vue directives.  How to make data reactive and pass properties from component to component and how to pull a project together. This course provided many insights into how to work with firebase when using Vue.  
 
 ![UC-4e6c8262-31bd-4897-92df-ab7ff084033e](https://user-images.githubusercontent.com/73107656/114021319-7c0a4280-9868-11eb-9f6b-b36f6b85bd6e.jpg)
 
-**Vue 3 Animations**: https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu
+**Vue 3 Animations**: I leant how to utilise Vue transitions and css properties, also with JS hooks and external libraries in this instance GSAP.   
+
+https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu
 
 
-**Firebase basics**: https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB
+**Firebase basics**: This playlist gives a wide foundation of how to utilise and work with different Firebase services. 
+
+https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB
 
 ------------------------------------------------
 
@@ -409,7 +414,7 @@ Once deployed any time changes are made just re-build and re-deploy as above.
 
 # Technologies
 
-The project is built in `vscode` and set up via the `Vue cli` which included: `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
+The project is built in `vscode` and set up via the `Vue cli` which includes: `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
 
 The project is built using the `Vue 3 composition api` with all views and components utilising the `setup()` function. `ref()` properties were heavily used to make data reactive and `props` are used to pass data between components. 
 
