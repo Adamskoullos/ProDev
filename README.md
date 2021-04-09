@@ -209,7 +209,9 @@ when uploading an image a file path to the `user/imageCollection` is made and on
 
 # Development
 
-The project management for each sprint is implemented using Trello, this section covers the following areas:
+During development the Vue cli offers a hot reload dev server: `npm run serve`
+
+The project management for each sprint is implemented using Trello, the rest of this section covers the following areas:
 
 [Bugs and Solutions](#Bugs-and-Solutions)<br>
 [Unresolved Bugs](#Unresolved-Bugs)<br>
@@ -222,32 +224,33 @@ The project management for each sprint is implemented using Trello, this section
 
 - [X] User display name not showing in top bar after first sign up. Firebase creates the user first then adds the displayName.  The onSnapshot for user updates was firing and triggering the render before the displayName had been returned from firebase.  
 
-**Solution**: Create a custom event within the sign in function to trigger after the user displayName has been returned from firebase.  Then back in the main dash view fire a callback to set a property to false and then true again using the boolean to show the top bar element. As the property becomes true the top bar is re-rendered showing the displayName 
-
---------------------------------------------------
-
 - [X] On login the side bar is being shown even on smaller screens
 
-**Solution**: Added the following code using the Vue lifecycle hook:
+The below solution solves both the above issues:
 
+**Solution**: Create a custom event within both the login and signup components that trigger once firebase has returned the authenticated user and in the signup component after Firebase has returned the promise from updating the user displayName.  This event is emitted up to the main dashboard view where the `handleLogin` function is fired.  
+
+First the top-bar is re-rendered to include the user displayName, then the code runs to show the dashboard depending on the viewport width:
 
 ```js
 
-onBeforeUpdate(() => {
-          if(visualViewport.width < 1200){
+const handleLogin = () => {
+          showTopBar.value = false
+          showTopBar.value = true
+          if(window.innerWidth < 1100){
               showSideNav.value = false
               showSideChat.value = false
-            }
-            if(visualViewport.width > 1200 && user.value){
-              showSideNav.value = true
-            }
-        })
+          }
+          if(window.innerWidth > 1100 && user.value){
+            showSideNav.value = true
+          }
+        } 
 
 ```
 
 -----------------------------------------
 
-- [X] When the main-content window (col) the main router-view has content greatr than the vh, scrolling content also scrolled the side-nav and side-chat.  Fixing the position of the side-nav worked while the page maintained the same view width but as the viewport width hit the break point it all went wrong.
+- [X] When the main-content window (col) the main router-view has content greater than the vh, scrolling content also scrolled the side-nav and side-chat.  Fixing the position of the side-nav worked while the page maintained the same view width but as the viewport width hit the break point it all went wrong.
 
 **Solution**: For both the chat window (col) and the main content window (col) I gave the container div a max height of the VH and then overflow: auto.  This separated them from the side bar without having to fix position the side bar which creates a whole lot of other issues.  This was great and really added to the dashboard feel. I then hid the scroll bars to give a really clean look.
 
@@ -255,15 +258,13 @@ onBeforeUpdate(() => {
 
 - [] When using transitions for elements that are also Bootstrap columns (part of a row). The target element transitions but the effected element still moves as normal.  Specifically as the side-chat window is toggled and slides in and out from the right the main content/view window does not move inline with the transition.  I have tried using transition-groups etc...but stuck for now and moving on.  This is a minor issue and not one to get caught up with any longer.
 
-- [] Working with DOM elements within the Vue 3 composition api setup function is done via template ref's.  Simple tasks such as auto focusing an input as the form is opened proved really awkward as using template ref's I struggled to grab and work with elements inside the setup function. The setup function is scoped so using basic JS to grab and manipulate elements has to be done through template refs.  This is one of the simpler parts of Vue to get your head around so spending 10's of hours on this and not conquering the issue was frustrating. Most of the time I was able to use the other ref() (not to be confused with template refs) to pass and work with data, so on a positive I have had a lot of practice passing props down and emitting events up which has given me a great understanding of managing state at the simplest level.
-
 --------------------------------------------------------------------------
 
 ## Testing
 
 ### HTML & CSS
 
-Both HTML CSS has been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed after some minor alterations. 
+Both HTML and CSS have been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed after some minor alterations. 
 
 I found testing the live site with Lighthouse got some confusing results as again the component nature of the build did not play well.  Overall accessibility scored 98 and best practices 100.
 
@@ -283,7 +284,7 @@ Lighthouse highlighted the landing page images could be condensed to improve ini
 
     1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
 
-        - **Solution**: window.innerWidth is recognised by all browsers and advised by mozilla. Works as expected in all browsers now
+        - **Solution**: `window.innerWidth` is recognised by all browsers and advised by mozilla. Works as expected in all browsers now
 
     2. **Minor issue**: Firefox does not recognise the webkit-scrollbar CSS property hiding the scrollbars, however scrollbar color properties are so at least they are in keeping with the color theme.
 
@@ -387,7 +388,7 @@ The above link is to a page that breaks down the available properties that can b
 
 The project is deployed with Firebase.
 
-First compile and minify the project for production:
+First using the Vue cli compile and minify the project for production:
 
 ```
 npm run build
@@ -401,14 +402,14 @@ firebase deploy
 
 Once deployed, firebase provides a url within the terminal, this can also be found in the firebase console, within hosting.
 
-For any teething issues during the build, make any changes and then just re-build and re-deploy as above.
+Once deployed any time changes are made just re-build and re-deploy as above.
 
 
 --------------------------------------------------------------
 
 # Technologies
 
-The project is built in `vscode` and set up via the `Vue cli` which included: the `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
+The project is built in `vscode` and set up via the `Vue cli` which included: `Vue-Router` to manage `SPA` routing, `webpack` to bundle and manage all files, `babel` to translate all JS into ES5 for browser compatibility and a node modules pack which also stores all npm installs.  `Bootstrap 5` is used mostly for the rows and columns responsiveness, `material icons` are used to keep things tidy especially on mobile devices.  `date-fns` is used to present timestamp data for chat messages and `GSAP` is used with Vue transitions to add a bit of flare. 
 
 The project is built using the `Vue 3 composition api` with all views and components utilising the `setup()` function. `ref()` properties were heavily used to make data reactive and `props` are used to pass data between components. 
 
