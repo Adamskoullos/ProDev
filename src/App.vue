@@ -234,7 +234,6 @@ components: { Chat },
             opacity: 1,
             duration: 0.6,
             ease: 'sine',
-            
           })
         }
 
@@ -249,7 +248,6 @@ components: { Chat },
             opacity: 0,
             duration: 0.3,
             ease: 'sine',
-            
           })
         }
 
