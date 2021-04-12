@@ -5,7 +5,8 @@
 ## [Live Link](https://www.prodev.dev/) | [ProDev build documentation](https://prodev-build-guide.netlify.app/)
 
 
-**Note**: Rather than litter the source code with a copious amount of notes a more in depth explanation of the code can be found within the above build documentation. It is recommended to view the live application in conjunction with the relevant section in the build guide to get the full flavour of what the code is doing.  I
+**Note**: Rather than litter the source code with a copious amount of notes, a more in depth explanation of the code can be found within the above build documentation. It is recommended to view the live application in conjunction with the relevant section of the build guide to get the full flavour of what the code is doing. 
+
 -----------------------------
 
 ## Table of Contents:
