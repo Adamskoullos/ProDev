@@ -430,6 +430,8 @@ The project is built using the `Vue 3 composition api` with all views and compon
 
 `GitHub` is used for version control and `Trello` for managing the project and each sprint.
 
+Lastly the ProDev Build Guide documentation is built using `Vitepress` and hosted on Netlify.  Vitepress is a `static site generator` designed for building documentation. 
+
 --------------------------------------------------
 
 
