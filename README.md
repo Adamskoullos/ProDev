@@ -376,7 +376,7 @@ I got my head around closure and how it was traditionally used in module pattern
 
 ![UC-7b1a8f5a-5d3d-49d9-b88f-bfa22f70c6e3](https://user-images.githubusercontent.com/73107656/114020871-f1294800-9867-11eb-8de1-093f082049d8.jpg)
 
-**Functional Programming**: I learnt how to build singular re-usable functions, chain them passing data in and retuning the new value without mutating the original property.  I then learned how to build larger functions using singular functions and compose them into a pipe. Then lastly the course touches on currying when multiple inputs need to be passed.  
+**Functional Programming**: I learnt how to build singular re-usable functions, chain them passing data in and returning the new value without mutating the original property.  I then learned how to build larger functions using singular functions and compose them into a pipe. Then lastly the course touches on currying when multiple inputs need to be passed.  
 
 ![UC-06438674-3733-445e-9c6c-b819765ec7d4](https://user-images.githubusercontent.com/73107656/114021189-58df9300-9868-11eb-801c-956327eb4461.jpg)
 
