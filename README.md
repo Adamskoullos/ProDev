@@ -152,8 +152,9 @@ During planning there were many ideas that after consideration were pushed back 
 
 * Admin/project Manager authentication and UI
 * User stats view showing performance metrics for analysis for events such as tasks completed, projects completed, bugs solved using charts to show data such as rolling 12 week, weekly averages, distribution curves of daily numbers etc 
-* In-app chat notification for unread messages
-* More user-friendly interactive feedback when interacting with forms, instead of the standard Firebase and Email.js built in messages 
+* In-app chat notification and a badge to show the number unread messages (since the chat view last mounted the DOM)
+* More user-friendly interactive feedback when interacting with forms, instead of the standard Firebase and Email.js built in messages. 
+
 
 ## Styling
 
