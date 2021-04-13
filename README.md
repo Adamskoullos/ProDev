@@ -100,13 +100,13 @@ As the application is designed to be on a developers screen in conjunction with 
 - The application to be easy and intuitive to navigate and get familiar with
 - To get up and running quickly 
 
-### Returning visitor goals
+### Returning visitor goals:
 
 - To be able to quickly and smoothly sign in
 - To clearly see when they are logged in and for any user profile settings to be loaded on login
 - To easily develop workflow patterns of efficiency and fold them into their daily processes
 
-### Frequent visitor goals
+### Frequent visitor goals:
 
 - For ProDev to become an integral cog to the users daily operations
 - To at a glance get up to speed with the overall project and any changes
@@ -269,13 +269,18 @@ const handleLogin = () => {
 
 ## Testing
 
-### HTML & CSS
+### HTML & CSS using the W3C Validators
 
 Both HTML and CSS have been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed after some minor alterations. 
 
 I found testing the live site with Lighthouse got some confusing results as again the component nature of the build did not play well.  Overall accessibility scored 98 and best practices 100.
 
 Lighthouse highlighted the landing page images could be condensed to improve initial loading times but in practice the loading time for the page seems fast, I may come back to do this as testing continues. 
+
+### Javascript Testing with ESLint
+
+All JavaScript was tested in real time during development using ESLint as an extension to vs.code, which identifies any syntax errors. Vue also has some really good features in the dev tools extension for Chrome, which can be used to track property values and state. The biggest part of testing during development came from console logging values at each stage and then also error messages with the use of catch blocks.  I feel during this project, the most common error I had to deal with was with property values being undefined for different reasons. A lot of lessons and habits were learnt here. I have become a lot more familiar with the Chrome dev tools during this project and am more comfortable reading error messages in the console to identify the source of the issue.
+
 
 ### Browser Testing
 
@@ -397,6 +402,41 @@ https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY
 ------------------------------------------------
 
 ## Deployment
+
+### Fork the repo
+
+In the top right corner of this page, hit the fork tab to add a copy of the repo to your GitHub account.
+
+Open the project in your IDE and open a terminal.
+
+In order to work with the project there are a few dependencies that need to be installed. To add these type:
+
+```
+npm install
+```
+
+### Local Clone
+
+Copy an existing repo within your GitHub account:
+
+First create the new repo, then go to the main page of the existing repo to be copied and hit the `Code` tab to open the drop-down. Copy the URL (HTTPS or SSH) and then open a terminal and cd into the new repo directory.
+
+Type: `git clone` followed by the URL and press enter to copy the existing repo to the new repo.
+
+### Full set-up details
+
+To get a full step by step guide on setting the project up from scratch including Firebase please visit the [build guide documentation](https://prodev-build-guide.netlify.app/build/gettingSetUp.html)
+
+### Development server
+
+The Vue cli comes with a hot-reload dev server that can be 
+run using:
+
+```
+npm run serve
+```
+
+### Final Deployment
 
 The project is deployed with Firebase.
 
