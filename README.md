@@ -146,6 +146,15 @@ On to the views:
 
 The Chat component itself will take the traditional style of newest message at the bottom and auto scrolling the message window to always show the newest messages.  The new message form to be located below the message window. The `date-fns` library will be used here to manipulate the `createdAt` property to present the message date in a more chat app manner. 
 
+### Features and functionality to be excluded from the initial release:
+
+During planning there were many ideas that after consideration were pushed back to potential future releases due to time restrictions for the project, which include:
+
+* Admin/project Manager authentication and UI
+* User stats view showing performance metrics for analysis for events such as tasks completed, projects completed, bugs solved using charts to show data such as rolling 12 week, weekly averages, distribution curves of daily numbers etc 
+* In-app chat notification for unread messages
+* More user-friendly interactive feedback when interacting with forms, instead of the standard Firebase and Email.js built in messages 
+
 ## Styling
 
 There is a focus on creating a neutral look to the dashboard with subtle styling and an emphasis on using box shadows to create a layered look and feel. There is also a focus on using transitions and transforms to create subtle switches that provide a tactile experience (a kind of virtual mechanical switch). Also element transitions to be used to give a tactile and snappy experience when navigating the application. 
@@ -269,7 +278,7 @@ const handleLogin = () => {
 
 ## Testing
 
-### HTML & CSS using the W3C Validators
+### HTML & CSS testing using the W3C Validators
 
 Both HTML and CSS have been tested with the W3C validators.  The HTML was really awkward to test by direct input due to the component and bundled nature of the project but tested using the site URI worked well with a clean pass.  This method did not work with the CSS validator again due to the bundled build, however I was able to go through the CSS and paste sections into the validator which allowed me to undergo a thorough test, which again passed after some minor alterations. 
 
@@ -335,7 +344,7 @@ Mobile and tablet devices:
 * To get up and running quickly
     * Complete login or signup form and go straight to `user projects` page. Signup has three inputs, user name, email and password.
 
-#### Returning visitor goals
+#### Returning visitor goals:
 * To be able to quickly and smoothly sign in
     * Users can sign in with two inputs, their email and password and then they get taken straight to their projects page
 * To clearly see when they are logged in and for any user profile settings to be loaded on login
@@ -349,7 +358,7 @@ Mobile and tablet devices:
     * Users can quickly check for bugs within the bugs journal, add new bugs and contribute to existing unsolved bugs 
     * The live-chat can be toggled out of sight to maximise the room for other features or when a developer does not want to get distracted 
 
-#### Frequent visitor goals
+#### Frequent visitor goals:
 * For ProDev to become an integral cog to the users daily operations
     * Users can log in check the teams overall projects and where they are at, update themselves on their own projects and tasks. They can scan the live-chat to get updated with any new news and then crack on with their own list of jobs 
 * To at a glance get up to speed with the overall project and any changes
