@@ -286,11 +286,11 @@ Both HTML and CSS have been tested with the W3C validators.  The HTML was really
 
 I found testing the live site with Lighthouse got some confusing results as again the component nature of the build did not play well.  Overall accessibility scored 98 and best practices 100.
 
-Lighthouse highlighted the landing page images could be condensed to improve initial loading times but in practice the loading time for the page seems fast, I may come back to do this as testing continues. 
+Lighthouse highlighted the landing page images could be condensed to improve initial loading times (current score of 96%) but in practice the loading time for the page seems fast, I may come back to do this as testing continues. 
 
 ### Javascript Testing with ESLint
 
-All JavaScript was tested in real time during development using ESLint as an extension to vs.code, which identifies any syntax errors. Vue also has some really good features in the dev tools extension for Chrome, which can be used to track property values and state. The biggest part of testing during development came from console logging values at each stage and then also error messages with the use of catch blocks.  I feel during this project, the most common error I had to deal with was with property values being undefined for different reasons. A lot of lessons and habits were learnt here. I have become a lot more familiar with the Chrome dev tools during this project and am more comfortable reading error messages in the console to identify the source of the issue.
+All JavaScript was tested in real-time during development using ESLint as an extension to vs.code, which identifies any syntax errors. Vue also has some really good features in the dev tools extension for Chrome, which can be used to track property values and state. The biggest part of testing during development came from console logging values at each stage and then also error messages with the use of catch blocks.  I feel during this project, the most common error I had to deal with was with property values being undefined for different reasons. A lot of lessons and habits were learnt here. I have become a lot more familiar with the Chrome dev tools during this project and am more comfortable reading error messages in the console to identify the source of the issue.
 
 
 ### Browser Testing
@@ -379,7 +379,7 @@ Mobile and tablet devices:
 
 ## Credits
 
-* Thanks to mentor **Antonio** for guiding me in the right direction when figuring out the Firefox visualViewport issue and then also giving me feedback from testing the live app.  It was highlighted that the forms that have a file upload input were not giving suitable user feedback for all combinations of user actions. This allowed me to add suitable provisions that let the user know exactly what is happening at every stage during both the `Add Solution` and `Create New Project` processes until a successful form is submitted. 
+* Thanks to my mentor **Antonio** for guiding me in the right direction when figuring out the Firefox visualViewport issue and then also giving me feedback from testing the live app.  It was highlighted that the forms that have a file upload input were not giving suitable user feedback for all combinations of user actions. This allowed me to add suitable provisions that let the user know exactly what is happening at every stage during both the `Add Solution` and `Create New Project` processes until a successful form is submitted. 
 
 * **CSS-Tricks** - https://css-tricks.com/custom-scrollbars-in-webkit/
 
