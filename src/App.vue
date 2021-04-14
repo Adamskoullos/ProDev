@@ -194,7 +194,7 @@ components: { Chat },
             showSideChat.value = !showSideChat.value
         }
 // The blow transition functions were part of the patterns learnt from the Net Ninja playlist: https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu
-// The GSAP documentation was used during testing to play with the variables to hone the required effects
+// The GSAP documentation was used during testing to play with the variables to hone the required effects: https://greensock.com/cheatsheet/
         const topBarBeforeEnter = (el) => {
           el.style.transform = 'translateY(-200px)'
           el.style.opacity = 0

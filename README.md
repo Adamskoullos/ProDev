@@ -235,6 +235,8 @@ The project management for each sprint is implemented using Trello, the rest of 
 [Unresolved Bugs](#Unresolved-Bugs)<br>
 [Testing](#Testing)<br>
 [Credits](#Credits)<br>
+[Content and Media](#Content-and-Media)<br>
+[Code](#Code)<br>
 [Deployment](#Deployment)<br>
 
 
@@ -292,6 +294,8 @@ Lighthouse highlighted the landing page images could be condensed to improve ini
 
 All JavaScript was tested in real-time during development using ESLint as an extension to vs.code, which identifies any syntax errors. Vue also has some really good features in the dev tools extension for Chrome, which can be used to track property values and state. The biggest part of testing during development came from console logging values at each stage and then also error messages with the use of catch blocks.  I feel during this project, the most common error I had to deal with was with property values being undefined for different reasons. A lot of lessons and habits were learnt here. I have become a lot more familiar with the Chrome dev tools during this project and am more comfortable reading error messages in the console to identify the source of the issue.
 
+----------------------------------------------------------------
+
 
 ### Browser Testing
 
@@ -305,7 +309,7 @@ All JavaScript was tested in real-time during development using ESLint as an ext
 
 * **Firefox**: Initial testing highlighted one serious issue and two minor issues:
 
-    1. Something to do with the nature of the Vue 3 setup function scoping or the bundled nature of the build (I am assuming) results in the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
+    1. Firefox deems the `window.visualViewport` to be undefined.  This is preventing break points being activated, meaning the side-bar is still showing on mobile displays.  The result is that the app cannot be used on mobile devices.
 
         - **Solution**: `window.innerWidth` is recognised by all browsers and advised by mozilla. Works as expected in all browsers now
 
@@ -411,6 +415,29 @@ https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9
 https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB
 
 ------------------------------------------------
+
+## Content and Media
+
+All content was created and all images were produced, by the developer.
+
+Material icons were used throughout the application and sourced from this link: https://fonts.google.com/icons?selected=Material+Icons
+
+----------------------------------------------------------------
+
+## Code
+
+- The GSAP documentation was used during animation development for transitions with this handy cheatsheet: https://greensock.com/cheatsheet/
+
+- The Vue documentation was heavily scanned during the project: https://v3.vuejs.org/guide/introduction.html#what-is-vue-js
+
+- Firebase documentation was also referenced a lot right through the project development when remembering different Firebase methods to work with different api's: https://firebase.google.com/docs?authuser=0
+
+- The date-fns library was used to manipulate timestamp data and present it in a more chat-app friendly format: https://date-fns.org/docs/Getting-Started
+
+- The Bootstrap 5 documentation was also referenced when using the rows and columns to create the responsive structure for each view and the main dashboard: https://getbootstrap.com/docs/5.0/layout/grid/
+
+------------------------------------------------
+
 
 ## Deployment
 
