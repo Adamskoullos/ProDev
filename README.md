@@ -379,7 +379,7 @@ Mobile and tablet devices:
 
 ## Credits
 
-* My mentor Antonio for guiding me in the right direction when figuring out the Firefox visualViewport issue.  
+* Thanks to mentor **Antonio** for guiding me in the right direction when figuring out the Firefox visualViewport issue and then also giving me feedback from testing the live app.  It was highlighted that the forms that have a file upload input were not giving suitable user feedback for all combinations of user actions. This allowed me to add suitable provisions that let the user know exactly what is happening at every stage during both the `Add Solution` and `Create New Project` processes until a successful form is submitted. 
 
 * **CSS-Tricks** - https://css-tricks.com/custom-scrollbars-in-webkit/
 
