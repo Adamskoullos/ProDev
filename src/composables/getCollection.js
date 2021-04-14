@@ -27,6 +27,9 @@ const getCollection = (collection, query) => {
         documents.value = null
     })
     // unsub method to prevent multiple onSnapshot events running at the same time
+    // The below function is a combination of the Firebase recommended technique
+    //  for unsubscribing to onSnapshot listeners and the Vue watchEffect method. 
+    // This was learnt within the Vue 3 course detailed within the credits of the readme  
     watchEffect((onInvalidate) => {
         onInvalidate(() => unsub())
     })

@@ -30,6 +30,7 @@ export default {
                 message: message.value
             }
             try{
+                // Below is the Email.js method used to connect to the Email.js api to send an email 
                 const res = await emailjs.send('service_2l8gu2j','template_78gjpjd', templateParams, 'user_Z5EDWeJCvIFumIfxti1gd')
                 console.log('SUCCESS!', res.status, res.text);
                 router.push({ name: 'MyProjects' })

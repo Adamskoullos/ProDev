@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row main-row" :class="{light: light}">
+      <!-- I learnt how to work with Vue transitions and JS hooks by this Net Ninja playlist: https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu  -->
       <transition name="side-nav" appear 
       @before-enter="sideNavBeforeEnter"
       @enter="sideNavEnter"
@@ -192,7 +193,8 @@ components: { Chat },
         const toggleSideChat = () => {
             showSideChat.value = !showSideChat.value
         }
-
+// The blow transition functions were part of the patterns learnt from the Net Ninja playlist: https://www.youtube.com/watch?v=RIApQjn9fvw&list=PL4cUxeGkcC9ghm7-iTfS9n468Kp7l9Ipu
+// The GSAP documentation was used during testing to play with the variables to hone the required effects
         const topBarBeforeEnter = (el) => {
           el.style.transform = 'translateY(-200px)'
           el.style.opacity = 0
@@ -336,6 +338,8 @@ components: { Chat },
   text-align: center;
   color: #464646;
 }
+
+/* The below scrollbar properties were learnt fro this CSS Tricks link: https://css-tricks.com/custom-scrollbars-in-webkit/  */
 
 /* Basic layout and responsiveness for main window - Main view, side chat, side nav, top bar */ 
 .content-col::-webkit-scrollbar {

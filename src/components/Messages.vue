@@ -29,6 +29,7 @@ export default {
         const formattedDocuments = computed (() => {
             if(documents.value){
                 return documents.value.map(doc => {
+                    // The below `formatDistanceToNow` is a method from the date-fns library
                     let time = formatDistanceToNow(doc.createdAt.toDate())
                     return { ...doc, createdAt: time }
                 })
@@ -38,6 +39,7 @@ export default {
         // auto-scroll to bottom of messages to show the newest
         const messages = ref(null)
         // fire on every update to maintain always showing the latest messages
+        // The scrollTop/scrollHeight trick was obtained from the Vue 3 course detailed within the credits of the readme
         onUpdated(() => {
             messages.value.scrollTop = messages.value.scrollHeight
         })
@@ -60,6 +62,7 @@ export default {
     overflow:auto;
 }
 /* Hiding the scrollbar to maintain a clean look */
+/* The below scrollbar properties we made aware to me from this CSS Tricks linK: https://css-tricks.com/custom-scrollbars-in-webkit/ */
 .messages::-webkit-scrollbar {
     width: 0px;               /* width of the entire scrollbar */
 }

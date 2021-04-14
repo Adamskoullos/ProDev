@@ -397,7 +397,7 @@ I got my head around closure and how it was traditionally used in module pattern
 ![UC-06438674-3733-445e-9c6c-b819765ec7d4](https://user-images.githubusercontent.com/73107656/114021189-58df9300-9868-11eb-801c-956327eb4461.jpg)
 
 
-**Vue 3 & Firebase**: This course taught me how build components, composables and use many of the Vue directives.  How to make data reactive and pass properties from component to component and how to pull a project together. This course provided many insights into how to work with firebase when using Vue.  
+**Vue 3 & Firebase**: This course taught me the patterns used when building components, composables and how to use many of the Vue directives.  How to make data reactive and pass properties from component to component, how to emit events up and act on them and how to pull a project together. This course provided many insights into how to work with firebase when using Vue.
 
 ![UC-4e6c8262-31bd-4897-92df-ab7ff084033e](https://user-images.githubusercontent.com/73107656/114021319-7c0a4280-9868-11eb-9f6b-b36f6b85bd6e.jpg)
 
