@@ -1,35 +1,35 @@
-import { ref } from "@vue/reactivity"
-import { watchEffect } from "@vue/runtime-core"
-import { fStore } from "../firebase/config"
+import { ref } from "@vue/reactivity";
+import { watchEffect } from "@vue/runtime-core";
+import { fStore } from "../firebase/config";
 
 const getCollectionMessages = (collection, query) => {
-    const documents = ref(null)
-    const error = ref(null)
+    const documents = ref(null);
+    const error = ref(null);
 
-    let collectionRef = fStore.collection(collection).orderBy('createdAt')
+    let collectionRef = fStore.collection(collection).orderBy('createdAt');
 
     if(query){
-        collectionRef = collectionRef.where(...query)
+        collectionRef = collectionRef.where(...query);
     }
 
     const unsub = collectionRef.onSnapshot((snap) => {
-        let results = []
+        let results = [];
         snap.docs.forEach(doc => {
-            doc.data().createdAt && results.push({ ...doc.data(), id: doc.id })
-        })
-        documents.value = results
-        error.value = null
+            doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
+        });
+        documents.value = results;
+        error.value = null;
     }, (err) => {
-        console.log(err.message)
-        error.value = 'Could not fetch data'
-        documents.value = null
-    })
+        console.log(err.message);
+        error.value = 'Could not fetch data';
+        documents.value = null;
+    });
     // unsub method to prevent multiple onSnapshot events running at the same time
     watchEffect((onInvalidate) => {
-        onInvalidate(() => unsub())
-    })
+        onInvalidate(() => unsub());
+    });
 
-    return { documents, error }
-}
+    return { documents, error };
+};
 
-export default getCollectionMessages
+export default getCollectionMessages;

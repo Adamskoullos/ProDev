@@ -290,9 +290,11 @@ I found testing the live site with Lighthouse got some confusing results as agai
 
 Lighthouse highlighted the landing page images could be condensed to improve initial loading times (current score of 96%) but in practice the loading time for the page seems fast, I may come back to do this as testing continues. 
 
-### Javascript Testing with ESLint
+### Javascript Testing with ESLint and JSHint
 
 All JavaScript was tested in real-time during development using ESLint as an extension to vs.code, which identifies any syntax errors. Vue also has some really good features in the dev tools extension for Chrome, which can be used to track property values and state. The biggest part of testing during development came from console logging values at each stage and then also error messages with the use of catch blocks.  I feel during this project, the most common error I had to deal with was with property values being undefined for different reasons. A lot of lessons and habits were learnt here. I have become a lot more familiar with the Chrome dev tools during this project and am more comfortable reading error messages in the console to identify the source of the issue.
+
+As the development was nearing its final stages each composable was put through the `JSHint` validator and after adding some semicolons passed with no warnings.  
 
 ----------------------------------------------------------------
 
