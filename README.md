@@ -443,6 +443,10 @@ Material icons were used throughout the application and sourced from this link: 
 
 ## Deployment
 
+### Full set-up details
+
+To get a full step by step guide on setting the project up from scratch including Firebase please visit the [build guide documentation](https://prodev-build-guide.netlify.app/build/gettingSetUp.html)
+
 ### Fork the repo
 
 In the top right corner of this page, hit the fork tab to add a copy of the repo to your GitHub account.
@@ -463,9 +467,6 @@ First create the new repo, then go to the main page of the existing repo to be c
 
 Type: `git clone` followed by the URL and press enter to copy the existing repo to the new repo.
 
-### Full set-up details
-
-To get a full step by step guide on setting the project up from scratch including Firebase please visit the [build guide documentation](https://prodev-build-guide.netlify.app/build/gettingSetUp.html)
 
 ### Development server
 
