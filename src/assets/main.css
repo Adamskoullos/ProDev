@@ -28,6 +28,7 @@
     color: var(--warning);
     font-size: 14px;
     margin: 16px 0;
+    text-align: center;
   }
   h1,h2,h3,h4{
     margin-bottom: 0;

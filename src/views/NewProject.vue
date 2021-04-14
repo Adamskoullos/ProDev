@@ -4,7 +4,11 @@
       <h4 :class="{light: light}">Create new project</h4>
       <input type="text" placeholder="Project title" v-model="title" :class="{light: light}" required>
       <textarea placeholder="Description" v-model="description" :class="{light: light}" required></textarea>
-      <label :class="{light: light}" for="file-upload" class="file-upload-button">Upload project image</label>
+      <div v-if="!image">
+        <label :class="{light: light}" for="file-upload" class="file-upload-button">Add project image</label>
+        <span>Required</span>
+      </div>
+      <label v-if="image" :class="{light: light}" for="file-upload" class="file-upload-button loaded">Image loaded</label>
       <input id="file-upload" type="file" @change="handleChange">
       <div class="error">{{ fileError }}</div>
       <button :class="{light: light}" v-if="!isPending">Add new project</button>
@@ -31,6 +35,7 @@ export default {
     const fileTypes = ['image/png', 'image/jpeg']
     const fileError = ref(null)
     const isPending = ref(false)
+    const image = ref(false)
 
     const { uploadImage, error, filePath, url } = useStorage()
     const { addDoc } = useCollection('projects')
@@ -38,6 +43,9 @@ export default {
     const router = useRouter()
 
     const handleSubmit = async () => {
+      if(!projectImage.value){
+        fileError.value = 'Please select an image to load'
+      }
       if(projectImage.value){
         isPending.value = true
         await uploadImage(projectImage.value)
@@ -55,25 +63,29 @@ export default {
           isPending.value = false
           router.push({ name: 'SingleProject', params: { id: res.id } })
         }
+        projectImage.value = null
+        title.value = ''
+        description.value = ''
+        fileError.value = null
+        image.value = false
       } 
-      projectImage.value = null
-      title.value = ''
-      description.value = ''
-      fileError.value = null
+      
     }
 
     const handleChange = (e) => {
       const selected = e.target.files[0]
       if(selected && fileTypes.includes(selected.type)){
+        image.value = true
         projectImage.value = selected
         fileError.value = null
       } else{
+        image.value = false
         projectImage.value = null
         fileError.value = 'Please select an image file, jpeg or png'
       }
     }
 
-    return { title, description, projectImage, fileError, handleSubmit, handleChange, error, isPending }
+    return { title, description, projectImage, fileError, handleSubmit, handleChange, error, isPending, image }
   }
 }
 </script>
@@ -120,6 +132,16 @@ input[type="file"]{
   box-shadow: 1px 2px 6px rgba(50,50,50,0.3);
   transform: scale(0.94);
   transition: all ease 0.3s;
+}
+.loaded{
+  color: rgb(45, 160, 0);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.0);
+}
+.loaded:hover{
+  cursor:default;
+  transform: scale(1);
+  color: rgb(45, 160, 0);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.0);
 }
 button.light{
   background: white;

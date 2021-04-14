@@ -8,7 +8,8 @@
             <h5 :class="{light: light}">Add solution details</h5>
             <textarea placeholder="Solution details" v-model="solution" required :class="{light: light}"></textarea>
             <div class="buttons">
-                <label for="file-upload" class="file-upload-button" :class="{light: light}">Upload solution image</label>
+                <label v-if="!image" for="file-upload" class="file-upload-button" :class="{light: light}">Add solution image</label>
+                <label v-if="image" for="file-upload" class="file-upload-button loaded" :class="{light: light}">Image loaded</label>
                 <input id="file-upload" type="file" @change="handleChange">
             </div>
             <div class="error">{{ fileError }}</div>
@@ -35,6 +36,7 @@ export default {
         const fileTypes = ['image/png', 'image/jpeg']
         const fileError = ref(null)
         const isPending = ref(false)
+        const image = ref(false)
 
         const { uploadImage, error, filePath, url } = useStorage()
         const { updateDoc } = useDocument('bugs', props.bug.id)
@@ -49,20 +51,27 @@ export default {
             showSolution.value = false
             solution.value = ''
             solutionImage.value = null
+            fileError.value = null
         }
 
         const handleChange = (e) => {
+            
             const selected = e.target.files[0]
             if(selected && fileTypes.includes(selected.type)){
+                image.value = true
                 solutionImage.value = selected
                 fileError.value = null
             } else{
                 solutionImage.value = null
                 fileError.value = 'Please select an image file, jpeg or png'
+                image.value = false
             }
         }
 
         const handleSubmit = async () => {
+            if(!solutionImage.value){
+                fileError.value = 'Please add a solution image'
+            }
             if(solutionImage.value){
                 isPending.value = true
                 await uploadImage(solutionImage.value)
@@ -75,14 +84,17 @@ export default {
                 isPending.value = false
                 showSolution.value = true
                 }
+                solutionImage.value = null
+                solution.value = ''
+                fileError.value = null
+                image.value = false
+                showSolution.value = false
             } 
-            solutionImage.value = null
-            solution.value = ''
-            fileError.value = null
+            
         }
 
 
-        return { showSolution, handleCloseForm, handleSubmit,handleChange, solution, fileError, isPending }
+        return { showSolution, handleCloseForm, handleSubmit,handleChange, solution, fileError, isPending, image }
     }
 }
 </script>
@@ -144,7 +156,16 @@ input[type="file"]{
     box-shadow: 1px 1px 2px rgba(50,50,50,0.3);
     transform: scale(0.97);
 }
-
+.loaded{
+  color: rgb(45, 160, 0);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.0);
+}
+.loaded:hover{
+  cursor:default;
+  transform: scale(1);
+  color: rgb(45, 160, 0);
+  box-shadow: 1px 2px 6px rgba(50,50,50,0.0);
+}
 /* Form transition in/out */
 
 .fade-enter-from,

@@ -151,9 +151,10 @@ The Chat component itself will take the traditional style of newest message at t
 During planning there were many ideas that after consideration were pushed back to potential future releases due to time restrictions for the project, which include:
 
 * Admin/project Manager authentication and UI
-* User stats view showing performance metrics for analysis for events such as tasks completed, projects completed, bugs solved using charts to show data such as rolling 12 week, weekly averages, distribution curves of daily numbers etc 
+* User stats view showing performance metrics such as tasks completed, projects completed, bugs solved. Using charts to show data such as rolling 12 week, weekly averages, distribution curves of daily numbers etc 
 * In-app chat notification and a badge to show the number unread messages (since the chat view last mounted the DOM)
-* More user-friendly interactive feedback when interacting with forms, instead of the standard Firebase and Email.js built in messages. 
+* More user-friendly interactive feedback when interacting with forms, instead of the just a string error message
+* For completed projects to be moved to a completed projects collection as if archived for future reference instead of simply being removed from the projects collection 
 
 
 ## Styling
@@ -187,7 +188,7 @@ Below are the early wireframes:
 
 # Component Architecture
 
-Below is a visual map of the planned structure for the project. The blue boxes are individual views that have their own route, the green boxes are nested components and the bright yellow boxes are composables.  The links show what views the components are nested within and where the composables are used.  
+Below is a visual map of the planned structure for the project. The blue boxes are individual views that have their own route, the green boxes are nested components and the bright yellow boxes are composables.  The links show which views the components are nested within and where the composables are used.  
 
 My only regret so far is that I did not extract the side-nav and top-bar into separate components from the start.  I miss judged the volume of code it would take in building the custom navigation for the project, next time I will start the nav build as a component or two depending on the project. Sitting down and creating this visual map has reinforced just how reusable functions can be if they are created with that in mind.
 
